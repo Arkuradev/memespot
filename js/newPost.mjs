@@ -1,3 +1,4 @@
+import { API_key } from "./constants.mjs";
 async function createPost(token, title, body, url) {
   const postUrl = `https://v2.api.noroff.dev/social/posts/`; // ${name}
   const postData = {
@@ -10,20 +11,17 @@ async function createPost(token, title, body, url) {
   };
 
   try {
-    console.log("Post URL:", postUrl);
-    console.log("Post Data:", postData);
-
     const response = await fetch(postUrl, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
+        "X-Noroff-API-Key": API_key,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(postData),
     });
 
     if (!response.ok) {
-      console.log("Response Status:", response.status);
       const errorData = await response.json();
       throw new Error(errorData.message || "Failed to create post.");
     }
@@ -50,6 +48,11 @@ function createPostForm() {
 
     if (!token) {
       alert("You must be logged in to create a post.");
+      return;
+    }
+
+    if (!urlInput || !titleInput || !bodyInput) {
+      alert("All fields required.");
       return;
     }
 
