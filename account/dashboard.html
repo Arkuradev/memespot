@@ -4,8 +4,75 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class", // Enables class-based dark mode
+        theme: {
+          extend: {},
+        },
+      };
+    </script>
+    <script src="/js/navbar.mjs" type="module"></script>
     <title>Document</title>
   </head>
+  <header>
+    <nav class="bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white p-4">
+      <div class="container mx-auto flex items-center justify-between">
+        <div class="text-2xl font-bold">
+          <a
+            href="./index.html"
+            class="hover:text-green-500 dark:hover:text-yellow-400"
+            >MemeSpot</a
+          >
+        </div>
+        <ul class="flex space-x-4">
+          <li>
+            <a
+              href="/index.html"
+              class="hover:text-green-500 dark:hover:text-yellow-400"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="./viewMemes.html"
+              class="hover:text-green-500 dark:hover:text-yellow-400"
+              >All Memes</a
+            >
+          </li>
+          <li>
+            <a
+              href="./post.html"
+              class="hover:text-yellow-500 dark:hover:text-yellow-400"
+              >New Post</a
+            >
+          </li>
+          <li>
+            <a
+              href="./dashboard.html"
+              class="hover:text-yellow-500 dark:hover:text-yellow-400"
+              >Dashboard</a
+            >
+          </li>
+          <li>
+            <a
+              id="loginLink"
+              href="../account/login.html"
+              class="hover:text-yellow-500 dark:hover:text-yellow-400"
+              >Login</a
+            >
+          </li>
+        </ul>
+        <button
+          id="themeToggle"
+          class="ml-4 p-2 rounded bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600"
+        >
+          🌞
+        </button>
+      </div>
+    </nav>
+  </header>
   <body>
     <main>
       <h1>INC DASHBOARD PAGE</h1>
@@ -13,3 +80,26 @@
     </main>
   </body>
 </html>
+
+<!--
+Current navbar idea when user is logged in. 
+(TEMP COMMENT)
+
+  Home
+  View Memes
+  Post Meme
+  Dashboard
+  Logout
+
+
+
+ Navbar when user is not logged in.
+
+  Home
+  View Memes
+  Login (hidden when logged in)
+  Post Meme (hidden when not logged in)
+  Dashboard> (hidden when not logged in)
+  Logout (hidden when not logged in)
+</ul>
+-->

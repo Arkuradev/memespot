@@ -3,7 +3,7 @@ import { API_LOGIN } from "./constants.mjs";
 const loginForm = document.querySelector("#loginForm");
 const emailInput = document.querySelector("#username");
 const passwordInput = document.querySelector("#password");
-const loginButton = document.querySelector("#loginButton");
+const loginButton = document.querySelector("#loginButton"); // Check if this is needed.
 const statusContainer = document.querySelector("#statusContainer"); // For errors and messages.
 
 loginForm.addEventListener("submit", async (event) => {
