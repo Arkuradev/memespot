@@ -4,6 +4,7 @@ async function createPost(token, title, body, url) {
   const postData = {
     title: title,
     body: body,
+    tags: ["memespot"], // Default tag to sort all posts relevant to this project.
     media: {
       url: url,
       alt: title,
