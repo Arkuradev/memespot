@@ -43,6 +43,12 @@ async function createPost(token, title, body, url) {
  * @param {string} bodyInput - The body of the post.
  * @param {string} urlInput - The URL of the post.
  * @returns {Promise} - A promise that resolves to the created post.
+ * @throws {Error} - If the post creation fails.
+ * @example
+ * ```js
+ * // Use this function when a user wants to create a new post.
+ * // After post has been created the user is forwarded to their dashboard page.
+ * ```
  */
 function createPostForm() {
   const form = document.getElementById("newPostForm");
