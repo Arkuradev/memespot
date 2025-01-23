@@ -36,6 +36,14 @@ async function createPost(token, title, body, url) {
   }
 }
 
+/**
+ * Function to create a new post.
+ * @param {string} token - The user's token from local storage.
+ * @param {string} titleInput - The title of the post.
+ * @param {string} bodyInput - The body of the post.
+ * @param {string} urlInput - The URL of the post.
+ * @returns {Promise} - A promise that resolves to the created post.
+ */
 function createPostForm() {
   const form = document.getElementById("newPostForm");
 
@@ -76,57 +84,4 @@ function createPostForm() {
 
 document.addEventListener("DOMContentLoaded", createPostForm);
 
-/*
-
-form.addEventListener("submit", async (event) => {
-  event.preventDefault(); // Prevents form from refreshing page.
-
-  const url = urlInput.value;
-  const title = titleInput.value;
-  const description = descriptionInput.value;
-
-  // Come back to this later to properly handle errors.
-  if (!url || !title || !description) {
-    alert("Please fill in all fields");
-    return;
-  }
-
-  const postData = {
-    title,
-    body: description,
-    tags: ["meme"],
-    media: {
-      url,
-      alt: title,
-    },
-  };
-  console.log("Post Data:", postData);
-  try {
-    //Fetching token from localStorage.
-    const token = localStorage.getItem("token");
-    console.log("Token", token);
-
-    const response = await fetch("https://v2.api.noroff.dev/social/posts/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(postData),
-    });
-
-    if (response.ok) {
-      alert("Meme posted successfully");
-      //Clear form.
-      form.reset();
-      window.location.href = "./account/dashboard.html";
-    } else {
-      const errorData = await response.json();
-      console.error("Error", errorData);
-      alert(`Failed to post meme: ${errorData.message || "Unknown Error"}`);
-    }
-  } catch (error) {
-    console.error("Error", error);
-    alert("An error occurred while posting this meme. Please try again.");
-  }
-}); */
+create;
