@@ -15,16 +15,16 @@
   </head>
   <body>
     <header>
-      <nav class="bg-gray-800 text-white shadow">
+      <nav class="bg-gray-800 text-white shadow relative">
         <div
           class="container mx-auto px-4 py-3 flex items-center justify-between"
         >
-          <!-- Logo / Brand -->
-          <a href="/index.html" class="text-lg font-bold hover:text-gray-300">
-            MemeSpot
-          </a>
+          <!-- Logo -->
+          <a href="/index.html" class="text-lg font-bold hover:text-gray-300"
+            >MemeSpot</a
+          >
 
-          <!-- Hamburger Menu (for mobile) -->
+          <!-- Hamburger Menu -->
           <button
             id="navToggle"
             class="block md:hidden text-white focus:outline-none"
@@ -46,10 +46,8 @@
             </svg>
           </button>
 
-          <!-- Desktop Navigation -->
-          <ul
-            class="hidden md:flex space-x-6 text-sm md:items-center md:space-x-4"
-          >
+          <!-- Desktop Menu -->
+          <ul class="hidden md:flex space-x-6 text-sm">
             <li><a href="/index.html" class="hover:text-gray-300">Home</a></li>
             <li>
               <a href="../pages/feed.html" class="hover:text-gray-300"
@@ -77,21 +75,50 @@
         <!-- Mobile Menu -->
         <div
           id="mobileMenu"
-          class="hidden bg-gray-700 text-white flex flex-col space-y-4 px-4 py-4 md:hidden absolute top-12 left-0 w-full z-50"
+          class="fixed top-0 right-0 h-70 w-full max-w-sm bg-gray-700 text-white transform translate-x-full transition-transform duration-300 ease-in-out md:hidden"
         >
-          <a href="/index.html" class="block hover:text-gray-300">Home</a>
-          <a href="../pages/feed.html" class="block hover:text-gray-300"
-            >All Memes</a
+          <div
+            class="flex items-center justify-between px-4 py-3 border-b border-gray-600"
           >
-          <a href="../post/new.html" class="block hover:text-gray-300"
-            >New Post</a
-          >
-          <a href="../account/dashboard.html" class="block hover:text-gray-300"
-            >Dashboard</a
-          >
-          <a href="../account/login.html" class="block hover:text-gray-300"
-            >Log Out</a
-          >
+            <h2 class="text-lg font-bold">Menu</h2>
+            <button
+              id="closeMenu"
+              class="text-white focus:outline-none"
+              aria-label="Close Menu"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <div class="flex flex-col px-4 py-4 space-y-4">
+            <a href="/index.html" class="block hover:text-gray-300">Home</a>
+            <a href="../pages/feed.html" class="block hover:text-gray-300"
+              >All Memes</a
+            >
+            <a href="../post/new.html" class="block hover:text-gray-300"
+              >New Post</a
+            >
+            <a
+              href="../account/dashboard.html"
+              class="block hover:text-gray-300"
+              >Dashboard</a
+            >
+            <a href="../account/login.html" class="block hover:text-gray-300"
+              >Log Out</a
+            >
+          </div>
         </div>
       </nav>
     </header>
