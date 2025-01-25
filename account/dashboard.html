@@ -4,79 +4,68 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: "class", // Enables class-based dark mode
-        theme: {
-          extend: {},
-        },
-      };
-    </script>
-    <script src="/js/navbar.mjs" type="module"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <!-- <script src="/js/navbar.mjs" type="module"></script> -->
+    <script src="/js/fetchUserPosts.mjs" type="module"></script>
     <title>Document</title>
   </head>
-  <header>
-    <nav class="bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white p-4">
-      <div class="container mx-auto flex items-center justify-between">
-        <div class="text-2xl font-bold">
-          <a
-            href="./index.html"
-            class="hover:text-green-500 dark:hover:text-yellow-400"
-            >MemeSpot</a
-          >
-        </div>
-        <ul class="flex space-x-4">
-          <li>
-            <a
-              href="/index.html"
-              class="hover:text-green-500 dark:hover:text-yellow-400"
-              >Home</a
-            >
-          </li>
-          <li>
-            <a
-              href="../pages/feed.html"
-              class="hover:text-green-500 dark:hover:text-yellow-400"
-              >All Memes</a
-            >
-          </li>
-          <li>
-            <a
-              href="../post/new.html"
-              class="hover:text-yellow-500 dark:hover:text-yellow-400"
-              >New Post</a
-            >
-          </li>
-          <li>
-            <a
-              href="./dashboard.html"
-              class="hover:text-yellow-500 dark:hover:text-yellow-400"
-              >Dashboard</a
-            >
-          </li>
-          <li>
-            <a
-              id="loginLink"
-              href="../account/login.html"
-              class="hover:text-yellow-500 dark:hover:text-yellow-400"
-              >Login</a
-            >
-          </li>
-        </ul>
-        <button
-          id="themeToggle"
-          class="ml-4 p-2 rounded bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600"
-        >
-          🌞
-        </button>
-      </div>
-    </nav>
-  </header>
   <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="../pages/feed.html">All Memes</a></li>
+          <li><a href="../post/new.html">New Post</a></li>
+          <li><a href="../account/dashboard.html">Dashboard</a></li>
+          <li><a href="../account/login.html">Log Out</a></li>
+        </ul>
+      </nav>
+    </header>
+
     <main>
-      <h1>INC DASHBOARD PAGE</h1>
-      <p>This is where the user can manage their profile and their posts.</p>
+      <section id="dashboard" class="p-6 bg-gray-100 min-h-screen">
+        <div class="dashboardContainer mx-auto bg-white p-4 rounded shadow">
+          <h1 class="text-2xl font-bold mb-4">
+            Welcome, <span id="userName">User</span>
+          </h1>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Meme post section -->
+
+            <section id="memePosts" class="bg-gray-50 p-4 rounded shadow">
+              <h2 class="text-xl font-semibold mb-4">Your Meme Posts</h2>
+              <div id="memeGrid" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <!-- Render meme thumbnails here -->
+              </div>
+              <button
+                id="createPostButton"
+                class="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+              >
+                New Post
+              </button>
+            </section>
+
+            <!-- User profile section -->
+            <section id="userProfile" class="bg-gray-50 p-4 rounded shadow">
+              <h2 class="text-xl font-semibold mb-4">User Profile</h2>
+              <div id="profileDetails" class="text-gray-700">
+                <p>Name: <span id="profileUsername">Loading...</span></p>
+                <p>Email: <span id="profileEmail">Loading...</span></p>
+              </div>
+              <button
+                id="editProfileButton"
+                class="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+              >
+                Edit Profile
+              </button>
+            </section>
+          </div>
+        </div>
+      </section>
     </main>
   </body>
 </html>

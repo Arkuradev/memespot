@@ -1,10 +1,15 @@
 import { API_key } from "./constants.mjs";
+
 async function createPost(token, title, body, url) {
-  const postUrl = `https://v2.api.noroff.dev/social/posts/`; // ${name}
+  const postUrl = `https://v2.api.noroff.dev/social/posts/`;
+
+  //Get the logged in user's username from localStorage.
+  const loggedInUser = localStorage.getItem("name");
+
   const postData = {
     title: title,
     body: body,
-    tags: ["memespot"], // Default tag to sort all posts relevant to this project.
+    tags: ["memespot", loggedInUser], // Default tag to sort all posts relevant to this project.
     media: {
       url: url,
       alt: title,
@@ -89,5 +94,3 @@ function createPostForm() {
 }
 
 document.addEventListener("DOMContentLoaded", createPostForm);
-
-create;
