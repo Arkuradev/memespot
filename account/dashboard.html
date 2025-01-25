@@ -9,20 +9,90 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/dashboard.css" />
-    <!-- <script src="/js/navbar.mjs" type="module"></script> -->
+    <script src="/js/navbar.mjs" type="module"></script>
     <script src="/js/fetchUserPosts.mjs" type="module"></script>
     <title>Document</title>
   </head>
   <body>
     <header>
-      <nav>
-        <ul>
-          <li><a href="/index.html">Home</a></li>
-          <li><a href="../pages/feed.html">All Memes</a></li>
-          <li><a href="../post/new.html">New Post</a></li>
-          <li><a href="../account/dashboard.html">Dashboard</a></li>
-          <li><a href="../account/login.html">Log Out</a></li>
-        </ul>
+      <nav class="bg-gray-800 text-white shadow">
+        <div
+          class="container mx-auto px-4 py-3 flex items-center justify-between"
+        >
+          <!-- Logo / Brand -->
+          <a href="/index.html" class="text-lg font-bold hover:text-gray-300">
+            MemeSpot
+          </a>
+
+          <!-- Hamburger Menu (for mobile) -->
+          <button
+            id="navToggle"
+            class="block md:hidden text-white focus:outline-none"
+            aria-label="Toggle Navigation"
+          >
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+
+          <!-- Desktop Navigation -->
+          <ul
+            class="hidden md:flex space-x-6 text-sm md:items-center md:space-x-4"
+          >
+            <li><a href="/index.html" class="hover:text-gray-300">Home</a></li>
+            <li>
+              <a href="../pages/feed.html" class="hover:text-gray-300"
+                >All Memes</a
+              >
+            </li>
+            <li>
+              <a href="../post/new.html" class="hover:text-gray-300"
+                >New Post</a
+              >
+            </li>
+            <li>
+              <a href="../account/dashboard.html" class="hover:text-gray-300"
+                >Dashboard</a
+              >
+            </li>
+            <li>
+              <a href="../account/login.html" class="hover:text-gray-300"
+                >Log Out</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div
+          id="mobileMenu"
+          class="hidden bg-gray-700 text-white flex flex-col space-y-4 px-4 py-4 md:hidden absolute top-12 left-0 w-full z-50"
+        >
+          <a href="/index.html" class="block hover:text-gray-300">Home</a>
+          <a href="../pages/feed.html" class="block hover:text-gray-300"
+            >All Memes</a
+          >
+          <a href="../post/new.html" class="block hover:text-gray-300"
+            >New Post</a
+          >
+          <a href="../account/dashboard.html" class="block hover:text-gray-300"
+            >Dashboard</a
+          >
+          <a href="../account/login.html" class="block hover:text-gray-300"
+            >Log Out</a
+          >
+        </div>
       </nav>
     </header>
 
