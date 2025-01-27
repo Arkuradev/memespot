@@ -9,6 +9,8 @@
     />
     <!-- <link rel="stylesheet" href="/css/credentials.css" /> -->
     <script src="/js/login.mjs" type="module"></script>
+
+    <script src="/js/navbar.mjs" type="module"></script>
     <title>Document</title>
   </head>
   <body>
@@ -63,8 +65,11 @@
               >
             </li>
             <li>
-              <a href="../account/login.html" class="hover:text-gray-300"
-                >Log Out</a
+              <a
+                href="../account/login.html"
+                id="loginLink"
+                class="hover:text-gray-300"
+                >Login</a
               >
             </li>
           </ul>
@@ -113,8 +118,11 @@
               class="block hover:text-gray-300"
               >Dashboard</a
             >
-            <a href="../account/login.html" class="block hover:text-gray-300"
-              >Log Out</a
+            <a
+              href="../account/login.html"
+              id="loginLink"
+              class="block hover:text-gray-300"
+              >Login</a
             >
           </div>
         </div>
@@ -167,5 +175,6 @@
         </div>
       </section>
     </main>
+    <script src="/js/logOut.mjs" type="module"></script>
   </body>
 </html>

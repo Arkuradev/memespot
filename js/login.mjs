@@ -36,7 +36,7 @@ loginForm.addEventListener("submit", async (event) => {
     // Saves the token and username to local storage for future use.
     localStorage.setItem("token", data.data?.accessToken);
     localStorage.setItem("name", data.data?.name);
-
+    localStorage.setItem("isLoggedIn", "true");
     statusContainer.textContent = "Login Successful!";
     statusContainer.style.color = "green";
 

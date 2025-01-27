@@ -22,15 +22,12 @@ export async function fetchAndRenderUserPosts() {
     }
 
     const { data: posts } = await response.json(); // API returns data array.
-    console.log("All posts from the API:", posts);
 
     // Filter posts to only include those created by the logged-in user
     const userPosts = posts.filter((post) => {
-      console.log("Post Tags:", post.tags);
       return post.tags.includes(currentUser);
     });
 
-    console.log("Filtered User Posts:", userPosts);
     // Display the user's name in the dashboard.
     userNameDisplay.textContent = currentUser;
 
