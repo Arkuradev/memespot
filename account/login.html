@@ -3,22 +3,165 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/credentials.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <!-- <link rel="stylesheet" href="/css/credentials.css" /> -->
     <script src="/js/login.mjs" type="module"></script>
     <title>Document</title>
   </head>
   <body>
-    <main>
-      <section id="loginSection">
-        <div class="loginContainer">
-          <form id="loginForm">
-            <label for="username:">Username</label>
-            <input type="text" placeholder="@stud.noroff.no" id="username" />
-            <label for="password">Password</label>
-            <input type="password" placeholder="Password" id="password" />
-            <button id="loginButton" type="submit">Login</button>
-            <p>Need an account?</p>
-            <a href="../account/register.html">Register</a>
+    <header>
+      <nav class="bg-gray-800 text-white shadow relative">
+        <div
+          class="container mx-auto px-4 py-3 flex items-center justify-between"
+        >
+          <!-- Logo -->
+          <a href="/index.html" class="text-lg font-bold hover:text-gray-300"
+            >MemeSpot</a
+          >
+
+          <!-- Hamburger Menu -->
+          <button
+            id="navToggle"
+            class="block md:hidden text-white focus:outline-none"
+            aria-label="Toggle Navigation"
+          >
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+
+          <!-- Desktop Menu -->
+          <ul class="hidden md:flex space-x-6 text-sm">
+            <li><a href="/index.html" class="hover:text-gray-300">Home</a></li>
+            <li>
+              <a href="../pages/feed.html" class="hover:text-gray-300"
+                >All Memes</a
+              >
+            </li>
+            <li>
+              <a href="../post/new.html" class="hover:text-gray-300"
+                >New Post</a
+              >
+            </li>
+            <li>
+              <a href="../account/dashboard.html" class="hover:text-gray-300"
+                >Dashboard</a
+              >
+            </li>
+            <li>
+              <a href="../account/login.html" class="hover:text-gray-300"
+                >Log Out</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div
+          id="mobileMenu"
+          class="fixed top-0 right-0 h-70 w-full max-w-sm bg-gray-700 text-white transform translate-x-full transition-transform duration-300 ease-in-out md:hidden"
+        >
+          <div
+            class="flex items-center justify-between px-4 py-3 border-b border-gray-600"
+          >
+            <h2 class="text-lg font-bold">Menu</h2>
+            <button
+              id="closeMenu"
+              class="text-white focus:outline-none"
+              aria-label="Close Menu"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <div class="flex flex-col px-4 py-4 space-y-4">
+            <a href="/index.html" class="block hover:text-gray-300">Home</a>
+            <a href="../pages/feed.html" class="block hover:text-gray-300"
+              >All Memes</a
+            >
+            <a href="../post/new.html" class="block hover:text-gray-300"
+              >New Post</a
+            >
+            <a
+              href="../account/dashboard.html"
+              class="block hover:text-gray-300"
+              >Dashboard</a
+            >
+            <a href="../account/login.html" class="block hover:text-gray-300"
+              >Log Out</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main
+      class="min-h-screen bg-gray-900 flex items-center justify-center px-4"
+    >
+      <section id="loginSection" class="w-full max-w-md">
+        <div
+          class="loginContainer bg-gray-800 text-white shadow-lg rounded-2xl p-8"
+        >
+          <h2 class="text-2xl font-bold text-center mb-6">Login</h2>
+          <form id="loginForm" class="space-y-4">
+            <label for="username" class="block text-sm font-medium mb-1"
+              >Username
+            </label>
+            <input
+              type="text"
+              placeholder="@stud.noroff.no"
+              id="username"
+              class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+            <label for="password" class="block text-sm font-medium mb-1"
+              >Password
+            </label>
+            <input
+              type="password"
+              placeholder="Password"
+              id="password"
+              class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+            <!-- Login Button -->
+            <button
+              id="loginButton"
+              type="submit"
+              class="w-full px-4 py-2 bg-blue-600 rounded-lg text-white font-bold hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500"
+            >
+              Login
+            </button>
+            <!-- Register Link -->
+            <p class="text-sm text-center mt-4">Need an account?</p>
+            <a
+              href="../account/register.html"
+              class="text-blue-100 hover:text-blue-300"
+              >Register</a
+            >
             <div id="statusContainer"></div>
           </form>
         </div>
