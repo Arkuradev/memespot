@@ -48,6 +48,7 @@ export async function renderPosts() {
 function renderPost(post, container) {
   const postElement = document.createElement("div");
   postElement.classList.add("post");
+  postElement.classList.add("bg-gray-700");
 
   postElement.innerHTML = `
     <div class="meme-img">

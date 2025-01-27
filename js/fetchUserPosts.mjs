@@ -53,7 +53,8 @@ function renderMemeThumbnail(post) {
   const postElement = document.createElement("div");
   postElement.classList.add(
     "meme-thumbnail",
-    "bg-gray-100",
+    "bg-gray-700",
+    "text-white",
     "p-2",
     "rounded",
     "shadow"
