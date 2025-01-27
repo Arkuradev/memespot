@@ -3,45 +3,53 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM fully loaded!");
 
-  const loginLink = document.getElementById("loginLink");
+  const desktopLoginLink = document.getElementById("desktopLoginLink");
+  const mobileLoginLink = document.getElementById("mobileLoginLink");
 
-  if (!loginLink) {
+  if (!desktopLoginLink || !mobileLoginLink) {
     console.error("No login link found!");
     return;
   }
 
   // Check login state
-
   const isUserLoggedIn = localStorage.getItem("name");
 
   if (isUserLoggedIn) {
     // Update the link to "Log Out"
-    loginLink.textContent = "Log Out";
-    loginLink.href = "#"; // Prevent navigation on logout
+    updateLoginLinks("Log Out", "#");
   }
 
   // Attach event listener to the link
-  loginLink.addEventListener("click", (event) => {
-    if (isUserLoggedIn) {
-      // Log out flow
-      event.preventDefault();
-      if (confirm("Are you sure you want to log out?")) {
-        logOutUser();
+  [desktopLoginLink, mobileLoginLink].forEach((link) => {
+    link.addEventListener("click", (event) => {
+      if (isUserLoggedIn) {
+        // Log out flow
+        event.preventDefault();
+        if (confirm("Are you sure you want to log out?")) {
+          logOutUser();
+        }
+      } else {
+        // Log in flow (redirect to login page)
+        console.log("Redirecting to login...");
+        link.href = "../account/login.html";
       }
-    } else {
-      // Log in flow (redirect to login page)
-      console.log("Redirecting to login...");
-      loginLink.href = "../account/login.html";
-    }
+    });
   });
 
   function logOutUser() {
     console.log("Logging out...");
     localStorage.clear(); // Clear login data
-    loginLink.textContent = "Log In"; // Update link back to "Log In"
-    loginLink.href = "../account/login.html"; // Update link destination
+    updateLoginLinks("Log In", "../account/login.html"); // Update link destination
     console.log("User logged out.");
     // Optionally redirect to the login page or a confirmation page
     window.location.href = "../account/login.html";
+  }
+
+  function updateLoginLinks(text, href) {
+    desktopLoginLink.textContent = text;
+    desktopLoginLink.href = href;
+
+    mobileLoginLink.textContent = text;
+    mobileLoginLink.href = href;
   }
 });
