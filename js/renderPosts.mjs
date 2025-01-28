@@ -47,19 +47,29 @@ export async function renderPosts() {
 
 function renderPost(post, container) {
   const postElement = document.createElement("div");
-  postElement.classList.add("post");
-  postElement.classList.add("bg-gray-700");
+  postElement.classList.add(
+    "post",
+    "snap-center",
+    "h-screen",
+    "flex",
+    "flex-col",
+    "justify-center",
+    "items-center",
+    "bg-gray-800"
+  );
 
   postElement.innerHTML = `
-    <div class="meme-img">
-    <img src="${post.media?.url || ""}" alt="${post.media?.alt || "Meme"}" />
-    </div>
-    <div class="post-header">
-    <h2>${post.title}</h2>
-    </div>
-    <div class="post-body">
-    <p>${post.body}</p>
-    </div>
+    
+    <img class="w-3/4 sm:w-2/3 md:w-1/4 max-w-sm object-contain rounded-lg shadow-lg" src="${
+      post.media?.url || ""
+    }" alt="${post.media?.alt || "Meme"}" />
+  
+
+    <h2 class="text-white text-lg font-semibold mt-4">${post.title}</h2>
+    
+  
+    <p class="text-gray-400 mt-2 text-center px-6">${post.body}</p>
+    
     
     `;
   container.appendChild(postElement);
@@ -67,3 +77,20 @@ function renderPost(post, container) {
 document.addEventListener("DOMContentLoaded", () => {
   renderPosts();
 });
+
+/* 
+
+ <div class="meme-img">
+    <img class="w-3/4 object-cover rounded-lg shadow-lg" src="${
+      post.media?.url || ""
+    }" alt="${post.media?.alt || "Meme"}" />
+    </div>
+    <div class="post-header">
+    <h2 class="text-white text-lg font-semibold mt-4">${post.title}</h2>
+    </div>
+    <div class="post-body">
+    <p class="text-gray-400 mt-2 text-center px-6">${post.body}</p>
+    </div>
+    
+    `;
+    */

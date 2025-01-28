@@ -8,6 +8,7 @@
       rel="stylesheet"
     />
     <script src="/js/renderPosts.mjs" type="module"></script>
+    <script src="/js/memeFeedScroll.mjs" type="module"></script>
     <script src="/js/logOut.mjs" type="module"></script>
     <title>Meme Posts</title>
   </head>
@@ -127,8 +128,14 @@
       </nav>
     </header>
     <main>
-      <section id="memeFeed-section">
-        <div id="memeFeed"></div>
+      <section
+        id="memeFeed-section"
+        class="bg-gray-700 min-h-screen flex flex-col items-center overflow-hidden relative"
+      >
+        <div
+          id="memeFeed"
+          class="snap-y snap-mandatory h-screen w-full overflow-y-scroll scroll-smooth"
+        ></div>
       </section>
     </main>
   </body>
