@@ -1,4 +1,7 @@
 import { API_key } from "./constants.mjs";
+import { deletePost } from "./deletePost.mjs";
+
+const token = localStorage.getItem("token");
 const memeGrid = document.getElementById("memeGrid");
 const userNameDisplay = document.getElementById("userName");
 
@@ -66,13 +69,23 @@ function renderMemeThumbnail(post) {
         alt="${post.media?.alt || "Meme"}"
         class="w-full h-32 object-cover rounded"
       />
+      <button class="edit-button text-sm font-semibold mt-2">Edit</button>
+      <button class="delete-button text-sm font-semibold mt-2">Delete</button>
       <h3 class="text-sm font-semibold mt-2">${post.title}</h3>
     `;
   // Add link to the specific post page when clicking on image.
   // Add 2 buttons that displays on hover to edit and delete the post.
 
+  const deleteButton = postElement.querySelector(".delete-button");
+
+  deleteButton.addEventListener("click", () => {
+    deletePost(post.id, token);
+  });
+
   memeGrid.appendChild(postElement);
 }
+
+// Edit and Delete button event listeners.
 
 // Load the user's post when the page is ready
 document.addEventListener("DOMContentLoaded", () => {
