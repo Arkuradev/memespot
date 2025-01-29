@@ -43,6 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       setTimeout(() => (debounce = false), 500); // Reset debounce.
     },
-    { passive: true }
+    { passive: true } // Mark the listener as passive.
   );
 });

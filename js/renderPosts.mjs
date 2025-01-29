@@ -55,7 +55,7 @@ function renderPost(post, container) {
     "flex-col",
     "justify-center",
     "items-center",
-    "bg-gray-800"
+    "bg-gray-700"
   );
 
   postElement.innerHTML = `
