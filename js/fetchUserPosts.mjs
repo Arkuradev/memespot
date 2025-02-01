@@ -77,6 +77,11 @@ function renderMemeThumbnail(post) {
   // Add 2 buttons that displays on hover to edit and delete the post.
 
   const deleteButton = postElement.querySelector(".delete-button");
+  const editButton = postElement.querySelector(".edit-button");
+
+  editButton.addEventListener("click", () => {
+    window.location.href = `../post/edit.html?id=${post.id}`;
+  });
 
   deleteButton.addEventListener("click", () => {
     deletePost(post.id, token);
