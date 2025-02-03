@@ -68,6 +68,7 @@ function createPostForm() {
 
     if (!token) {
       alert("You must be logged in to create a post.");
+
       return;
     }
 
