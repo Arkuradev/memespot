@@ -8,6 +8,6 @@ export function checkLoginStatus() {
 
   if (!token) {
     alert("You must be logged in to view this page. Please log in.");
-    window.location.href = "login.html";
+    window.location.href = "../account/login.html";
   }
 }
