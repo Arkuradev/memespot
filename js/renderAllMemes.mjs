@@ -1,6 +1,6 @@
 // Rendering all memes for the home page.
 import { API_key } from "./constants.mjs";
-async function fetchMemes() {
+export async function fetchMemes() {
   const token = localStorage.getItem("token");
 
   if (!token) {
@@ -32,7 +32,7 @@ async function fetchMemes() {
   }
 }
 
-function renderMemes(memes) {
+export function renderMemes(memes) {
   const memeContainer = document.getElementById("memeContainer");
   memeContainer.innerHTML = ""; // Clear previous content.
 
