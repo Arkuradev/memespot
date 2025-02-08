@@ -14,7 +14,8 @@
     <script src="/js/deletePost.mjs" type="module"></script>
     <script src="/js/createNewPost.mjs" type="module"></script>
     <script src="/js/fetchUserPosts.mjs" type="module"></script>
-    <script src="/js/profileInformation.mjs" type="module"></script>
+    <!-- <script src="/js/profileInformation.mjs" type="module"></script> -->
+    <script src="/js/fetchProfile.mjs" type="module"></script>
     <title>Document</title>
   </head>
   <body>
@@ -162,12 +163,15 @@
 
             <!-- User profile section -->
             <section id="userProfile" class="bg-gray-800 p-4 rounded shadow">
-              <h2 class="text-xl text-white font-semibold mb-4">
-                User Profile
-              </h2>
-              <div id="profileDetails" class="text-white">
-                <p>Name: <span id="profileUsername">Loading...</span></p>
-                <p>Email: <span id="profileEmail">Loading...</span></p>
+              <div>
+                <img id="profileAvatar" src="" alt="Profile Avatar" />
+                <h2
+                  id="profileName"
+                  class="text-xl text-white font-semibold mb-4"
+                >
+                  Loading name...
+                </h2>
+                <p id="profileBio" class="text-white">Loading bio...</p>
               </div>
               <button
                 id="editProfileButton"
@@ -175,6 +179,18 @@
               >
                 Edit Profile
               </button>
+
+              <!-- Hidden edit form -->
+              <section id="editProfileForm" style="display: none">
+                <label for="editAvatar">Avatar URL:</label>
+                <input type="text" id="editAvatar" />
+
+                <label for="editBio">Bio:</label>
+                <textarea id="editBio"></textarea>
+
+                <button id="saveProfileBtn">Save</button>
+                <button id="cancelEditBtn">Cancel</button>
+              </section>
             </section>
           </div>
         </div>

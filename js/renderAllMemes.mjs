@@ -50,7 +50,7 @@ export function renderMemes(memes) {
     memeElement.innerHTML = `
   <img src="${meme.media?.url || ""}" alt="${
       meme.media?.alt || "Meme"
-    }" class="w-full rounded-md">
+    }" class="w-full h-auto object-cover rounded-md">
   <h2 class="text-white text-lg font-semibold mt-2">${meme.title}</h2>
   <p class="text-gray-400 mt-2">${meme.body}</p>
   <p class="text-gray-500 text-sm mt-1">Posted by: ${meme.author?.name}</p>
