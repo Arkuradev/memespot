@@ -8,6 +8,7 @@
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
+
     <link rel="stylesheet" href="../css/dashboard.css" />
     <script src="/js/navbar.mjs" type="module"></script>
     <script src="/js/logOut.mjs" type="module"></script>
@@ -15,7 +16,7 @@
     <script src="/js/createNewPost.mjs" type="module"></script>
     <script src="/js/fetchUserPosts.mjs" type="module"></script>
     <!-- <script src="/js/profileInformation.mjs" type="module"></script> -->
-    <script src="/js/fetchProfile.mjs" type="module"></script>
+
     <title>Document</title>
   </head>
   <body>
@@ -163,7 +164,7 @@
 
             <!-- User profile section -->
             <section id="userProfile" class="bg-gray-800 p-4 rounded shadow">
-              <div>
+              <div id="profilePreview">
                 <img id="profileAvatar" src="" alt="Profile Avatar" />
                 <h2
                   id="profileName"
@@ -171,6 +172,7 @@
                 >
                   Loading name...
                 </h2>
+                <h2 id="profileEmail" class="text-white">Loading email...</h2>
                 <p id="profileBio" class="text-white">Loading bio...</p>
               </div>
               <button
@@ -181,15 +183,15 @@
               </button>
 
               <!-- Hidden edit form -->
-              <section id="editProfileForm" style="display: none">
+              <section id="editProfileForm">
                 <label for="editAvatar">Avatar URL:</label>
                 <input type="text" id="editAvatar" />
 
                 <label for="editBio">Bio:</label>
                 <textarea id="editBio"></textarea>
 
-                <button id="saveProfileBtn">Save</button>
-                <button id="cancelEditBtn">Cancel</button>
+                <button id="saveProfileButton">Save</button>
+                <button id="cancelEditButton">Cancel</button>
               </section>
             </section>
           </div>
@@ -197,27 +199,5 @@
       </section>
     </main>
   </body>
+  <script src="/js/fetchProfile.mjs" type="module"></script>
 </html>
-
-<!--
-Current navbar idea when user is logged in. 
-(TEMP COMMENT)
-
-  Home
-  View Memes
-  Post Meme
-  Dashboard
-  Logout
-
-
-
- Navbar when user is not logged in.
-
-  Home
-  View Memes
-  Login (hidden when logged in)
-  Post Meme (hidden when not logged in)
-  Dashboard> (hidden when not logged in)
-  Logout (hidden when not logged in)
-</ul>
--->

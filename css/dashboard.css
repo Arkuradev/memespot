@@ -4,6 +4,9 @@
   gap: 1rem;
   padding: 1rem;
 }
+#editProfileForm {
+  display: none;
+}
 
 .post-thumbnail {
   position: relative;
