@@ -43,7 +43,7 @@ export function renderMemes(memes) {
     console.log(meme);
 
     const authorName =
-      meme.author && meme.author.name ? meme.author.name : "Uknown";
+      meme.author && meme.author.name ? meme.author.name : "Unknown";
 
     const memeElement = document.createElement("div");
     memeElement.classList.add(

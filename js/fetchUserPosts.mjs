@@ -85,13 +85,12 @@ function renderMemeThumbnail(post) {
 
   deleteButton.addEventListener("click", () => {
     deletePost(post.id, token);
+    // Refresh the page after deleting the post
     setTimeout(fetchAndRenderUserPosts, 1000);
   });
 
   memeGrid.appendChild(postElement);
 }
-
-// Edit and Delete button event listeners.
 
 // Load the user's post when the page is ready
 document.addEventListener("DOMContentLoaded", () => {
