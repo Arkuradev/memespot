@@ -8,14 +8,17 @@ export async function fetchMemes() {
     return;
   }
   try {
-    const response = await fetch("https://v2.api.noroff.dev/social/posts", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-        "X-Noroff-API-Key": API_key,
-      },
-    });
+    const response = await fetch(
+      "https://v2.api.noroff.dev/social/posts?_author=true",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+          "X-Noroff-API-Key": API_key,
+        },
+      }
+    );
     const data = await response.json();
 
     if (response.ok) {
@@ -37,6 +40,11 @@ export function renderMemes(memes) {
   memeContainer.innerHTML = ""; // Clear previous content.
 
   memes.forEach((meme) => {
+    console.log(meme);
+
+    const authorName =
+      meme.author && meme.author.name ? meme.author.name : "Uknown";
+
     const memeElement = document.createElement("div");
     memeElement.classList.add(
       "meme-card",
@@ -53,7 +61,7 @@ export function renderMemes(memes) {
     }" class="w-full h-auto object-cover rounded-md">
   <h2 class="text-white text-lg font-semibold mt-2">${meme.title}</h2>
   <p class="text-gray-400 mt-2">${meme.body}</p>
-  <p class="text-gray-500 text-sm mt-1">Posted by: ${meme.author?.name}</p>
+  <p class="text-gray-500 text-sm mt-1">Posted by: ${authorName}</p>
   `;
 
     memeContainer.appendChild(memeElement);

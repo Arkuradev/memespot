@@ -8,7 +8,7 @@ const userNameDisplay = document.getElementById("userName");
 export async function fetchAndRenderUserPosts() {
   const token = localStorage.getItem("token");
   const currentUser = localStorage.getItem("name");
-  const postUrl = `https://v2.api.noroff.dev/social/posts/`;
+  const postUrl = `https://v2.api.noroff.dev/social/posts?_author=true`;
 
   try {
     const response = await fetch(postUrl, {
@@ -85,6 +85,7 @@ function renderMemeThumbnail(post) {
 
   deleteButton.addEventListener("click", () => {
     deletePost(post.id, token);
+    setTimeout(fetchAndRenderUserPosts, 1000);
   });
 
   memeGrid.appendChild(postElement);

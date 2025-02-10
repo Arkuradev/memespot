@@ -15,6 +15,8 @@
     <script src="/js/deletePost.mjs" type="module"></script>
     <script src="/js/createNewPost.mjs" type="module"></script>
     <script src="/js/fetchUserPosts.mjs" type="module"></script>
+    <script src="/js/dashboard.mjs" type="module"></script>
+
     <!-- <script src="/js/profileInformation.mjs" type="module"></script> -->
 
     <title>Document</title>
@@ -165,7 +167,12 @@
             <!-- User profile section -->
             <section id="userProfile" class="bg-gray-800 p-4 rounded shadow">
               <div id="profilePreview">
-                <img id="profileAvatar" src="" alt="Profile Avatar" />
+                <img
+                  id="profileAvatar"
+                  src=""
+                  class="h-42 w-72 rounded-full mb-4"
+                  alt="Profile Avatar"
+                />
                 <h2
                   id="profileName"
                   class="text-xl text-white font-semibold mb-4"
@@ -183,15 +190,52 @@
               </button>
 
               <!-- Hidden edit form -->
-              <section id="editProfileForm">
-                <label for="editAvatar">Avatar URL:</label>
-                <input type="text" id="editAvatar" />
+              <section
+                id="editProfileForm"
+                class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+              >
+                <div
+                  class="bg-gray-900 p-6 rounded-lg shadow-lg max-w-md w-full"
+                >
+                  <h2 class="text-white text-xl font-semibold mb-4">
+                    Edit Profile
+                  </h2>
+                  <label
+                    for="editAvatar"
+                    class="block text-sm font.medium text-gray-300"
+                    >Avatar URL:</label
+                  >
+                  <input
+                    type="text"
+                    id="editAvatar"
+                    class="w-full p-2 bg-gray-800 border border-gray-700 rounded text-white focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+                    placeholder="Enter avatar URL"
+                  />
 
-                <label for="editBio">Bio:</label>
-                <textarea id="editBio"></textarea>
+                  <label
+                    for="editBio"
+                    class="block text-sm font.medium text-gray-300"
+                    >Bio:</label
+                  >
+                  <textarea
+                    id="editBio"
+                    class="w-full p-2 bg-gray-800 border border-gray-700 rounded text-white focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+                    placeholder="Tell us about yourself..."
+                  ></textarea>
 
-                <button id="saveProfileButton">Save</button>
-                <button id="cancelEditButton">Cancel</button>
+                  <button
+                    id="saveProfileButton"
+                    class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg transition duration-300"
+                  >
+                    Save
+                  </button>
+                  <button
+                    id="cancelEditButton"
+                    class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white font-semibold rounded-lg transition duration-300"
+                  >
+                    Cancel
+                  </button>
+                </div>
               </section>
             </section>
           </div>
@@ -199,5 +243,4 @@
       </section>
     </main>
   </body>
-  <script src="/js/fetchProfile.mjs" type="module"></script>
 </html>
