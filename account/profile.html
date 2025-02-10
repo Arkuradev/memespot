@@ -9,6 +9,8 @@
     />
 
     <script src="/js/logOut.mjs" type="module"></script>
+    <script src="/js/navbar.mjs" type="module"></script>
+    <script src="/js/fetchUserProfile.mjs" type="module"></script>
 
     <title>TEMP TITLE</title>
   </head>
@@ -127,6 +129,27 @@
         </div>
       </nav>
     </header>
-    <main>VIEW PROFILE</main>
+    <main class="bg-gray-900">
+      <section class="bg-gray-900 p-6 rounded-lg shadow-lg">
+        <img
+          id="profileAvatar"
+          src=""
+          alt="Profile Avatar"
+          class="w-24 h-24 rounded-full mx-auto"
+        />
+        <h2
+          id="profileUsername"
+          class="text-xl text-white font-semibold text-center mt-2"
+        >
+          Loading...
+        </h2>
+        <p id="profileBio" class="text-gray-400 text-center mt-2">Loading...</p>
+
+        <button id="followButton" class="px-4 py-2 rounded-md"></button>
+
+        <h3 class="text-white text-lg font-semibold mt-6">Posts</h3>
+        <div id="userPosts" class="mt-4"></div>
+      </section>
+    </main>
   </body>
 </html>

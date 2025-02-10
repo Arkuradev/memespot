@@ -61,7 +61,7 @@ export function renderMemes(memes) {
     }" class="w-full h-auto object-cover rounded-md">
   <h2 class="text-white text-lg font-semibold mt-2">${meme.title}</h2>
   <p class="text-gray-400 mt-2">${meme.body}</p>
-  <p class="text-gray-500 text-sm mt-1">Posted by: ${authorName}</p>
+  <p class="text-gray-500 text-sm mt-1">Posted by: <a href="../account/profile.html?user=${authorName}">${authorName}</a></p>
   `;
 
     memeContainer.appendChild(memeElement);

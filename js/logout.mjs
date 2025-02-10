@@ -1,8 +1,6 @@
 // Deploy a fix for mobile menu so the loginLink updates when the user is logged in.
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("DOM fully loaded!");
-
   const desktopLoginLink = document.getElementById("desktopLoginLink");
   const mobileLoginLink = document.getElementById("mobileLoginLink");
 
