@@ -1,4 +1,5 @@
 import { API_key } from "./constants.mjs";
+import { setupFollowButtons } from "./follow.mjs";
 
 const token = localStorage.getItem("token");
 
@@ -53,12 +54,12 @@ function renderUserProfile(user) {
 
   const loggedInUser = localStorage.getItem("name");
   if (loggedInUser !== user.name) {
-    setupFollowButton(user);
+    setupFollowButtons(user);
   } else {
     document.getElementById("followButton").style.display = "none";
   }
 }
-
+/*
 function setupFollowButton(user) {
   console.log("Setting up follow button for:", user.name);
   const followButton = document.getElementById("followButton");
@@ -103,7 +104,7 @@ function setupFollowButton(user) {
     }
   });
 }
-
+*/
 async function fetchUserPosts(username) {
   try {
     const postResponse = await fetch(
@@ -125,7 +126,7 @@ async function fetchUserPosts(username) {
     const userPosts = allPosts.filter(
       (post) => post.author && post.author.name === username
     );
-
+    console.log(userPosts);
     renderUserPosts(userPosts);
   } catch (error) {
     console.error("Error fetching user posts:", error);

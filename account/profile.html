@@ -11,6 +11,7 @@
     <script src="/js/logOut.mjs" type="module"></script>
     <script src="/js/navbar.mjs" type="module"></script>
     <script src="/js/fetchUserProfile.mjs" type="module"></script>
+    <script src="/js/followUnfollow.mjs" type="module"></script>
 
     <title>TEMP TITLE</title>
   </head>
@@ -145,10 +146,21 @@
         </h2>
         <p id="profileBio" class="text-gray-400 text-center mt-2">Loading...</p>
 
-        <button id="followButton" class="px-4 py-2 rounded-md"></button>
+        <button
+          id="followButton"
+          class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg transition duration-300"
+        >
+          Follow
+        </button>
+        <button
+          id="unfollowButton"
+          class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg transition duration-300"
+        >
+          Unfollow
+        </button>
 
         <h3 class="text-white text-lg font-semibold mt-6">Posts</h3>
-        <div id="userPosts" class="mt-4"></div>
+        <div id="userPosts" class="grid grid-cols-4 md:grid-cols-6 gap-6"></div>
       </section>
     </main>
   </body>
