@@ -34,6 +34,7 @@ async function isFollowingUser(targetUsername) {
 }
 
 export async function setupFollowButtons(user) {
+  const loggedInUser = localStorage.getItem("name");
   const followButton = document.getElementById("followButton");
   const unfollowButton = document.getElementById("unfollowButton");
 
@@ -43,7 +44,7 @@ export async function setupFollowButtons(user) {
   }
 
   const isFollowing = await isFollowingUser(user.name);
-  console.log(`Is logged-in user following ${user.name}?`, isFollowing);
+  console.log(`Is ${loggedInUser} following ${user.name}?`, isFollowing);
 
   // Show the correct button
   // followButton.style.display = isFollowing ? "none" : "block";

@@ -1,11 +1,8 @@
 import { API_key } from "./constants.mjs";
-
 const token = localStorage.getItem("token");
 const username = localStorage.getItem("name");
 
 export async function fetchProfile() {
-  console.log("fetchProfile() is running..."); // Debugging.
-
   if (!token || !username) {
     console.error(
       "Missing token or username in localStorage. Please log in first."

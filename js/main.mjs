@@ -8,6 +8,9 @@ Username: Memespottest1
 Memespottest1@stud.noroff.no  
 password: memespot123
 
+Log in: memespotdemo1@stud.noroff.no 
+Password: memespotdemo
+
 API key: 44069cf0-8209-4b66-9ee5-9bf34aad45ff
 
 const options = {

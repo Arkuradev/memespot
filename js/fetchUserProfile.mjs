@@ -59,52 +59,7 @@ function renderUserProfile(user) {
     document.getElementById("followButton").style.display = "none";
   }
 }
-/*
-function setupFollowButton(user) {
-  console.log("Setting up follow button for:", user.name);
-  const followButton = document.getElementById("followButton");
 
-  followButton.replaceWith(followButton.cloneNode(true));
-
-  const newFollowButton = document.getElementById("followButton");
-  const loggedInUser = localStorage.getItem("name");
-
-  // Check if the logged in user is following this profile.
-  if (user.followers.includes(loggedInUser)) {
-    newFollowButton.textContent = "Unfollow";
-    newFollowButton.classList.add("bg-red-600");
-  } else {
-    newFollowButton.textContent = "Follow";
-    newFollowButton.classList.add("bg-blue-600");
-  }
-
-  newFollowButton.addEventListener("click", async () => {
-    try {
-      const method =
-        newFollowButton.textContent === "Follow" ? "PUT" : "DELETE";
-      const response = await fetch(
-        `https://v2.api.noroff.dev/social/profiles/${user.name}/follow`,
-        {
-          method,
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-            "X-Noroff-API-Key": API_key,
-          },
-        }
-      );
-
-      if (!response.ok) throw new Error("Failed to update follow status.");
-      newFollowButton.textContent =
-        newFollowButton.textContent === "Follow" ? "Unfollow" : "Follow";
-      newFollowButton.classList.toggle("bg-red-600");
-      newFollowButton.classList.toggle("bg-blue-600");
-    } catch (error) {
-      console.error("Error updating follow status:", error);
-    }
-  });
-}
-*/
 async function fetchUserPosts(username) {
   try {
     const postResponse = await fetch(
@@ -126,7 +81,7 @@ async function fetchUserPosts(username) {
     const userPosts = allPosts.filter(
       (post) => post.author && post.author.name === username
     );
-    console.log(userPosts);
+
     renderUserPosts(userPosts);
   } catch (error) {
     console.error("Error fetching user posts:", error);

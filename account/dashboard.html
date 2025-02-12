@@ -15,7 +15,7 @@
     <script src="/js/deletePost.mjs" type="module"></script>
     <script src="/js/fetchUserPosts.mjs" type="module"></script>
     <script src="/js/dashboard.mjs" type="module"></script>
-
+    <script src="/js/editPost.mjs" type="module"></script>
     <!-- <script src="/js/profileInformation.mjs" type="module"></script> -->
 
     <title>Dashboard - Manage Memes & Profile</title>
@@ -139,17 +139,13 @@
     <main>
       <section id="dashboard" class="p-6 bg-gray-900 min-h-screen">
         <div class="dashboardContainer mx-auto bg-gray-800 p-4 rounded shadow">
-          <h1 class="text-2xl text-white font-bold mb-4">
-            Welcome, <span id="userName">User</span>
-          </h1>
-
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Meme post section -->
 
             <section id="memePosts" class="bg-gray-800 p-4 rounded shadow">
-              <h2 class="text-xl text-white font-semibold mb-4">
+              <h1 class="text-xl text-white font-semibold mb-4">
                 Your Meme Posts
-              </h2>
+              </h1>
               <div id="memeGrid" class="grid grid-cols-2 md:grid-cols-3 gap-4">
                 <!-- Render meme thumbnails here -->
               </div>
@@ -164,6 +160,9 @@
                   class="h-42 w-72 rounded-full mb-4"
                   alt="Profile Avatar"
                 />
+                <a href="../account/my-profile.html" class="text-white"
+                  >&#128203; View Profile</a
+                >
                 <h2
                   id="profileName"
                   class="text-xl text-white font-semibold mb-4"

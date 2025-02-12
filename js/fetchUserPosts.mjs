@@ -31,11 +31,7 @@ export async function fetchAndRenderUserPosts() {
       return post.tags.includes(currentUser);
     });
 
-    // Display the user's name in the dashboard.
-    userNameDisplay.textContent = currentUser;
-
     // Render posts in the dashboard grid.
-
     if (userPosts.length > 0) {
       memeGrid.innerHTML = "";
       userPosts.forEach((post) => {

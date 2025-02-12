@@ -77,20 +77,3 @@ function renderPost(post, container) {
 document.addEventListener("DOMContentLoaded", () => {
   renderPosts();
 });
-
-/* 
-
- <div class="meme-img">
-    <img class="w-3/4 object-cover rounded-lg shadow-lg" src="${
-      post.media?.url || ""
-    }" alt="${post.media?.alt || "Meme"}" />
-    </div>
-    <div class="post-header">
-    <h2 class="text-white text-lg font-semibold mt-4">${post.title}</h2>
-    </div>
-    <div class="post-body">
-    <p class="text-gray-400 mt-2 text-center px-6">${post.body}</p>
-    </div>
-    
-    `;
-    */

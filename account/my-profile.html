@@ -8,12 +8,14 @@
       rel="stylesheet"
     />
 
-    <script src="/js/logOut.mjs" type="module"></script>
+    <link rel="stylesheet" href="../css/dashboard.css" />
     <script src="/js/navbar.mjs" type="module"></script>
-    <script src="/js/fetchUserProfile.mjs" type="module"></script>
+    <script src="/js/logOut.mjs" type="module"></script>
+    <script src="/js/myProfile.mjs" type="module"></script>
     <script src="/js/fetchUserPosts.mjs" type="module"></script>
+    <script src="/js/editPost.mjs" type="module"></script>
 
-    <title>TEMP TITLE</title>
+    <title>My profile</title>
   </head>
   <body class="bg-gray-900">
     <header>
@@ -22,7 +24,7 @@
           class="container mx-auto px-4 py-3 flex items-center justify-between"
         >
           <!-- Logo -->
-          <a href="/index.html" class="text-lg font-bold hover:text-gray-300"
+          <a href="/index.html" class="text-lg font-bold hover:text-blue-300"
             >MemeSpot</a
           >
 
@@ -50,19 +52,19 @@
 
           <!-- Desktop Menu -->
           <ul class="hidden md:flex space-x-6 text-sm">
-            <li><a href="/index.html" class="hover:text-gray-300">Home</a></li>
+            <li><a href="/index.html" class="hover:text-blue-300">Home</a></li>
             <li>
-              <a href="../pages/feed.html" class="hover:text-gray-300"
+              <a href="../pages/feed.html" class="hover:text-blue-300"
                 >All Memes</a
               >
             </li>
             <li>
-              <a href="../post/new.html" class="hover:text-gray-300"
+              <a href="../post/new.html" class="hover:text-blue-300"
                 >New Post</a
               >
             </li>
             <li>
-              <a href="../account/dashboard.html" class="hover:text-gray-300"
+              <a href="../account/dashboard.html" class="hover:text-blue-300"
                 >Dashboard</a
               >
             </li>
@@ -70,7 +72,7 @@
               <a
                 href="../account/login.html"
                 id="desktopLoginLink"
-                class="hover:text-gray-300"
+                class="hover:text-blue-300"
                 >Login</a
               >
             </li>
@@ -109,58 +111,57 @@
           </div>
           <div class="flex flex-col px-4 py-4 space-y-4">
             <a href="/index.html" class="block hover:text-gray-300">Home</a>
-            <a href="../pages/feed.html" class="block hover:text-gray-300"
+            <a href="../pages/feed.html" class="block hover:text-blue-300"
               >All Memes</a
             >
-            <a href="../post/new.html" class="block hover:text-gray-300"
+            <a href="../post/new.html" class="block hover:text-blue-300"
               >New Post</a
             >
             <a
               href="../account/dashboard.html"
-              class="block hover:text-gray-300"
+              class="block hover:text-blue-300"
               >Dashboard</a
             >
             <a
               href="../account/login.html"
               id="mobileLoginLink"
-              class="block hover:text-gray-300"
+              class="block hover:text-blue-300"
               >Login</a
             >
           </div>
         </div>
       </nav>
     </header>
-    <main class="bg-gray-900">
-      <section class="bg-gray-900 p-6 rounded-lg shadow-lg">
-        <img
-          id="profileAvatar"
-          src=""
-          alt="Profile Avatar"
-          class="w-24 h-24 rounded-full mx-auto"
-        />
-        <h2
-          id="profileUsername"
-          class="text-xl text-white font-semibold text-center mt-2"
-        >
-          Loading...
-        </h2>
-        <p id="profileBio" class="text-gray-400 text-center mt-2">Loading...</p>
 
-        <button
-          id="followButton"
-          class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg transition duration-300"
-        >
-          Follow
-        </button>
-        <button
-          id="unfollowButton"
-          class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg transition duration-300"
-        >
-          Unfollow
-        </button>
-
-        <h3 class="text-white text-lg font-semibold mt-6">Posts</h3>
-        <div id="userPosts" class="grid grid-cols-4 md:grid-cols-6 gap-6"></div>
+    <main>
+      <main class="bg-gray-900">
+        <section class="bg-gray-900 p-6 rounded-lg shadow-lg">
+          <img
+            id="profileAvatar"
+            src=""
+            alt="Profile Avatar"
+            class="w-24 h-24 rounded-full mx-auto"
+          />
+          
+          <h2
+            id="profileName"
+            class="text-xl text-white font-semibold text-center mt-2"
+          >
+          </h2>
+          <p id="profileEmail" class="text-gray-400 text-center mt-2"></p>
+          <p id="profileBio" class="text-gray-400 text-center mt-2"></p>
+            </section>
+            <section id="memePosts" class="bg-gray-800 p-4 rounded shadow">
+              <h2 class="text-xl text-white font-semibold mb-4">
+                Your Meme Posts
+              </h2>
+              <div id="memeGrid" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <!-- Render meme thumbnails here -->
+              </div>
+              <div id="userPosts" class="grid grid-cols-4 md:grid-cols-6 gap-6"></div>
+            </section>
+          </div>
+        </div>
       </section>
     </main>
   </body>
