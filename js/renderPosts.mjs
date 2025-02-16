@@ -65,7 +65,9 @@ function renderPost(post, container) {
     }" alt="${post.media?.alt || "Meme"}" />
   
 
-    <h2 class="text-white text-lg font-semibold mt-4">${post.title}</h2>
+    <h2 class="text-white text-lg font-semibold mt-4"><a class="text-white hover:text-blue-300" href="../pages/post.html?id=${
+      post.id
+    }">${post.title}</a></h2>
     
   
     <p class="text-gray-400 mt-2 text-center px-6">${post.body}</p>

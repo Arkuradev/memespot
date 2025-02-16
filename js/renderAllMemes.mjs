@@ -40,8 +40,6 @@ export function renderMemes(memes) {
   memeContainer.innerHTML = ""; // Clear previous content.
 
   memes.forEach((meme) => {
-    console.log(meme);
-
     const authorName =
       meme.author && meme.author.name ? meme.author.name : "Unknown";
 
@@ -59,7 +57,9 @@ export function renderMemes(memes) {
   <img src="${meme.media?.url || ""}" alt="${
       meme.media?.alt || "Meme"
     }" class="w-full h-auto object-cover rounded-md">
-  <h2 class="text-white text-lg font-semibold mt-2">${meme.title}</h2>
+  <h2 class="text-white text-lg font-semibold mt-2"><a class="text-white hover:text-blue-300" href="../pages/post.html?id=${
+    meme.id
+  }">${meme.title}</a></h2>
   <p class="text-gray-400 mt-2">${meme.body}</p>
   <p class="text-gray-500 text-sm mt-1">Posted by: <a class="text-white hover:text-blue-300" href="../account/profile.html?user=${authorName}">${authorName}</a></p>
   `;
