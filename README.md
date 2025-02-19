@@ -29,6 +29,7 @@ Since the project uses Tailwind via a CDN, there is no need for additional setup
 
 ### Clone the repository
 
+> [!TIP]
 > git clone https://github.com/yourusername/memespot.git
 > cd memespot
 
