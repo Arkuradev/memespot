@@ -31,7 +31,6 @@ Since the project uses Tailwind via a CDN, there is no need for additional setup
 
 > [!TIP]
 > git clone https://github.com/NoroffFEU/js2-course-assignment-Arkuradev
-> .git
 >
 > cd memespot
 
