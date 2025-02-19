@@ -1,4 +1,4 @@
-### MemeSpot - A Social Media Platform for Memes.
+# MemeSpot - A Social Media Platform for Memes.
 
 MemeSpot is a social media platform where users can create an account to share fun memes. Users can follow each other, explore profiles, and interact
 with memes in a fun and engaging way.
@@ -27,6 +27,29 @@ with memes in a fun and engaging way.
 
 Since the project uses Tailwind via a CDN, there is no need for additional setup. Simply clone the repository and open the index.html file in a browser.
 
-## Clone the repository
+### Clone the repository
 
-To be continued....
+> git clone https://github.com/yourusername/memespot.git
+> cd memespot
+
+### Open in browser
+
+Just open the index.html file in your preferred browser, and you're good to go!
+
+## API Integration
+
+The project interacts with the **Noroff Social API**, handling user authentication, post creation and profile management.
+
+- **Authentication:** Secure login and registration with API key authentication.
+- **Posts:** Fetching, creating, editing and deleting meme posts.
+- **Profiles:** Fetching user profiles and managing follow/unfollow actions.
+
+## Future Enhancements
+
+- **Comments & Reactions:** Users can comment and react to memes.
+- **Light/Dark Mode Support:** Toggle between light and dark themes.
+- **Better Search Functionality:** Find memes and users more easily.
+
+## Author
+
+**Stein Arild Gansmoe** - Built as a part of a project assignment at Noroff Vocational School.

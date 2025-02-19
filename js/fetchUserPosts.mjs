@@ -3,7 +3,6 @@ import { deletePost } from "./deletePost.mjs";
 
 const token = localStorage.getItem("token");
 const memeGrid = document.getElementById("memeGrid");
-const userNameDisplay = document.getElementById("userName");
 
 export async function fetchAndRenderUserPosts() {
   const token = localStorage.getItem("token");
