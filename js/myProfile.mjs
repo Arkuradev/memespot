@@ -34,8 +34,6 @@ async function fetchMyProfile() {
     document.getElementById("profileName").textContent = data.name;
     document.getElementById("profileBio").textContent =
       "Your Bio: " + data.bio || "No bio set yet.";
-
-    // Prefill edit form.
   } catch (error) {
     console.error("Error fetching profile:", error);
   }

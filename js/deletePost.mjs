@@ -21,7 +21,7 @@ export async function deletePost(postId, token) {
         // Replace with handling message later.
         alert("Success! Meme has been deleted.");
       } else {
-        alert("Failed to delete meme.");
+        alert("Failed to delete meme. Please try again.");
       }
     } catch (error) {
       console.error("Error deleting post:", error);

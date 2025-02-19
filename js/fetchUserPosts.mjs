@@ -47,7 +47,7 @@ export async function fetchAndRenderUserPosts() {
   }
 }
 
-function renderMemeThumbnail(post) {
+export function renderMemeThumbnail(post) {
   const postElement = document.createElement("div");
   postElement.classList.add(
     "meme-thumbnail",

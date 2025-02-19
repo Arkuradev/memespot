@@ -5,8 +5,6 @@ const urlParams = new URLSearchParams(window.location.search);
 const postId = urlParams.get("id");
 const token = localStorage.getItem("token");
 
-console.log("Post ID from URL:", postId); // Debugging log
-
 // Load post data when the page is loaded.
 document.addEventListener("DOMContentLoaded", loadPostData);
 

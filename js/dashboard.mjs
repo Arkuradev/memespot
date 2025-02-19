@@ -2,7 +2,6 @@ import { updateProfile } from "./updateProfile.mjs";
 import { fetchProfile } from "./fetchProfile.mjs";
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("DOM is fully loaded, now updating profile...");
   fetchProfile(); // Fetch profile data when the page is loaded.
 
   const editProfileButton = document.getElementById("editProfileButton");
