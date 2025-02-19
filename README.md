@@ -32,6 +32,11 @@ Since the project uses Tailwind via a CDN, there is no need for additional setup
 > git clone https://github.com/yourusername/memespot.git
 > cd memespot
 
+> [!NOTE]
+> If you want to log in straight away you can use one of the users here or create a new account.
+
+### Demo Users
+
 ### Open in browser
 
 Just open the index.html file in your preferred browser, and you're good to go!
