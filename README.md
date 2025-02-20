@@ -44,6 +44,11 @@ Since the project uses Tailwind via a CDN, there is no need for additional setup
 - Log in: memespotdemo1@stud.noroff.no
 - Password: memespotdemo
 
+2. Demo user 2:
+
+- Log in: memespotdemo2@stud.noroff.no
+- Password: memespotdemo
+
 ### Open in browser
 
 Just open the index.html file in your preferred browser, and you're good to go!
