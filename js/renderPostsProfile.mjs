@@ -4,6 +4,7 @@ export async function renderPostsProfile() {
   const token = localStorage.getItem("token");
   const currentUser = localStorage.getItem("name");
   const profilePosts = document.getElementById("userPosts");
+
   const postUrl = `https://v2.api.noroff.dev/social/posts?_author=true`;
 
   try {

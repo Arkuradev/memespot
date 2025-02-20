@@ -1,5 +1,5 @@
 import { API_key } from "./constants.mjs";
-import { setupFollowButtons } from "./follow.mjs";
+// import { setupFollowButtons } from "./follow.mjs";
 
 const token = localStorage.getItem("token");
 
@@ -12,6 +12,9 @@ export async function fetchUserProfile() {
   // Get username from URL parameters.
   const urlParams = new URLSearchParams(window.location.search);
   const profileUsername = urlParams.get("user");
+
+  // Sets the title of the page to the profile the user has opened.
+  document.title = `${profileUsername}'s profile`;
 
   if (!profileUsername) {
     alert("No user specified. Please try again.");
@@ -54,7 +57,7 @@ function renderUserProfile(user) {
 
   const loggedInUser = localStorage.getItem("name");
   if (loggedInUser !== user.name) {
-    setupFollowButtons(user);
+    // document.getElementById("followButton").style.display = "block";
   } else {
     document.getElementById("followButton").style.display = "none";
   }
