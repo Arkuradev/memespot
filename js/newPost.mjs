@@ -1,4 +1,5 @@
 import { API_key } from "./constants.mjs";
+import { displayMessage } from "./displayMessage.mjs";
 
 const loggedInUser = localStorage.getItem("name");
 
@@ -34,11 +35,11 @@ async function createPost(token, title, body, url) {
     }
 
     const result = await response.json();
-    console.log("Post Created:", result);
     return result;
   } catch (error) {
     console.error("Error creating post:", error);
-    alert(`Error creating post: ${error.message}`);
+    displayMessage("#message", "error", "Failed to create post.");
+    // alert(`Error creating post: ${error.message}`);
   }
 }
 
@@ -69,13 +70,19 @@ function createPostForm() {
     const token = localStorage.getItem("token");
 
     if (!token) {
-      alert("You must be logged in to create a post.");
-
+      displayMessage(
+        "#message",
+        "error",
+        "You must be logged in to create a post."
+      );
       return;
     }
 
     if (!urlInput || !titleInput || !bodyInput) {
-      alert("All fields required.");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1500);
+      displayMessage("#message", "error", "All fields required.");
       return;
     }
 
@@ -83,8 +90,11 @@ function createPostForm() {
       const newPost = await createPost(token, titleInput, bodyInput, urlInput);
 
       if (newPost) {
-        alert("Post successfully created!");
-        form.reset();
+        displayMessage("#message", "success", "Post successfully created!");
+        setTimeout(() => {
+          form.reset();
+        }, 1500);
+
         // window.location.href = "../account/dashboard.html";
       } else {
         alert("Failed to create post. Please try again!");

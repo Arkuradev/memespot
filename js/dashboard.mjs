@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
       updateProfile();
       if (updateProfile) {
         setTimeout(() => {
-          // fetchProfile();
           // Reloads page to show updated profile and allow user to click Edit profile right away.
           window.location.reload();
         }, 2000);

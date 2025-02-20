@@ -1,4 +1,5 @@
 import { API_key } from "./constants.mjs";
+import { displayMessage } from "./displayMessage.mjs";
 
 // Get postId and name from URL parameters.
 const urlParams = new URLSearchParams(window.location.search);
@@ -8,10 +9,17 @@ const token = localStorage.getItem("token");
 // Load post data when the page is loaded.
 document.addEventListener("DOMContentLoaded", loadPostData);
 
+// Add event listener to cancel button to return user to dashboard.
+const cancelEditButton = document.getElementById("cancelEditButton");
+cancelEditButton.addEventListener("click", () => {
+  window.location.href = "../account/dashboard.html";
+});
+
 // Fetch and display post data.
 async function loadPostData() {
   if (!postId) {
     console.error("Post ID is null or undefined.");
+    displayMessage("#message", "error", "Missing post ID. Cannot update post.");
     return;
   }
 
@@ -35,6 +43,7 @@ async function loadPostData() {
       document.getElementById("editTitle").value = data.data.title;
       document.getElementById("editDescription").value = data.data.body;
       document.getElementById("editURL").value = data.data.media.url;
+      document.title = `Edit Post - ${data.data.title}`; // Set page title.
     } else {
       console.error("Failed to fetch post data.");
     }
@@ -49,12 +58,13 @@ export async function savePost() {
 
   if (!postId) {
     console.error("Missing postId in URL parameters.");
-    alert("Error: Missing post ID. Cannot update post.");
+    displayMessage("#message", "error", "Missing post ID. Cannot update post.");
     return;
   }
 
   if (!token) {
     console.error("Missing token in localStorage. Please log in first.");
+    displayMessage("#message", "error", "Please log in first.");
     return;
   }
 
@@ -80,15 +90,22 @@ export async function savePost() {
 
     if (response.ok) {
       console.log("Post updated successfully:", responseData);
-      alert("Post updated successfully!");
-      window.location.href = "../account/dashboard.html";
+      setTimeout(
+        () => (window.location.href = "../account/dashboard.html"),
+        2000
+      );
+      displayMessage("#message", "success", "Post updated!");
     } else {
       console.error("Failed to update post:", responseData);
-      alert("Failed to update post. Please try again.");
+      displayMessage("#message", "error", "Failed to update post.");
     }
   } catch (error) {
     console.error("Error updating post:", error);
-    alert("An error occurred while updating the post. Please try again later.");
+    displayMessage(
+      "#message",
+      "error",
+      "An error occurred while updating the post. Please try again later."
+    );
   }
 }
 

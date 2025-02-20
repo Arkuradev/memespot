@@ -1,10 +1,15 @@
 import { API_key } from "./constants.mjs";
-// import { setupFollowButtons } from "./follow.mjs";
+import { displayMessage } from "./displayMessage.mjs";
 
 const token = localStorage.getItem("token");
 
 if (!token) {
   alert("You must be logged in to view this page. Please log in.");
+  displayMessage(
+    "#message",
+    "error",
+    "You must be logged in to view this page."
+  );
   window.location.href = "../account/login.html";
 }
 
@@ -17,8 +22,10 @@ export async function fetchUserProfile() {
   document.title = `${profileUsername}'s profile`;
 
   if (!profileUsername) {
-    alert("No user specified. Please try again.");
-    window.location.href = "/index.html";
+    setTimeout(() => {
+      window.location.href = "/index.html";
+    }, 2000);
+    displayMessage("#message", "error", "No user specified. Please try again.");
   }
 
   // Fetch user profile.
@@ -56,10 +63,10 @@ function renderUserProfile(user) {
     user.bio || "No bio available.";
 
   const loggedInUser = localStorage.getItem("name");
-  if (loggedInUser !== user.name) {
-    // document.getElementById("followButton").style.display = "block";
-  } else {
-    document.getElementById("followButton").style.display = "none";
+  if (loggedInUser === user.name) {
+    document.getElementById("follow-btn").style.display = "none";
+  } else if (loggedInUser !== user.name) {
+    document.getElementById("follow-btn").style.display = "block";
   }
 }
 

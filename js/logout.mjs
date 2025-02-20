@@ -1,3 +1,5 @@
+import { displayMessage } from "./displayMessage.mjs";
+
 // Deploy a fix for mobile menu so the loginLink updates when the user is logged in.
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -24,10 +26,16 @@ document.addEventListener("DOMContentLoaded", () => {
         // Log out flow
         event.preventDefault();
         if (confirm("Are you sure you want to log out?")) {
+          displayMessage(
+            "#message",
+            "warning",
+            "You have been logged out Redirecting to login page."
+          );
           logOutUser();
         }
       } else {
         // Log in flow (redirect to login page)
+
         console.log("Redirecting to login...");
         link.href = "../account/login.html";
       }
@@ -35,12 +43,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function logOutUser() {
-    console.log("Logging out...");
-    localStorage.clear(); // Clear login data
-    updateLoginLinks("Log In", "../account/login.html"); // Update link destination
-    console.log("User logged out.");
-    // Optionally redirect to the login page or a confirmation page
-    window.location.href = "../account/login.html";
+    setTimeout(() => {
+      localStorage.clear(); // Clear login data
+      updateLoginLinks("Log In", "../account/login.html"); // Update link destination
+      // Optionally redirect to the login page or a confirmation page
+      window.location.href = "../account/login.html";
+    }, 2000);
   }
 
   function updateLoginLinks(text, href) {

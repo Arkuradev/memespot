@@ -1,4 +1,5 @@
 import { API_key } from "./constants.mjs";
+import { displayMessage } from "./displayMessage.mjs";
 
 const token = localStorage.getItem("token");
 const username = localStorage.getItem("name");
@@ -24,7 +25,7 @@ export async function updateProfile() {
     if (!response.ok)
       throw new Error(`Failed to update profile: ${response.status}`);
 
-    alert("Profile updated successfully!");
+    displayMessage("#message", "success", "Profile updated successfully!");
 
     document.getElementById("editProfileForm").style.display = "none";
     document.getElementById("userProfile").style.display = "block";
@@ -33,6 +34,6 @@ export async function updateProfile() {
     return response.json();
   } catch (error) {
     console.error("Error updating profile:", error);
-    alert("An error occurred while updating your profile.");
+    displayMessage("#message", "error", "Failed to update profile.");
   }
 }

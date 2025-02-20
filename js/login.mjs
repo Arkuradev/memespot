@@ -1,10 +1,9 @@
 import { API_LOGIN } from "./constants.mjs";
+import { displayMessage } from "./displayMessage.mjs";
 
 const loginForm = document.querySelector("#loginForm");
 const emailInput = document.querySelector("#username");
 const passwordInput = document.querySelector("#password");
-const loginButton = document.querySelector("#loginButton"); // Check if this is needed.
-const statusContainer = document.querySelector("#statusContainer"); // For errors and messages.
 
 loginForm.addEventListener("submit", async (event) => {
   event.preventDefault(); // Prevents form from refreshing page.
@@ -14,8 +13,8 @@ loginForm.addEventListener("submit", async (event) => {
 
   // Come back to this later to properly handle errors.
   if (!email || !password) {
-    statusContainer.textContent = "Please enter your email and password.";
-    statusContainer.style.color = "red";
+    const errorMessage = "Please enter your email and password.";
+    displayMessage("#message", "error", errorMessage);
     return;
   }
 
@@ -37,15 +36,13 @@ loginForm.addEventListener("submit", async (event) => {
     localStorage.setItem("token", data.data?.accessToken);
     localStorage.setItem("name", data.data?.name);
     localStorage.setItem("isLoggedIn", "true");
-    statusContainer.textContent = "Login Successful!";
-    statusContainer.style.color = "green";
 
-    // Redirect to dashboard or home page. (Not decided yet)
+    // Redirect to dashboard or home page.
+    displayMessage("#message", "success", "Login successful! Redirecting...");
     setTimeout(() => {
       window.location.href = "../account/dashboard.html";
-    }, 1000);
+    }, 3000);
   } catch (error) {
-    statusContainer.textContent = error.message;
-    statusContainer.style.color = "red";
+    displayMessage("#message", "error", error.message);
   }
 });

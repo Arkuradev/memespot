@@ -7,10 +7,10 @@
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
-    <!-- <link rel="stylesheet" href="/css/credentials.css" /> -->
+    <link rel="stylesheet" href="/css/styles.css" />
     <script src="/js/login.mjs" type="module"></script>
-
     <script src="/js/navbar.mjs" type="module"></script>
+    <script src="/js/loadingIndicator.mjs" type="module"></script>
     <title>Memespot - Log in to your account</title>
   </head>
   <body>
@@ -128,10 +128,19 @@
         </div>
       </nav>
     </header>
+    <div
+      id="global-loader"
+      class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50"
+    >
+      <div
+        class="w-12 h-12 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"
+      ></div>
+    </div>
     <main
       class="min-h-screen bg-gray-900 flex items-center justify-center px-4"
     >
       <section id="loginSection" class="w-full max-w-md">
+        <div id="message" class="message"></div>
         <div
           class="loginContainer bg-gray-800 text-white shadow-lg rounded-2xl p-8"
         >
@@ -170,7 +179,6 @@
               class="text-blue-100 hover:text-blue-300"
               >Click here to register.</a
             >
-            <div id="statusContainer"></div>
           </form>
         </div>
       </section>
