@@ -67,7 +67,7 @@ export function renderMemeThumbnail(post) {
       <h3 class="text-sm font-semibold mt-2"><a class="text-white hover:text-blue-300" href="../pages/post.html?id=${
         post.id
       }">${post.title}</a></h3>
-      <button class="edit-button mt-4 mb-4 px-4 py-2 bg-green-600 hover:bg-green-500 text-white font-semibold py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-300">Edit</button>
+      <button class="edit-button mt-4 mb-4 px-4 py-2 bg-green-700 hover:bg-green-500 text-white font-semibold py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-300">Edit</button>
       <button class="delete-button mt-4 mb-4 px-4 py-2 bg-red-600 hover:bg-red-500 text-white font-semibold py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition duration-300">Delete</button>
     `;
   // Add link to the specific post page when clicking on image.
@@ -80,7 +80,8 @@ export function renderMemeThumbnail(post) {
     window.location.href = `../post/edit.html?id=${post.id}`;
   });
 
-  deleteButton.addEventListener("click", () => {
+  deleteButton.addEventListener("click", async (event) => {
+    event.preventDefault();
     deletePost(post.id, token);
     // Refresh the page after deleting the post
     setTimeout(fetchAndRenderUserPosts, 300);

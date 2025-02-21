@@ -44,7 +44,9 @@ async function loadPostData() {
 
 export function renderPost(post) {
   if (post) {
+    const pageTitle = document.querySelector("#pageTitle");
     document.title = post.title;
+    pageTitle.innerHTML = `${post.title} posted by ${post.tags[1]}`; // Set the h1 element's text;
   }
 
   const formattedDate = formatDate(post.created);
@@ -64,8 +66,8 @@ export function renderPost(post) {
       post.media?.url || "default-image.jpg"
     }" alt="${post.media?.alt || "Meme"}" />
     <h2 class="text-white text-lg font-semibold mt-4">${post.title}</h2>
-    <p class="text-gray-400 mt-2 text-center px-6">${post.body}</p>
-    <p class="text-gray-500 text-sm mt-1">Posted by: <a class="text-white hover:text-blue-300" href="../account/profile.html?user=${
+    <p class="text-gray-300 mt-2 text-center px-6">${post.body}</p>
+    <p class="text-gray-300 text-sm mt-1">Posted by: <a class="text-white hover:text-blue-300" href="../account/profile.html?user=${
       post.tags[1]
     }">${post.tags[1]}</a></p>
     <p class="text-gray-200 text-sm mt-1">Post created: ${formattedDate}</p>

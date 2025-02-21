@@ -15,25 +15,25 @@
     <script src="/js/loadingIndicator.mjs" type="module"></script>
     <script src="/js/myProfile.mjs" type="module"></script>
     <script src="/js/fetchUserPosts.mjs" type="module"></script>
-    
+
     <link
-    rel="apple-touch-icon"
-    sizes="180x180"
-    href="/images/apple-touch-icon.png"
-  />
-  <link
-    rel="icon"
-    type="image/png"
-    sizes="32x32"
-    href="/images/favicon-32x32.png"
-  />
-  <link
-    rel="icon"
-    type="image/png"
-    sizes="16x16"
-    href="/images/favicon-16x16.png"
-  />
-  <link rel="manifest" href="/images/site.webmanifest" />
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/images/site.webmanifest" />
 
     <title>My profile</title>
   </head>
@@ -144,39 +144,39 @@
         </div>
       </nav>
     </header>
-    <div id="global-loader" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
-      <div class="w-12 h-12 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+    <div
+      id="global-loader"
+      class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50"
+    >
+      <div
+        class="w-12 h-12 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"
+      ></div>
     </div>
-    <main>
-      <main class="bg-gray-900">
-        <section class="bg-gray-900 p-6 rounded-lg shadow-lg">
-          <div id="message" class="message"></div>
-          <img
-            id="profileAvatar"
-            src=""
-            alt="Profile Avatar"
-            class="w-24 h-24 rounded-full mx-auto"
-          />
-          
-          <h2
-            id="profileName"
-            class="text-xl text-white font-semibold text-center mt-2"
-          >
-          </h2>
-          <p id="profileEmail" class="text-gray-400 text-center mt-2"></p>
-          <p id="profileBio" class="text-gray-400 text-center mt-2"></p>
-            </section>
-            <section id="memePosts" class="bg-gray-800 p-4 rounded shadow">
-              <h2 class="text-xl text-white font-semibold mb-4">
-                Your Meme Posts
-              </h2>
-              <div id="memeGrid" class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                <!-- Render meme thumbnails here -->
-              </div>
-              <div id="userPosts" class="grid grid-cols-4 md:grid-cols-6 gap-6"></div>
-            </section>
-          </div>
+    <main class="bg-gray-900">
+      <section class="bg-gray-900 p-6 rounded-lg shadow-lg">
+        <div id="message" class="message"></div>
+        <img
+          id="profileAvatar"
+          src="#"
+          alt="Profile Avatar"
+          class="w-24 h-24 rounded-full mx-auto"
+        />
+
+        <h2
+          id="profileName"
+          class="text-xl text-white font-semibold text-center mt-2"
+        >
+          Loading...
+        </h2>
+        <p id="profileEmail" class="text-gray-400 text-center mt-2"></p>
+        <p id="profileBio" class="text-gray-400 text-center mt-2"></p>
+      </section>
+      <section id="memePosts" class="bg-gray-800 p-4 rounded shadow">
+        <h2 class="text-xl text-white font-semibold mb-4">Your Meme Posts</h2>
+        <div id="memeGrid" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <!-- Render meme thumbnails here -->
         </div>
+        <div id="userPosts" class="grid grid-cols-4 md:grid-cols-6 gap-6"></div>
       </section>
     </main>
   </body>
