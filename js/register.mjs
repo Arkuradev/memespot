@@ -1,3 +1,5 @@
+import { displayMessage } from "./displayMessage.mjs";
+
 export async function registerUser(name, email, password, bio) {
   const registerUrl = `https://v2.api.noroff.dev/auth/register`;
 
@@ -13,10 +15,16 @@ export async function registerUser(name, email, password, bio) {
     const data = await response.json();
 
     if (response.ok) {
-      alert("Registration successful! You can now log in.");
-      window.location.href = "../account/login.html";
+      displayMessage("#message", "success", "Registration successful!");
+      setTimeout(() => {
+        window.location.href = "../account/login.html";
+      }, 1500);
     } else {
-      alert(data.message || "Registration failed. Please try again.");
+      displayMessage(
+        "#message",
+        "error",
+        data.message || "Registration failed."
+      );
     }
   } catch (error) {
     console.error("Error registering user:", error);

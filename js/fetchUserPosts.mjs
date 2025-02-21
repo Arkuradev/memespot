@@ -82,9 +82,15 @@ export function renderMemeThumbnail(post) {
 
   deleteButton.addEventListener("click", async (event) => {
     event.preventDefault();
-    deletePost(post.id, token);
+    try {
+      await deletePost(post.id, token); // Wait for deletion to complete.
+      fetchAndRenderUserPosts();
+    } catch (error) {
+      console.error("Error deleting post:", error);
+    }
+    /* deletePost(post.id, token);
     // Refresh the page after deleting the post
-    setTimeout(fetchAndRenderUserPosts, 300);
+    setTimeout(fetchAndRenderUserPosts, 300); */
   });
 
   memeGrid.appendChild(postElement);

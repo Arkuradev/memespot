@@ -32,19 +32,12 @@ export async function deletePost(postId, token) {
       if (response.ok) {
         // Replace with handling message later.
         displayMessage("#message", "warning", "Meme has been deleted.");
-        setTimeout(() => {
-          const messageElement = document.querySelector("#message");
-          if (messageElement) {
-            messageElement.innerHTML = "";
-            messageElement.className = "";
-          }
-        }, 1000);
-      } else {
-        displayMessage(
-          "#message",
-          "error",
-          "Failed to delete meme. Please try again."
-        );
+
+        const messageElement = document.querySelector("#message");
+        if (messageElement) {
+          messageElement.innerHTML = "";
+          messageElement.className = "";
+        }
       }
     } catch (error) {
       console.error("Error deleting post:", error);
