@@ -1,4 +1,4 @@
-import { API_key } from "./constants.mjs";
+import { API_Key } from "./constants.mjs";
 import { displayMessage } from "./displayMessage.mjs";
 
 const token = localStorage.getItem("token");
@@ -16,7 +16,7 @@ export async function updateProfile() {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
-          "X-Noroff-API-Key": API_key,
+          "X-Noroff-API-Key": API_Key,
         },
         body: JSON.stringify({ avatar: { url: avatarUrl }, bio }),
       }
@@ -30,7 +30,6 @@ export async function updateProfile() {
     document.getElementById("editProfileForm").style.display = "none";
     document.getElementById("userProfile").style.display = "block";
 
-    // Refresh profile data after updating.
     return response.json();
   } catch (error) {
     console.error("Error updating profile:", error);

@@ -1,4 +1,4 @@
-import { API_key } from "./constants.mjs";
+import { API_Key } from "./constants.mjs";
 import { deletePost } from "./deletePost.mjs";
 
 const token = localStorage.getItem("token");
@@ -15,7 +15,7 @@ export async function fetchAndRenderUserPosts() {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
-        "X-Noroff-API-Key": API_key,
+        "X-Noroff-API-Key": API_Key,
       },
     });
 
@@ -88,9 +88,6 @@ export function renderMemeThumbnail(post) {
     } catch (error) {
       console.error("Error deleting post:", error);
     }
-    /* deletePost(post.id, token);
-    // Refresh the page after deleting the post
-    setTimeout(fetchAndRenderUserPosts, 300); */
   });
 
   memeGrid.appendChild(postElement);

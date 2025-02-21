@@ -1,7 +1,5 @@
 import { displayMessage } from "./displayMessage.mjs";
 
-// Deploy a fix for mobile menu so the loginLink updates when the user is logged in.
-
 document.addEventListener("DOMContentLoaded", () => {
   const desktopLoginLink = document.getElementById("desktopLoginLink");
   const mobileLoginLink = document.getElementById("mobileLoginLink");
@@ -11,15 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // Check login state
   const isUserLoggedIn = localStorage.getItem("name");
 
   if (isUserLoggedIn) {
-    // Update the link to "Log Out"
     updateLoginLinks("Log Out", "#");
   }
-
-  // Attach event listener to the link
   [desktopLoginLink, mobileLoginLink].forEach((link) => {
     link.addEventListener("click", (event) => {
       if (isUserLoggedIn) {
@@ -34,9 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
           logOutUser();
         }
       } else {
-        // Log in flow (redirect to login page)
-
-        console.log("Redirecting to login...");
+        displayMessage(
+          "#message",
+          "warning",
+          "You are not logged in. Redirecting to login page."
+        );
         link.href = "../account/login.html";
       }
     });
@@ -44,9 +40,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function logOutUser() {
     setTimeout(() => {
-      localStorage.clear(); // Clear login data
-      updateLoginLinks("Log In", "../account/login.html"); // Update link destination
-      // Optionally redirect to the login page or a confirmation page
+      localStorage.clear();
+      updateLoginLinks("Log In", "../account/login.html");
       window.location.href = "../account/login.html";
     }, 2000);
   }

@@ -1,4 +1,5 @@
-import { API_key } from "./constants.mjs";
+import { API_Key } from "./constants.mjs";
+import { API_BASE_URL } from "./constants.mjs";
 import { displayMessage } from "./displayMessage.mjs";
 
 /**
@@ -17,27 +18,24 @@ export async function deletePost(postId, token) {
 
   if (confirmDelete) {
     try {
-      const response = await fetch(
-        `https://v2.api.noroff.dev/social/posts/${postId}`,
-        {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-            "X-Noroff-API-Key": API_key,
-          },
-        }
-      );
+      const response = await fetch(`${API_BASE_URL}/social/posts/${postId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+          "X-Noroff-API-Key": API_Key,
+        },
+      });
 
       if (response.ok) {
-        // Replace with handling message later.
         displayMessage("#message", "warning", "Meme has been deleted.");
-
-        const messageElement = document.querySelector("#message");
-        if (messageElement) {
-          messageElement.innerHTML = "";
-          messageElement.className = "";
-        }
+        setTimeout(() => {
+          const messageElement = document.querySelector("#message");
+          if (messageElement) {
+            messageElement.innerHTML = "";
+            messageElement.className = "";
+          }
+        }, 500);
       }
     } catch (error) {
       console.error("Error deleting post:", error);

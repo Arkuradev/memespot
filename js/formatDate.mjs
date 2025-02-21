@@ -1,5 +1,3 @@
-// Function to display a formatted date.
-
 /**
  * Converts a timestamp into a formatted date string.
  *

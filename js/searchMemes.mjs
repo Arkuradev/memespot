@@ -1,4 +1,4 @@
-import { API_key } from "./constants.mjs";
+import { API_Key } from "./constants.mjs";
 import { renderMemes, fetchMemes } from "./renderAllMemes.mjs";
 
 async function searchMemes(query) {
@@ -17,28 +17,26 @@ async function searchMemes(query) {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
-          "X-Noroff-API-Key": API_key,
+          "X-Noroff-API-Key": API_Key,
         },
       }
     );
     const data = await response.json();
 
     if (response.ok) {
-      // Filter out other students posts.
       const filteredMemes = data.data.filter(
         (meme) =>
           meme.title.toLowerCase().includes(query.toLowerCase()) ||
           meme.body.toLowerCase().includes(query.toLowerCase()) ||
           meme.author?.name.toLowerCase().includes(query.toLowerCase())
       );
-      renderMemes(filteredMemes); // Render memes on the page.
+      renderMemes(filteredMemes);
     }
   } catch (error) {
     console.error("Error fetching memes:", error);
   }
 }
 
-// Event listener for search input
 document.getElementById("searchBar").addEventListener("input", (event) => {
   const query = event.target.value.trim();
   if (query.length > 0) {

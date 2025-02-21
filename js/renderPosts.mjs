@@ -1,4 +1,4 @@
-import { API_key } from "./constants.mjs";
+import { API_Key } from "./constants.mjs";
 import { displayMessage } from "./displayMessage.mjs";
 
 const postFeed = document.getElementById("memeFeed");
@@ -14,7 +14,7 @@ export async function renderPosts() {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
-        "X-Noroff-API-Key": API_key,
+        "X-Noroff-API-Key": API_Key,
       },
     });
 
@@ -48,8 +48,6 @@ export async function renderPosts() {
     );
   }
 }
-// Clear any existing content in the feed.
-// postFeed.innerHTML = "";
 
 function renderPost(post, container) {
   const postElement = document.createElement("div");

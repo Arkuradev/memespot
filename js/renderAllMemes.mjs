@@ -1,10 +1,15 @@
-// Rendering all memes for the home page.
-import { API_key } from "./constants.mjs";
+import { API_Key } from "./constants.mjs";
+import { displayMessage } from "./displayMessage.mjs";
 export async function fetchMemes() {
   const token = localStorage.getItem("token");
 
   if (!token) {
-    alert("You must be logged in to view this page. Please log in.");
+    displayMessage(
+      "#message",
+      "error",
+      "You must be logged in to view this page."
+    );
+    window.location.href = "../account/login.html";
     return;
   }
   try {
@@ -15,18 +20,17 @@ export async function fetchMemes() {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
-          "X-Noroff-API-Key": API_key,
+          "X-Noroff-API-Key": API_Key,
         },
       }
     );
     const data = await response.json();
 
     if (response.ok) {
-      // Filter out other students posts.
       const memespotPosts = data.data.filter((post) =>
         post.tags.includes("memespot")
       );
-      renderMemes(memespotPosts); // Render memes on the page.
+      renderMemes(memespotPosts);
     } else {
       console.error("Failed to fetch memes.");
     }
@@ -37,7 +41,7 @@ export async function fetchMemes() {
 
 export function renderMemes(memes) {
   const memeContainer = document.getElementById("memeContainer");
-  memeContainer.innerHTML = ""; // Clear previous content.
+  memeContainer.innerHTML = "";
 
   memes.forEach((meme) => {
     const authorName =

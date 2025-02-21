@@ -1,4 +1,4 @@
-import { API_key } from "./constants.mjs";
+import { API_Key } from "./constants.mjs";
 
 export async function fetchUserDetails(loggedInUser, queryParams = "") {
   try {
@@ -8,7 +8,7 @@ export async function fetchUserDetails(loggedInUser, queryParams = "") {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
           "Content-type": "application/json",
-          "X-Noroff-API-Key": API_key,
+          "X-Noroff-API-Key": API_Key,
         },
       }
     );

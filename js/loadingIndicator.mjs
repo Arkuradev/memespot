@@ -1,9 +1,6 @@
-// Hide loading indicator when content is ready.
-
 document.addEventListener("DOMContentLoaded", () => {
   const loader = document.getElementById("global-loader");
 
-  // Hide loader when page is fully loaded
   window.addEventListener("load", () => {
     if (loader) loader.classList.add("opacity-0", "pointer-events-none");
   });

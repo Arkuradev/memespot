@@ -1,4 +1,4 @@
-import { API_key } from "./constants.mjs";
+import { API_Key } from "./constants.mjs";
 import { displayMessage } from "./displayMessage.mjs";
 
 const loggedInUser = localStorage.getItem("name");
@@ -34,7 +34,7 @@ async function createPost(token, title, body, url) {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
-        "X-Noroff-API-Key": API_key,
+        "X-Noroff-API-Key": API_Key,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(postData),

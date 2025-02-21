@@ -1,5 +1,4 @@
-// Rendering of 1 post on the post page.
-import { API_key } from "./constants.mjs";
+import { API_Key } from "./constants.mjs";
 import { formatDate } from "./formatDate.mjs";
 
 const token = localStorage.getItem("token");
@@ -22,7 +21,7 @@ async function loadPostData() {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
-          "X-Noroff-API-Key": API_key,
+          "X-Noroff-API-Key": API_Key,
         },
       }
     );

@@ -1,4 +1,4 @@
-import { API_key } from "./constants.mjs";
+import { API_Key } from "./constants.mjs";
 
 export async function renderPostsProfile() {
   const token = localStorage.getItem("token");
@@ -13,7 +13,7 @@ export async function renderPostsProfile() {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
-        "X-Noroff-API-Key": API_key,
+        "X-Noroff-API-Key": API_Key,
       },
     });
 
@@ -21,14 +21,12 @@ export async function renderPostsProfile() {
       throw new Error(`Failed to fetch posts: ${response.status}`);
     }
 
-    const { data: posts } = await response.json(); // API returns data array.
+    const { data: posts } = await response.json();
 
-    // Filter posts to only include those created by the logged-in user
     const userPosts = posts.filter((post) => {
       return post.tags.includes(currentUser);
     });
 
-    // Render posts in the dashboard grid.
     if (userPosts.length > 0) {
       userPosts.forEach((post) => {
         profilePosts.innerHTML = "";

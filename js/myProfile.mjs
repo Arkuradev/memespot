@@ -1,5 +1,4 @@
-// Fetch profile data of logged in user. More detailed profile information and Edit functionality included on profile view.
-import { API_key } from "./constants.mjs";
+import { API_Key } from "./constants.mjs";
 
 const token = localStorage.getItem("token");
 const loggedInUser = localStorage.getItem("name");
@@ -24,7 +23,7 @@ async function fetchMyProfile() {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-type": "application/json",
-          "X-Noroff-API-Key": API_key,
+          "X-Noroff-API-Key": API_Key,
         },
       }
     );
