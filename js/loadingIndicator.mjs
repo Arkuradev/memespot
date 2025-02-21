@@ -3,9 +3,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   const loader = document.getElementById("global-loader");
 
-  setTimeout(() => {
+  // Hide loader when page is fully loaded
+  window.addEventListener("load", () => {
     if (loader) loader.classList.add("opacity-0", "pointer-events-none");
-  }, 500);
+  });
 });
 
 async function fetchData(url) {
@@ -21,7 +22,9 @@ async function fetchData(url) {
       console.error("Error fetching data:", error);
       displayMessage("#message", "error", error.message);
     } finally {
-      if (loader) loader.style.display = "none"; // Hide loader after fetching data.
+      setTimeout(() => {
+        if (loader) loader.style.display = "none"; // Hide loader after fetching data.
+      }, 300);
     }
   }
 }
