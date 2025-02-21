@@ -3,6 +3,17 @@ import { displayMessage } from "./displayMessage.mjs";
 
 const loggedInUser = localStorage.getItem("name");
 
+/**
+ * Asynchronously creates a new post on the social platform.
+ *
+ * @param {string} token - The authentication token of the user.
+ * @param {string} title - The title of the post.
+ * @param {string} body - The body content of the post.
+ * @param {string} url - The URL of the media associated with the post.
+ * @returns {Promise<Object>} - A promise that resolves to the created post data if successful.
+ * @throws {Error} - Throws an error if the post creation fails.
+ */
+
 async function createPost(token, title, body, url) {
   const postUrl = `https://v2.api.noroff.dev/social/posts/`;
 
@@ -93,9 +104,8 @@ function createPostForm() {
         displayMessage("#message", "success", "Post successfully created!");
         setTimeout(() => {
           form.reset();
+          window.location.href = "../account/dashboard.html";
         }, 1500);
-
-        // window.location.href = "../account/dashboard.html";
       } else {
         displayMessage(
           "#message",
@@ -105,7 +115,11 @@ function createPostForm() {
       }
     } catch (error) {
       console.error("Error during form submission:", error);
-      alert("An unexpected error occurred. Please try again.");
+      displayMessage(
+        "#message",
+        "error",
+        "Failed to create post. Please try again later."
+      );
     }
   });
 }
