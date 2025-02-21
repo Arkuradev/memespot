@@ -78,7 +78,7 @@ async function fetchUserPosts(username) {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
-          "X-Noroff-API-Key": API_key,
+          "X-Noroff-API-Key": API_Key,
         },
       }
     );
