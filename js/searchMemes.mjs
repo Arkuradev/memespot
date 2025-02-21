@@ -28,6 +28,7 @@ async function searchMemes(query) {
       const filteredMemes = data.data.filter(
         (meme) =>
           meme.title.toLowerCase().includes(query.toLowerCase()) ||
+          meme.body.toLowerCase().includes(query.toLowerCase()) ||
           meme.author?.name.toLowerCase().includes(query.toLowerCase())
       );
       renderMemes(filteredMemes); // Render memes on the page.
