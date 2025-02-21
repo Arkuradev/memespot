@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
           displayMessage(
             "#message",
             "warning",
-            "You have been logged out Redirecting to login page."
+            "You have been logged out. Redirecting to login page."
           );
           logOutUser();
         }
