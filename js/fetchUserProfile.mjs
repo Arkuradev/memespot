@@ -122,7 +122,9 @@ function renderUserPosts(posts) {
       <img src="${post.media?.url || ""}" alt="${
       post.media?.alt || "Meme"
     }" class="w-62 h-auto object-cover rounded-md">
-      <h2 class="text-white text-lg font-semibold mt-2">${post.title}</h2>
+      <h2 class="text-white text-lg font-semibold mt-2"><a class="text-white hover:text-blue-300"href="../pages/post.html?id=${
+        post.id
+      }">${post.title}</a></h2>
       <p class="text-gray-400 mt-2">${post.body}</p>
     `;
 

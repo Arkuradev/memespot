@@ -37,7 +37,7 @@ export async function followHandler() {
       const action = isCurrentlyFollowing ? "unfollow" : "follow";
 
       // Showloading state
-
+      // Disables the button to avoid multiple clicks
       followButton.innerHTML = `<div class="w-5 h-5 border-2 border-t-2 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>`;
       followButton.disabled = true;
 
@@ -72,6 +72,7 @@ export async function followHandler() {
         console.log(error);
         displayMessage("#message", "error", error.message);
       } finally {
+        // Re-enables the button after action is complete.
         followButton.disabled = false;
       }
     });
@@ -80,6 +81,12 @@ export async function followHandler() {
     displayMessage("#message", "error", error.message);
   }
 }
+
+/**
+ * This will handle the API call to follow/unfollow a user.
+ * @param {string} user - The username of the user to follow/unfollow.
+ * @param {string} action - The action to perform, either "follow" or "unfollow".
+ */
 
 async function followToggleApi(user, action) {
   try {

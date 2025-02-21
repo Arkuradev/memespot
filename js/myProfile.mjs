@@ -4,6 +4,13 @@ import { API_key } from "./constants.mjs";
 const token = localStorage.getItem("token");
 const loggedInUser = localStorage.getItem("name");
 
+/**
+ * Fetches the profile data of the logged-in user and updates the DOM with
+ * the user's avatar, email, name, and bio. If no token is found in localStorage,
+ * the function logs an error and returns early. Handles errors in fetching
+ * profile data by logging them to the console.
+ */
+
 async function fetchMyProfile() {
   if (!token) {
     console.error("Missing token, please log in before viewing this page.");
