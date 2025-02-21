@@ -36,7 +36,7 @@ export async function renderPostsProfile() {
       });
     } else {
       profilePosts.innerHTML =
-        "<p>No memes found. Create a new post to get started.</p>";
+        "<p class='text-gray-400'>No memes found. Create a new post to get started.</p>";
     }
   } catch (error) {
     console.error("Error fetching user posts:", error);

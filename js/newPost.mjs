@@ -97,7 +97,11 @@ function createPostForm() {
 
         // window.location.href = "../account/dashboard.html";
       } else {
-        alert("Failed to create post. Please try again!");
+        displayMessage(
+          "#message",
+          "error",
+          "Failed to create post. Please try again."
+        );
       }
     } catch (error) {
       console.error("Error during form submission:", error);
@@ -108,7 +112,11 @@ function createPostForm() {
 
 document.addEventListener("DOMContentLoaded", () => {
   if (!loggedInUser) {
-    alert("Please log in to post a meme");
+    displayMessage(
+      "#message",
+      "error",
+      "You must be logged in to create a post."
+    );
     window.location.href = "../account/login.html";
   } else {
     createPostForm();

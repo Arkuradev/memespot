@@ -1,4 +1,6 @@
 import { API_key } from "./constants.mjs";
+import { displayMessage } from "./displayMessage.mjs";
+
 const postFeed = document.getElementById("memeFeed");
 const projectTag = "memespot";
 
@@ -39,7 +41,11 @@ export async function renderPosts() {
     }
   } catch (error) {
     console.error("Error rendering posts, error");
-    postFeed.innerHTML = `<p>Failed to load memes. Please try again later...</p>`;
+    displayMessage(
+      "#message",
+      "error",
+      "Failed to load memes. Please try again later..."
+    );
   }
 }
 // Clear any existing content in the feed.
