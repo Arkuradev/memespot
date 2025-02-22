@@ -36,10 +36,14 @@ loginForm.addEventListener("submit", async (event) => {
     localStorage.setItem("name", data.data?.name);
     localStorage.setItem("isLoggedIn", "true");
 
-    displayMessage("#message", "success", "Login successful! Redirecting...");
+    displayMessage(
+      "#message",
+      "success",
+      "Login successful! Loading Dashboard..."
+    );
     setTimeout(() => {
       window.location.href = "../account/dashboard.html";
-    }, 3000);
+    }, 1000);
   } catch (error) {
     displayMessage("#message", "error", error.message);
   }

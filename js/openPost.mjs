@@ -1,7 +1,5 @@
-import { API_KEY } from "./constants.mjs";
-import { API_SOCIAL_POSTS_ENDPOINT } from "./constants.mjs";
+import { apiFetch } from "./apiFetch.mjs";
 import { formatDate } from "./formatDate.mjs";
-import { token } from "./constants.mjs";
 
 const openPost = document.getElementById("postContainer");
 
@@ -13,37 +11,20 @@ async function loadPostData() {
     console.error("Post ID is null or undefined.");
     return;
   }
-
-  try {
-    const response = await fetch(`${API_SOCIAL_POSTS_ENDPOINT}/${postId}`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-        "X-Noroff-API-Key": API_KEY,
-      },
-    });
-    if (!response.ok) {
-      console.error("Failed to fetch post data:", response.status);
-      return;
-    }
-    const data = await response.json();
-    const post = data.data;
-    if (!post) {
-      console.error("No post data found in response.");
-      return;
-    }
-    openPost.appendChild(renderPost(post));
-  } catch (error) {
-    console.error("Error fetching post data:", error);
+  const data = await apiFetch(`/posts/${postId}`);
+  const post = data.data;
+  if (!post) {
+    console.error("No post data found in response.");
+    return;
   }
+  openPost.appendChild(renderPost(post));
 }
 
 export function renderPost(post) {
   if (post) {
     const pageTitle = document.querySelector("#pageTitle");
-    document.title = post.title;
-    pageTitle.innerHTML = `${post.title} posted by ${post.tags[1]}`; // Set the h1 element's text;
+    document.title = `${post.title} | ${post.tags[1]}`;
+    pageTitle.innerHTML = `${post.title} posted by ${post.tags[1]}`;
   }
 
   const formattedDate = formatDate(post.created);
@@ -67,7 +48,7 @@ export function renderPost(post) {
     <p class="text-gray-300 text-sm mt-1">Posted by: <a class="text-white hover:text-blue-300" href="../account/profile.html?user=${
       post.tags[1]
     }">${post.tags[1]}</a></p>
-    <p class="text-gray-200 text-sm mt-1">Post created: ${formattedDate}</p>
+    <p class="text-gray-300 text-sm mt-1">Post created: ${formattedDate}</p>
     
   `;
   return postElement;

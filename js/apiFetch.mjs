@@ -42,8 +42,11 @@ export async function apiFetch(endpoint, method = "GET", body = null) {
 
     return data;
   } catch (error) {
-    console.error("Error fetching data:", error);
-    displayMessage("#message", "error", error.message);
+    displayMessage(
+      "#message",
+      "error",
+      "Failed to fetch data. Please log in and try again."
+    );
   } finally {
     setTimeout(() => {
       if (loader) loader.style.display = "none";

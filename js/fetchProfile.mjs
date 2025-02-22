@@ -1,6 +1,12 @@
-import { API_KEY } from "./constants.mjs";
-
+import { apiFetch } from "./apiFetch.mjs";
 import { displayMessage } from "./displayMessage.mjs";
+
+/**
+ * Fetches the profile data of the logged-in user and updates the DOM with
+ * the user's email, avatar, name, and bio. If no token is found in localStorage,
+ * the function logs an error, displays a message to the user, and redirects
+ * to the login page. Prefills the edit form fields with the fetched data.
+ */
 
 export async function fetchProfile() {
   const token = localStorage.getItem("token");
@@ -12,36 +18,23 @@ export async function fetchProfile() {
     displayMessage("#message", "error", "Please log in first.");
     return (window.location.href = "/account/login.html");
   }
-  try {
-    const response = await fetch(
-      `https://v2.api.noroff.dev/social/profiles/${username}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-          "X-Noroff-API-Key": API_KEY,
-        },
-      }
-    );
 
-    if (!response.ok)
-      throw new Error(`Failed to fetch profile: ${response.status}`);
+  const { data } = await apiFetch(`/profiles/${username}`);
 
-    const { data } = await response.json();
+  document.getElementById("profileEmail").textContent = "Email: " + data.email;
+  document.getElementById("profileAvatar").src =
+    data.avatar?.url || "default-avatar.jpg";
+  document.getElementById("profileName").textContent = data.name;
+  document.getElementById("profileBio").textContent =
+    data.bio || "No bio set yet";
 
-    document.getElementById("profileEmail").textContent =
-      "Email: " + data.email;
-    document.getElementById("profileAvatar").src =
-      data.avatar?.url || "default-avatar.jpg";
-    document.getElementById("profileName").textContent =
-      "Username: " + data.name;
-    document.getElementById("profileBio").textContent =
-      "Bio: " + data.bio || "No bio set yet";
-
-    // Prefill edit form.
-    document.getElementById("editAvatar").value = data.avatar?.url;
-    document.getElementById("editBio").value = data.bio;
-  } catch (error) {
-    console.error("Error fetching profile:", error);
-  }
+  // Prefill edit form.
+  document.getElementById("editAvatar").value = data.avatar?.url;
+  document.getElementById("editBio").value = data.bio;
 }
+
+function main() {
+  fetchProfile();
+}
+
+main();

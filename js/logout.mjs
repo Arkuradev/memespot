@@ -4,11 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const desktopLoginLink = document.getElementById("desktopLoginLink");
   const mobileLoginLink = document.getElementById("mobileLoginLink");
 
-  if (!desktopLoginLink || !mobileLoginLink) {
-    console.error("No login link found!");
-    return;
-  }
-
   const isUserLoggedIn = localStorage.getItem("name");
 
   if (isUserLoggedIn) {
@@ -19,18 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
       if (isUserLoggedIn) {
         event.preventDefault();
         if (confirm("Are you sure you want to log out?")) {
-          displayMessage(
-            "#message",
-            "warning",
-            "You have been logged out. Redirecting to login page."
-          );
+          displayMessage("#message", "warning", "Logging out...");
           logOutUser();
         }
       } else {
         displayMessage(
           "#message",
           "warning",
-          "You are not logged in. Redirecting to login page."
+          "You are not logged in. Please log in."
         );
         link.href = "../account/login.html";
       }
@@ -42,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.clear();
       updateLoginLinks("Log In", "../account/login.html");
       window.location.href = "../account/login.html";
-    }, 2000);
+    }, 1000);
   }
 
   function updateLoginLinks(text, href) {

@@ -1,47 +1,26 @@
-import { API_KEY } from "./constants.mjs";
-import { API_BASE_URL } from "./constants.mjs";
+import { apiFetch } from "./apiFetch.mjs";
 import { token } from "./constants.mjs";
 import { deletePost } from "./deletePost.mjs";
 
 const memeGrid = document.getElementById("memeGrid");
 
 export async function fetchAndRenderUserPosts() {
-  const token = localStorage.getItem("token");
   const currentUser = localStorage.getItem("name");
 
-  try {
-    const response = await fetch(`${API_BASE_URL}/social/posts?_author=true`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-        "X-Noroff-API-Key": API_KEY,
-      },
+  const { data: posts } = await apiFetch("/posts?_author=true");
+
+  const userPosts = posts.filter((post) => {
+    return post.tags.includes(currentUser);
+  });
+
+  if (userPosts.length > 0) {
+    memeGrid.innerHTML = "";
+    userPosts.forEach((post) => {
+      renderMemeThumbnail(post);
     });
-
-    if (!response.ok) {
-      throw new Error(`Failed to fetch posts: ${response.status}`);
-    }
-
-    const { data: posts } = await response.json();
-
-    const userPosts = posts.filter((post) => {
-      return post.tags.includes(currentUser);
-    });
-
-    if (userPosts.length > 0) {
-      memeGrid.innerHTML = "";
-      userPosts.forEach((post) => {
-        renderMemeThumbnail(post);
-      });
-    } else {
-      memeGrid.innerHTML =
-        "<p>No memes found. Create a new post to get started.</p>";
-    }
-  } catch (error) {
-    console.error("Error fetching user posts:", error);
+  } else {
     memeGrid.innerHTML =
-      "<p>Error fetching user posts. Please try again later.</p>";
+      "<p class='text-gray-400'>No memes found.<br> Click on <a class='text-white hover:text-blue-300' href='../post/new.html'>New Post</a> to post a meme!</p>";
   }
 }
 
@@ -89,6 +68,8 @@ export function renderMemeThumbnail(post) {
   memeGrid.appendChild(postElement);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+function main() {
   fetchAndRenderUserPosts();
-});
+}
+
+main();

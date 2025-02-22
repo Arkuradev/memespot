@@ -1,25 +1,12 @@
-import { API_KEY } from "./constants.mjs";
-import { API_SOCIAL_PROFILES_ENDPOINT } from "./constants.mjs";
+import { apiFetch } from "./apiFetch.mjs";
 
+/**
+ * Fetches a user's profile details from the API.
+ * @param {string} loggedInUser the username of the user to fetch
+ * @param {string} [queryParams=""] any additional query parameters to add to the URL
+ * @returns {Object} the user's profile details
+ */
 export async function fetchUserDetails(loggedInUser, queryParams = "") {
-  try {
-    const response = await fetch(
-      `${API_SOCIAL_PROFILES_ENDPOINT}/${loggedInUser}/${queryParams}`,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-          "Content-type": "application/json",
-          "X-Noroff-API-Key": API_KEY,
-        },
-      }
-    );
-
-    if (!response.ok) throw new Error("Failed to fetch user details.");
-
-    const data = await response.json();
-    return data.data;
-  } catch (error) {
-    console.error("Error fetching user details:", error);
-    throw error;
-  }
+  const data = await apiFetch(`/profiles/${loggedInUser}/${queryParams}`);
+  return data.data;
 }

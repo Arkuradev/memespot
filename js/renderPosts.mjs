@@ -1,47 +1,22 @@
-import { API_KEY } from "./constants.mjs";
-import { API_SOCIAL_POSTS_ENDPOINT } from "./constants.mjs";
-import { token } from "./constants.mjs";
-import { displayMessage } from "./displayMessage.mjs";
+import { apiFetch } from "./apiFetch.mjs";
 
 const postFeed = document.getElementById("memeFeed");
 const projectTag = "memespot";
 
 export async function renderPosts() {
-  try {
-    const response = await fetch(`${API_SOCIAL_POSTS_ENDPOINT}`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-        "X-Noroff-API-Key": API_KEY,
-      },
+  const data = await apiFetch("/posts");
+  const posts = data.data || [];
+  const filteredPosts = posts.filter((post) => {
+    return Array.isArray(post.tags) && post.tags.includes(projectTag);
+  });
+
+  if (filteredPosts.length > 0) {
+    postFeed.innerHTML = "";
+    filteredPosts.forEach((post) => {
+      renderPost(post, postFeed);
     });
-
-    if (!response.ok) {
-      throw new Error(`Failed to fetch posts: ${response.status}`);
-    }
-
-    const data = await response.json();
-    const posts = data.data || [];
-    const filteredPosts = posts.filter((post) => {
-      return Array.isArray(post.tags) && post.tags.includes(projectTag);
-    });
-
-    if (filteredPosts.length > 0) {
-      postFeed.innerHTML = "";
-      filteredPosts.forEach((post) => {
-        renderPost(post, postFeed);
-      });
-    } else {
-      postFeed.innerHTML = "<p>No relevant memes found for this project.</p>";
-    }
-  } catch (error) {
-    console.error("Error rendering posts, error");
-    displayMessage(
-      "#message",
-      "error",
-      "Failed to load memes. Please try again later..."
-    );
+  } else {
+    postFeed.innerHTML = "<p>No relevant memes found</p>";
   }
 }
 

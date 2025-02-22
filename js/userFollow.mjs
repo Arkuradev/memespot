@@ -4,11 +4,18 @@ import { fetchUserDetails } from "./profile.mjs";
 import { displayMessage } from "./displayMessage.mjs";
 
 export async function followHandler() {
+  const loggedInUser = localStorage.getItem("name");
+  if (!loggedInUser) {
+    displayMessage(
+      "#message",
+      "error",
+      "Log in before making a post. Redirecting to login page..."
+    );
+    setTimeout(() => {
+      window.location.href = "../account/login.html";
+    }, 1500);
+  }
   try {
-    const loggedInUser = localStorage.getItem("name");
-    if (!loggedInUser)
-      throw new Error("User not logged in. Please log in and try again.");
-
     const userData = await fetchUserDetails(loggedInUser, "?_following=true");
     const following = userData.following;
     let followingNames = following.map((user) => user.name);

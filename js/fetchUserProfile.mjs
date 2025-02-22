@@ -1,5 +1,4 @@
-import { API_KEY } from "./constants.mjs";
-import { API_BASE_URL } from "./constants.mjs";
+import { apiFetch } from "./apiFetch.mjs";
 import { displayMessage } from "./displayMessage.mjs";
 import { token } from "./constants.mjs";
 
@@ -26,28 +25,11 @@ export async function fetchUserProfile() {
     displayMessage("#message", "error", "No user specified. Please try again.");
   }
 
-  try {
-    const profileResponse = await fetch(
-      `${API_BASE_URL}/social/profiles/${profileUsername}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-          "X-Noroff-API-Key": API_KEY,
-        },
-      }
-    );
+  const { data: profileData } = await apiFetch(`/profiles/${profileUsername}`);
 
-    if (!profileResponse.ok) throw new Error("Failed to fetch user profile.");
+  renderUserProfile(profileData);
 
-    const { data: profileData } = await profileResponse.json();
-
-    renderUserProfile(profileData);
-
-    fetchUserPosts(profileUsername);
-  } catch (error) {
-    console.error("Error fetching user profile:", error);
-  }
+  fetchUserPosts(profileUsername);
 }
 
 function renderUserProfile(user) {
@@ -66,31 +48,12 @@ function renderUserProfile(user) {
 }
 
 async function fetchUserPosts(username) {
-  try {
-    const postResponse = await fetch(
-      `${API_BASE_URL}/social/posts?_author=true`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-          "X-Noroff-API-Key": API_KEY,
-        },
-      }
-    );
+  const { data: allPosts } = await apiFetch("/posts?_author=true");
 
-    if (!postResponse.ok) throw new Error("Failed to fetch user posts.");
-
-    const { data: allPosts } = await postResponse.json();
-
-    // Filter posts to only include those from selected user.
-    const userPosts = allPosts.filter(
-      (post) => post.author && post.author.name === username
-    );
-
-    renderUserPosts(userPosts);
-  } catch (error) {
-    console.error("Error fetching user posts:", error);
-  }
+  const userPosts = allPosts.filter(
+    (post) => post.author && post.author.name === username
+  );
+  renderUserPosts(userPosts);
 }
 
 function renderUserPosts(posts) {
@@ -127,4 +90,8 @@ function renderUserPosts(posts) {
   });
 }
 
-document.addEventListener("DOMContentLoaded", fetchUserProfile);
+function main() {
+  fetchUserProfile();
+}
+
+main();

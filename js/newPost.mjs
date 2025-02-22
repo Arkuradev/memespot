@@ -1,20 +1,16 @@
-import { API_KEY } from "./constants.mjs";
-import { API_SOCIAL_POSTS_ENDPOINT } from "./constants.mjs";
+import { apiFetch } from "./apiFetch.mjs";
 import { displayMessage } from "./displayMessage.mjs";
 
 const loggedInUser = localStorage.getItem("name");
 
 /**
- * Asynchronously creates a new post on the social platform.
- *
- * @param {string} token - The authentication token of the user.
- * @param {string} title - The title of the post.
- * @param {string} body - The body content of the post.
- * @param {string} url - The URL of the media associated with the post.
- * @returns {Promise<Object>} - A promise that resolves to the created post data if successful.
- * @throws {Error} - Throws an error if the post creation fails.
+ * Posts a new meme to the server.
+ * @param {string} token - The user's authentication token.
+ * @param {string} title - The title of the meme.
+ * @param {string} body - The body of the meme.
+ * @param {string} url - The URL of the meme.
+ * @returns {Promise<Object>} - The newly created post.
  */
-
 async function createPost(token, title, body, url) {
   const postData = {
     title: title,
@@ -25,30 +21,8 @@ async function createPost(token, title, body, url) {
       alt: title,
     },
   };
-
-  try {
-    const response = await fetch(`${API_SOCIAL_POSTS_ENDPOINT}`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "X-Noroff-API-Key": API_KEY,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(postData),
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.message || "Failed to create post.");
-    }
-
-    const result = await response.json();
-    return result;
-  } catch (error) {
-    console.error("Error creating post:", error);
-    displayMessage("#message", "error", "Failed to create post.");
-    // alert(`Error creating post: ${error.message}`);
-  }
+  const result = await apiFetch("/posts?_author=true", "POST", postData, token);
+  return result;
 }
 
 /**
