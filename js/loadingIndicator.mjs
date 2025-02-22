@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-async function fetchData(url) {
+export async function fetchData(url) {
   const loader = document.getElementById("global-loader");
   if (loader) {
     loader.style.display = "flex"; // Show loader while fetching data.

@@ -1,4 +1,6 @@
 import { API_Key } from "./constants.mjs";
+import { API_BASE_URL } from "./constants.mjs";
+
 import { displayMessage } from "./displayMessage.mjs";
 
 const token = localStorage.getItem("token");
@@ -14,11 +16,9 @@ if (!token) {
 }
 
 export async function fetchUserProfile() {
-  // Get username from URL parameters.
   const urlParams = new URLSearchParams(window.location.search);
   const profileUsername = urlParams.get("user");
 
-  // Sets the title of the page to the profile the user has opened.
   document.title = `${profileUsername}'s profile`;
 
   if (!profileUsername) {
@@ -28,10 +28,9 @@ export async function fetchUserProfile() {
     displayMessage("#message", "error", "No user specified. Please try again.");
   }
 
-  // Fetch user profile.
   try {
     const profileResponse = await fetch(
-      `https://v2.api.noroff.dev/social/profiles/${profileUsername}`,
+      `${API_BASE_URL}/social/profiles/${profileUsername}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -45,10 +44,8 @@ export async function fetchUserProfile() {
 
     const { data: profileData } = await profileResponse.json();
 
-    // Call renderUserProfile to display the profile details.
     renderUserProfile(profileData);
 
-    // Fetch user specific posts.
     fetchUserPosts(profileUsername);
   } catch (error) {
     console.error("Error fetching user profile:", error);
@@ -73,7 +70,7 @@ function renderUserProfile(user) {
 async function fetchUserPosts(username) {
   try {
     const postResponse = await fetch(
-      `https://v2.api.noroff.dev/social/posts?_author=true`,
+      `${API_BASE_URL}/social/posts?_author=true`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -133,8 +130,3 @@ function renderUserPosts(posts) {
 }
 
 document.addEventListener("DOMContentLoaded", fetchUserProfile);
-/*
-
-
-
-*/

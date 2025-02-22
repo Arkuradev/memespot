@@ -1,4 +1,5 @@
 import { API_Key } from "./constants.mjs";
+import { API_BASE_URL } from "./constants.mjs";
 import { deletePost } from "./deletePost.mjs";
 
 const token = localStorage.getItem("token");
@@ -7,7 +8,7 @@ const memeGrid = document.getElementById("memeGrid");
 export async function fetchAndRenderUserPosts() {
   const token = localStorage.getItem("token");
   const currentUser = localStorage.getItem("name");
-  const postUrl = `https://v2.api.noroff.dev/social/posts?_author=true`;
+  const postUrl = `${API_BASE_URL}/social/posts?_author=true`;
 
   try {
     const response = await fetch(postUrl, {
