@@ -1,11 +1,9 @@
 import { displayMessage } from "./displayMessage.mjs";
-import { BASE_API_ENDPOINT } from "./constants.mjs";
+import { API_REGISTER } from "./constants.mjs";
 
 export async function registerUser(name, email, password, bio) {
-  const registerUrl = `${BASE_API_ENDPOINT}/auth/register`;
-
   try {
-    const response = await fetch(registerUrl, {
+    const response = await fetch(`${API_REGISTER}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

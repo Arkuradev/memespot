@@ -100,4 +100,8 @@ async function followToggleApi(user, action) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", followHandler);
+function main() {
+  followHandler();
+}
+
+main();

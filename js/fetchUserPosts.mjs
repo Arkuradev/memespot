@@ -1,8 +1,8 @@
 import { API_KEY } from "./constants.mjs";
 import { API_BASE_URL } from "./constants.mjs";
+import { token } from "./constants.mjs";
 import { deletePost } from "./deletePost.mjs";
 
-const token = localStorage.getItem("token");
 const memeGrid = document.getElementById("memeGrid");
 
 export async function fetchAndRenderUserPosts() {
@@ -23,7 +23,7 @@ export async function fetchAndRenderUserPosts() {
       throw new Error(`Failed to fetch posts: ${response.status}`);
     }
 
-    const { data: posts } = await response.json(); // API returns data array.
+    const { data: posts } = await response.json();
 
     const userPosts = posts.filter((post) => {
       return post.tags.includes(currentUser);
@@ -79,7 +79,7 @@ export function renderMemeThumbnail(post) {
   deleteButton.addEventListener("click", async (event) => {
     event.preventDefault();
     try {
-      await deletePost(post.id, token); // Wait for deletion to complete.
+      await deletePost(post.id, token);
       fetchAndRenderUserPosts();
     } catch (error) {
       console.error("Error deleting post:", error);

@@ -16,14 +16,10 @@ const loggedInUser = localStorage.getItem("name");
  */
 
 async function createPost(token, title, body, url) {
-  const postUrl = `${API_SOCIAL_POSTS_ENDPOINT}`;
-
-  //Get the logged in user's username from localStorage.
-
   const postData = {
     title: title,
     body: body,
-    tags: ["memespot", loggedInUser], // Default tag to sort all posts relevant to this project.
+    tags: ["memespot", loggedInUser],
     media: {
       url: url,
       alt: title,
@@ -31,7 +27,7 @@ async function createPost(token, title, body, url) {
   };
 
   try {
-    const response = await fetch(postUrl, {
+    const response = await fetch(`${API_SOCIAL_POSTS_ENDPOINT}`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -125,15 +121,19 @@ function createPostForm() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+function main() {
   if (!loggedInUser) {
     displayMessage(
       "#message",
       "error",
-      "You must be logged in to create a post."
+      "Log in before making a post. Redirecting to login page..."
     );
-    window.location.href = "../account/login.html";
+    setTimeout(() => {
+      window.location.href = "../account/login.html";
+    }, 1500);
   } else {
     createPostForm();
   }
-});
+}
+
+main();

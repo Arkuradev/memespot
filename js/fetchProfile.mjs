@@ -1,5 +1,5 @@
 import { API_KEY } from "./constants.mjs";
-const token = localStorage.getItem("token");
+import { token } from "./constants.mjs";
 const username = localStorage.getItem("name");
 
 export async function fetchProfile() {

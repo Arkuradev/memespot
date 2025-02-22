@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
   [desktopLoginLink, mobileLoginLink].forEach((link) => {
     link.addEventListener("click", (event) => {
       if (isUserLoggedIn) {
-        // Log out flow
         event.preventDefault();
         if (confirm("Are you sure you want to log out?")) {
           displayMessage(

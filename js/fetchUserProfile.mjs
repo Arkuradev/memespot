@@ -1,7 +1,7 @@
 import { API_KEY } from "./constants.mjs";
 import { API_BASE_URL } from "./constants.mjs";
 import { displayMessage } from "./displayMessage.mjs";
-const token = localStorage.getItem("token");
+import { token } from "./constants.mjs";
 
 if (!token) {
   alert("You must be logged in to view this page. Please log in.");

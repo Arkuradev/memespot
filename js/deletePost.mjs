@@ -35,7 +35,7 @@ export async function deletePost(postId, token) {
             messageElement.innerHTML = "";
             messageElement.className = "";
           }
-        }, 500);
+        }, 1000);
       }
     } catch (error) {
       console.error("Error deleting post:", error);

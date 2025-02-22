@@ -1,13 +1,10 @@
 import { API_KEY } from "./constants.mjs";
 import { API_BASE_URL } from "./constants.mjs";
 import { displayMessage } from "./displayMessage.mjs";
+import { token } from "./constants.mjs";
 
-// Get postId and name from URL parameters.
 const urlParams = new URLSearchParams(window.location.search);
 const postId = urlParams.get("id");
-const token = localStorage.getItem("token");
-
-document.addEventListener("DOMContentLoaded", loadPostData);
 
 const cancelEditButton = document.getElementById("cancelEditButton");
 cancelEditButton.addEventListener("click", () => {
@@ -99,3 +96,9 @@ export async function savePost() {
 }
 
 window.savePost = savePost;
+
+function main() {
+  loadPostData();
+}
+
+main();

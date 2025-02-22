@@ -1,6 +1,6 @@
 import { API_KEY } from "./constants.mjs";
+import { token } from "./constants.mjs";
 
-const token = localStorage.getItem("token");
 const loggedInUser = localStorage.getItem("name");
 
 /**
@@ -45,4 +45,8 @@ async function fetchMyProfile() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", fetchMyProfile);
+function main() {
+  fetchMyProfile();
+}
+
+main();

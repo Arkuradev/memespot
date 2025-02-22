@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 export async function fetchData(url) {
   const loader = document.getElementById("global-loader");
   if (loader) {
-    loader.style.display = "flex"; // Show loader while fetching data.
+    loader.style.display = "flex";
 
     try {
       const response = await fetch(url);
@@ -20,7 +20,7 @@ export async function fetchData(url) {
       displayMessage("#message", "error", error.message);
     } finally {
       setTimeout(() => {
-        if (loader) loader.style.display = "none"; // Hide loader after fetching data.
+        if (loader) loader.style.display = "none";
       }, 300);
     }
   }
