@@ -1,4 +1,6 @@
-import { API_Key } from "./constants.mjs";
+import { API_KEY } from "./constants.mjs";
+import { API_SOCIAL_POSTS_ENDPOINT } from "./constants.mjs";
+import { token } from "./constants.mjs";
 import { renderMemes, fetchMemes } from "./renderAllMemes.mjs";
 
 async function searchMemes(query) {
@@ -7,17 +9,15 @@ async function searchMemes(query) {
     return;
   }
 
-  const token = localStorage.getItem("token");
-
   try {
     const response = await fetch(
-      "https://v2.api.noroff.dev/social/posts?_tag=memespot&_author=true",
+      `${API_SOCIAL_POSTS_ENDPOINT}?_tag=memespot&_author=true`,
       {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
-          "X-Noroff-API-Key": API_Key,
+          "X-Noroff-API-Key": API_KEY,
         },
       }
     );

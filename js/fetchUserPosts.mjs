@@ -1,4 +1,4 @@
-import { API_Key } from "./constants.mjs";
+import { API_KEY } from "./constants.mjs";
 import { API_BASE_URL } from "./constants.mjs";
 import { deletePost } from "./deletePost.mjs";
 
@@ -8,15 +8,14 @@ const memeGrid = document.getElementById("memeGrid");
 export async function fetchAndRenderUserPosts() {
   const token = localStorage.getItem("token");
   const currentUser = localStorage.getItem("name");
-  const postUrl = `${API_BASE_URL}/social/posts?_author=true`;
 
   try {
-    const response = await fetch(postUrl, {
+    const response = await fetch(`${API_BASE_URL}/social/posts?_author=true`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
-        "X-Noroff-API-Key": API_Key,
+        "X-Noroff-API-Key": API_KEY,
       },
     });
 
@@ -26,12 +25,10 @@ export async function fetchAndRenderUserPosts() {
 
     const { data: posts } = await response.json(); // API returns data array.
 
-    // Filter posts to only include those created by the logged-in user
     const userPosts = posts.filter((post) => {
       return post.tags.includes(currentUser);
     });
 
-    // Render posts in the dashboard grid.
     if (userPosts.length > 0) {
       memeGrid.innerHTML = "";
       userPosts.forEach((post) => {
@@ -71,8 +68,6 @@ export function renderMemeThumbnail(post) {
       <button class="edit-button mt-4 mb-4 px-4 py-2 bg-green-700 hover:bg-green-500 text-white font-semibold py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-300">Edit</button>
       <button class="delete-button mt-4 mb-4 px-4 py-2 bg-red-600 hover:bg-red-500 text-white font-semibold py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition duration-300">Delete</button>
     `;
-  // Add link to the specific post page when clicking on image.
-  // Add 2 buttons that displays on hover to edit and delete the post.
 
   const deleteButton = postElement.querySelector(".delete-button");
   const editButton = postElement.querySelector(".edit-button");
@@ -94,7 +89,6 @@ export function renderMemeThumbnail(post) {
   memeGrid.appendChild(postElement);
 }
 
-// Load the user's post when the page is ready
 document.addEventListener("DOMContentLoaded", () => {
   fetchAndRenderUserPosts();
 });

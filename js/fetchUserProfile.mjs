@@ -1,8 +1,6 @@
-import { API_Key } from "./constants.mjs";
+import { API_KEY } from "./constants.mjs";
 import { API_BASE_URL } from "./constants.mjs";
-
 import { displayMessage } from "./displayMessage.mjs";
-
 const token = localStorage.getItem("token");
 
 if (!token) {
@@ -35,7 +33,7 @@ export async function fetchUserProfile() {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
-          "X-Noroff-API-Key": API_Key,
+          "X-Noroff-API-Key": API_KEY,
         },
       }
     );
@@ -75,7 +73,7 @@ async function fetchUserPosts(username) {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
-          "X-Noroff-API-Key": API_Key,
+          "X-Noroff-API-Key": API_KEY,
         },
       }
     );

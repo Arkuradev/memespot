@@ -1,4 +1,5 @@
-import { API_Key } from "./constants.mjs";
+import { API_KEY } from "./constants.mjs";
+import { API_SOCIAL_POSTS_ENDPOINT } from "./constants.mjs";
 import { displayMessage } from "./displayMessage.mjs";
 
 const loggedInUser = localStorage.getItem("name");
@@ -15,7 +16,7 @@ const loggedInUser = localStorage.getItem("name");
  */
 
 async function createPost(token, title, body, url) {
-  const postUrl = `https://v2.api.noroff.dev/social/posts/`;
+  const postUrl = `${API_SOCIAL_POSTS_ENDPOINT}`;
 
   //Get the logged in user's username from localStorage.
 
@@ -34,7 +35,7 @@ async function createPost(token, title, body, url) {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
-        "X-Noroff-API-Key": API_Key,
+        "X-Noroff-API-Key": API_KEY,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(postData),

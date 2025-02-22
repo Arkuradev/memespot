@@ -1,4 +1,4 @@
-import { API_Key } from "./constants.mjs";
+import { API_KEY } from "./constants.mjs";
 import { API_BASE_URL } from "./constants.mjs";
 import { displayMessage } from "./displayMessage.mjs";
 
@@ -27,7 +27,7 @@ async function loadPostData() {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
-        "X-Noroff-API-Key": API_Key,
+        "X-Noroff-API-Key": API_KEY,
       },
     });
 
@@ -66,18 +66,15 @@ export async function savePost() {
   const mediaUrl = document.getElementById("editURL").value;
 
   try {
-    const response = await fetch(
-      `https://v2.api.noroff.dev/social/posts/${postId}`,
-      {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-          "X-Noroff-API-Key": API_Key,
-        },
-        body: JSON.stringify({ title, body, media: { url: mediaUrl } }),
-      }
-    );
+    const response = await fetch(`${API_BASE_URL}/social/posts/${postId}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        "X-Noroff-API-Key": API_KEY,
+      },
+      body: JSON.stringify({ title, body, media: { url: mediaUrl } }),
+    });
 
     const responseData = await response.json();
 

@@ -1,7 +1,8 @@
-import { API_Key } from "./constants.mjs";
+import { API_KEY } from "./constants.mjs";
+import { API_SOCIAL_PROFILES_ENDPOINT } from "./constants.mjs";
+import { token } from "./constants.mjs";
 import { displayMessage } from "./displayMessage.mjs";
 
-const token = localStorage.getItem("token");
 const username = localStorage.getItem("name");
 
 export async function updateProfile() {
@@ -10,13 +11,13 @@ export async function updateProfile() {
 
   try {
     const response = await fetch(
-      `https://v2.api.noroff.dev/social/profiles/${username}`,
+      `${API_SOCIAL_PROFILES_ENDPOINT}/${username}`,
       {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
-          "X-Noroff-API-Key": API_Key,
+          "X-Noroff-API-Key": API_KEY,
         },
         body: JSON.stringify({ avatar: { url: avatarUrl }, bio }),
       }

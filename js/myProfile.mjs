@@ -1,4 +1,4 @@
-import { API_Key } from "./constants.mjs";
+import { API_KEY } from "./constants.mjs";
 
 const token = localStorage.getItem("token");
 const loggedInUser = localStorage.getItem("name");
@@ -23,7 +23,7 @@ async function fetchMyProfile() {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-type": "application/json",
-          "X-Noroff-API-Key": API_Key,
+          "X-Noroff-API-Key": API_KEY,
         },
       }
     );

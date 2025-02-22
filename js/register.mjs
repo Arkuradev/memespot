@@ -1,7 +1,8 @@
 import { displayMessage } from "./displayMessage.mjs";
+import { BASE_API_ENDPOINT } from "./constants.mjs";
 
 export async function registerUser(name, email, password, bio) {
-  const registerUrl = `https://v2.api.noroff.dev/auth/register`;
+  const registerUrl = `${BASE_API_ENDPOINT}/auth/register`;
 
   try {
     const response = await fetch(registerUrl, {

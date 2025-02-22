@@ -1,4 +1,5 @@
-import { API_Key } from "./constants.mjs";
+import { API_KEY } from "./constants.mjs";
+import { API_SOCIAL_PROFILES_ENDPOINT } from "./constants.mjs";
 import { fetchUserDetails } from "./profile.mjs";
 import { displayMessage } from "./displayMessage.mjs";
 
@@ -17,7 +18,6 @@ export async function followHandler() {
     if (!profileUser) throw new Error("No user specified. Please try again.");
 
     const followButton = document.querySelector("#follow-btn");
-    if (!followButton) throw new Error("Follow button not found.");
 
     function updateButtonUI(isFollowing) {
       followButton.textContent = isFollowing ? "Unfollow" : "Follow";
@@ -82,12 +82,12 @@ export async function followHandler() {
 async function followToggleApi(user, action) {
   try {
     const response = await fetch(
-      `https://v2.api.noroff.dev/social/profiles/${user}/${action}`,
+      `${API_SOCIAL_PROFILES_ENDPOINT}/${user}/${action}`,
       {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
-          "X-Noroff-API-Key": API_Key,
+          "X-Noroff-API-Key": API_KEY,
         },
       }
     );

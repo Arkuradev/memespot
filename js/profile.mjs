@@ -1,14 +1,15 @@
-import { API_Key } from "./constants.mjs";
+import { API_KEY } from "./constants.mjs";
+import { API_SOCIAL_PROFILES_ENDPOINT } from "./constants.mjs";
 
 export async function fetchUserDetails(loggedInUser, queryParams = "") {
   try {
     const response = await fetch(
-      `https://v2.api.noroff.dev/social/profiles/${loggedInUser}${queryParams}`,
+      `${API_SOCIAL_PROFILES_ENDPOINT}/${loggedInUser}/${queryParams}`,
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
           "Content-type": "application/json",
-          "X-Noroff-API-Key": API_Key,
+          "X-Noroff-API-Key": API_KEY,
         },
       }
     );

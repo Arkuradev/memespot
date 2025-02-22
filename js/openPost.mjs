@@ -1,4 +1,5 @@
-import { API_Key } from "./constants.mjs";
+import { API_KEY } from "./constants.mjs";
+import { API_SOCIAL_POSTS_ENDPOINT } from "./constants.mjs";
 import { formatDate } from "./formatDate.mjs";
 
 const token = localStorage.getItem("token");
@@ -14,17 +15,14 @@ async function loadPostData() {
   }
 
   try {
-    const response = await fetch(
-      `https://v2.api.noroff.dev/social/posts/${postId}`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-          "X-Noroff-API-Key": API_Key,
-        },
-      }
-    );
+    const response = await fetch(`${API_SOCIAL_POSTS_ENDPOINT}/${postId}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        "X-Noroff-API-Key": API_KEY,
+      },
+    });
     if (!response.ok) {
       console.error("Failed to fetch post data:", response.status);
       return;

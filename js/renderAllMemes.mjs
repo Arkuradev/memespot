@@ -1,4 +1,4 @@
-import { API_Key } from "./constants.mjs";
+import { API_KEY } from "./constants.mjs";
 import { displayMessage } from "./displayMessage.mjs";
 export async function fetchMemes() {
   const token = localStorage.getItem("token");
@@ -20,7 +20,7 @@ export async function fetchMemes() {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
-          "X-Noroff-API-Key": API_Key,
+          "X-Noroff-API-Key": API_KEY,
         },
       }
     );

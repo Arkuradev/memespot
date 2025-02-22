@@ -1,19 +1,18 @@
-import { API_Key } from "./constants.mjs";
+import { API_KEY } from "./constants.mjs";
+import { API_SOCIAL_POSTS_ENDPOINT } from "./constants.mjs";
+import { token } from "./constants.mjs";
 
 export async function renderPostsProfile() {
-  const token = localStorage.getItem("token");
   const currentUser = localStorage.getItem("name");
   const profilePosts = document.getElementById("userPosts");
 
-  const postUrl = `https://v2.api.noroff.dev/social/posts?_author=true`;
-
   try {
-    const response = await fetch(postUrl, {
+    const response = await fetch(`${API_SOCIAL_POSTS_ENDPOINT}?_author=true`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
-        "X-Noroff-API-Key": API_Key,
+        "X-Noroff-API-Key": API_KEY,
       },
     });
 

@@ -1,4 +1,6 @@
-import { API_Key } from "./constants.mjs";
+import { API_KEY } from "./constants.mjs";
+import { API_SOCIAL_POSTS_ENDPOINT } from "./constants.mjs";
+import { token } from "./constants.mjs";
 import { displayMessage } from "./displayMessage.mjs";
 
 const postFeed = document.getElementById("memeFeed");
@@ -6,15 +8,14 @@ const projectTag = "memespot";
 
 export async function renderPosts() {
   try {
-    // Fetch posts from the API
-    const token = localStorage.getItem("token");
-    const postUrl = "https://v2.api.noroff.dev/social/posts";
-    const response = await fetch(postUrl, {
+    // const token = localStorage.getItem("token");
+
+    const response = await fetch(`${API_SOCIAL_POSTS_ENDPOINT}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
-        "X-Noroff-API-Key": API_Key,
+        "X-Noroff-API-Key": API_KEY,
       },
     });
 
