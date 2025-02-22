@@ -10,5 +10,5 @@ export function displayMessage(selector, type = "info", text) {
   setTimeout(() => {
     messageContainer.textContent = "";
     messageContainer.className = "";
-  }, 5000);
+  }, 2000);
 }

@@ -1,42 +1,13 @@
-import { API_KEY } from "./constants.mjs";
-import { displayMessage } from "./displayMessage.mjs";
+import { apiFetch } from "./apiFetch.mjs";
 import { getTimeAgo } from "./formatDate.mjs";
+
 export async function fetchMemes() {
-  const token = localStorage.getItem("token");
-
-  if (!token) {
-    displayMessage(
-      "#message",
-      "error",
-      "You must be logged in to view this page."
+  const data = await apiFetch("/posts?_author=true");
+  if (data) {
+    const memespotPosts = data.data.filter((post) =>
+      post.tags.includes("memespot")
     );
-    window.location.href = "../account/login.html";
-    return;
-  }
-  try {
-    const response = await fetch(
-      "https://v2.api.noroff.dev/social/posts?_author=true",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-          "X-Noroff-API-Key": API_KEY,
-        },
-      }
-    );
-    const data = await response.json();
-
-    if (response.ok) {
-      const memespotPosts = data.data.filter((post) =>
-        post.tags.includes("memespot")
-      );
-      renderMemes(memespotPosts);
-    } else {
-      console.error("Failed to fetch memes.");
-    }
-  } catch (error) {
-    console.error("Error fetching memes:", error);
+    renderMemes(memespotPosts);
   }
 }
 
@@ -75,5 +46,8 @@ export function renderMemes(memes) {
     memeContainer.appendChild(memeElement);
   });
 }
+function main() {
+  fetchMemes();
+}
 
-document.addEventListener("DOMContentLoaded", fetchMemes);
+main();

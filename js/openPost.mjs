@@ -1,8 +1,8 @@
 import { API_KEY } from "./constants.mjs";
 import { API_SOCIAL_POSTS_ENDPOINT } from "./constants.mjs";
 import { formatDate } from "./formatDate.mjs";
+import { token } from "./constants.mjs";
 
-const token = localStorage.getItem("token");
 const openPost = document.getElementById("postContainer");
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -73,6 +73,8 @@ export function renderPost(post) {
   return postElement;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+function main() {
   loadPostData();
-});
+}
+
+main();

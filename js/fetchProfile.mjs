@@ -1,12 +1,15 @@
 import { API_KEY } from "./constants.mjs";
-import { token } from "./constants.mjs";
-const username = localStorage.getItem("name");
+
+import { displayMessage } from "./displayMessage.mjs";
 
 export async function fetchProfile() {
-  if (!token || !username) {
+  const token = localStorage.getItem("token");
+  const username = localStorage.getItem("name");
+  if (!token) {
     console.error(
       "Missing token or username in localStorage. Please log in first."
     );
+    displayMessage("#message", "error", "Please log in first.");
     return (window.location.href = "/account/login.html");
   }
   try {
