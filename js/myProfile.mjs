@@ -13,7 +13,7 @@ const loggedInUser = localStorage.getItem("name");
 async function fetchMyProfile() {
   if (!token) {
     console.error("Missing token, please log in before viewing this page.");
-    return;
+    return (window.location.href = "/account/login.html");
   }
 
   try {

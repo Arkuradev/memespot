@@ -1,5 +1,6 @@
 import { API_KEY } from "./constants.mjs";
 import { displayMessage } from "./displayMessage.mjs";
+import { getTimeAgo } from "./formatDate.mjs";
 export async function fetchMemes() {
   const token = localStorage.getItem("token");
 
@@ -41,12 +42,14 @@ export async function fetchMemes() {
 
 export function renderMemes(memes) {
   const memeContainer = document.getElementById("memeContainer");
+
   memeContainer.innerHTML = "";
 
   memes.forEach((meme) => {
     const authorName =
       meme.author && meme.author.name ? meme.author.name : "Unknown";
 
+    const timeAgo = getTimeAgo(meme.created);
     const memeElement = document.createElement("div");
     memeElement.classList.add(
       "meme-card",
@@ -66,6 +69,7 @@ export function renderMemes(memes) {
   }">${meme.title}</a></h2>
   <p class="text-gray-400 mt-2">${meme.body}</p>
   <p class="text-gray-400 text-sm mt-1">Posted by: <a class="text-white hover:text-blue-300" href="../account/profile.html?user=${authorName}">${authorName}</a></p>
+  <p class="text-gray-200 text-sm mt-1">${timeAgo}</p>
   `;
 
     memeContainer.appendChild(memeElement);

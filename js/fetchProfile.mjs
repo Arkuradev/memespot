@@ -7,7 +7,7 @@ export async function fetchProfile() {
     console.error(
       "Missing token or username in localStorage. Please log in first."
     );
-    return;
+    return (window.location.href = "/account/login.html");
   }
   try {
     const response = await fetch(
