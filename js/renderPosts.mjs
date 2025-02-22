@@ -3,6 +3,13 @@ import { apiFetch } from "./apiFetch.mjs";
 const postFeed = document.getElementById("memeFeed");
 const projectTag = "memespot";
 
+/**
+ * Fetches all posts from the API and renders the relevant posts on the
+ * #memeFeed element. A post is considered relevant if it has the
+ * "memespot" tag.
+ *
+ * @returns {Promise<void>}
+ */
 export async function renderPosts() {
   const data = await apiFetch("/posts");
   const posts = data.data || [];

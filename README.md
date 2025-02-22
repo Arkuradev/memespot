@@ -39,14 +39,9 @@ Since the project uses Tailwind via a CDN, there is no need for additional setup
 > [!NOTE]
 > If you want to log in straight away you can use one of the users here or create a new account.
 
-1.  Demo user 1:
+1.  Demo user:
 
 - Log in: memespotdemo1@stud.noroff.no
-- Password: memespotdemo
-
-2. Demo user 2:
-
-- Log in: memespotdemo2@stud.noroff.no
 - Password: memespotdemo
 
 ### Open in browser
