@@ -13,6 +13,10 @@ with memes in a fun and engaging way.
 - Post Viewing: Click on a meme to view its full post page.
 - Tailwind CSS for Styling: The project uses Tailwind CSS via CDN, so no setup is required for styling.
 
+## Used For
+
+This project has been used for JavaScript 2 and CSS Frameworks assignment at Noroff Vocational School.
+
 ## Tech Stack
 
 - JavaScript (Vanilla JS) - Core functionality and API interaction.
