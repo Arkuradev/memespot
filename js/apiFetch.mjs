@@ -1,6 +1,7 @@
 import { API_KEY } from "./constants.mjs";
 import { BASE_API_ENDPOINT } from "./constants.mjs";
 import { displayMessage } from "./displayMessage.mjs";
+import { showLoader, hideLoader } from "./loader.mjs";
 
 export async function apiFetch(endpoint, method = "GET", body = null) {
   const token = localStorage.getItem("token");
@@ -18,9 +19,9 @@ export async function apiFetch(endpoint, method = "GET", body = null) {
   if (body) {
     options.body = JSON.stringify(body);
   }
-  const loader = document.getElementById("global-loader");
   try {
-    if (loader) loader.style.display = "flex";
+    showLoader();
+
     const response = await fetch(
       `${BASE_API_ENDPOINT}/social${endpoint}`,
       options
@@ -34,17 +35,11 @@ export async function apiFetch(endpoint, method = "GET", body = null) {
     }
     return data;
   } catch (error) {
-    displayMessage(
-      "#message",
-      "error",
-      "Failed to fetch data. Please log in and try again."
-    );
+    displayMessage("#message", "error", `${error.message}. Please try again.`);
     setTimeout(() => {
       window.location.href = "../account/login.html";
     }, 1000);
   } finally {
-    setTimeout(() => {
-      if (loader) loader.style.display = "none";
-    }, 300);
+    hideLoader();
   }
 }
