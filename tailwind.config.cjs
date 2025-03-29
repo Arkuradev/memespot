@@ -1,9 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./**/*.html", "./js/**/*.mjs", "!./node_modules/**/*"],
-  safelist: ["animate-spin"],
+  darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        grape: "var(--grape)",
+      },
+    },
   },
   plugins: [],
 };

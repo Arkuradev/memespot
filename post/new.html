@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,6 +9,7 @@
     <script src="../js/logOut.mjs" type="module"></script>
     <script src="../js/navbar.mjs" type="module"></script>
     <script src="../js/loadingIndicator.mjs" type="module"></script>
+    <script src="../js/theme.mjs" type="module"></script>
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -29,21 +30,26 @@
     <link rel="manifest" href="/images/site.webmanifest" />
     <title>Post New Meme</title>
   </head>
-  <body class="bg-gray-900">
+  <body class="bg-white text-gray-900 dark:text-white dark:bg-gray-900">
     <header>
-      <nav class="bg-gray-800 text-white shadow relative">
+      <nav
+        class="bg-white text-gray-900 dark:text-white dark:bg-gray-900 shadow relative"
+      >
         <div
           class="container mx-auto px-4 py-3 flex items-center justify-between"
         >
           <!-- Logo -->
-          <a href="/index.html" class="text-lg font-bold hover:text-gray-300"
-            >MemeSpot</a
+          <a
+            href="/index.html"
+            class="text-lg font-bold hover:text-blue-300 dark:hover:text-gray-200"
+          >
+            MemeSpot</a
           >
 
           <!-- Hamburger Menu -->
           <button
             id="navToggle"
-            class="block md:hidden text-white focus:outline-none"
+            class="block md:hidden text-gray-900 dark:text-white focus:outline-none"
             aria-label="Toggle Navigation"
           >
             <svg
@@ -64,14 +70,24 @@
 
           <!-- Desktop Menu -->
           <ul class="hidden md:flex space-x-6 text-sm">
-            <li><a href="/index.html" class="hover:text-gray-300">Home</a></li>
             <li>
-              <a href="../post/new.html" class="hover:text-gray-300"
+              <a
+                href="/index.html"
+                class="hover:text-blue-300 dark:hover:text-gray-200"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="../post/new.html"
+                class="hover:text-blue-300 dark:hover:text-gray-200"
                 >New Post</a
               >
             </li>
             <li>
-              <a href="../account/dashboard.html" class="hover:text-gray-300"
+              <a
+                href="../account/dashboard.html"
+                class="hover:text-blue-300 dark:hover:text-gray-200"
                 >Dashboard</a
               >
             </li>
@@ -79,7 +95,7 @@
               <a
                 href="../account/login.html"
                 id="desktopLoginLink"
-                class="hover:text-gray-300"
+                class="hover:text-blue-300 dark:hover:text-gray-200"
                 >Login</a
               >
             </li>
@@ -89,7 +105,7 @@
         <!-- Mobile Menu -->
         <div
           id="mobileMenu"
-          class="fixed top-0 right-0 h-70 w-full max-w-sm bg-gray-700 text-white transform translate-x-full transition-transform duration-300 ease-in-out md:hidden"
+          class="fixed top-0 right-0 h-70 w-full max-w-sm bg-white text-gray-900 dark:text-white dark:bg-gray-900 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden"
         >
           <div
             class="flex items-center justify-between px-4 py-3 border-b border-gray-600"
@@ -97,7 +113,7 @@
             <h2 class="text-lg font-bold">Menu</h2>
             <button
               id="closeMenu"
-              class="text-white focus:outline-none"
+              class="text-gray-900 dark:text-white focus:outline-none"
               aria-label="Close Menu"
             >
               <svg
@@ -117,19 +133,25 @@
             </button>
           </div>
           <div class="flex flex-col px-4 py-4 space-y-4">
-            <a href="/index.html" class="block hover:text-gray-300">Home</a>
-            <a href="../post/new.html" class="block hover:text-gray-300"
+            <a
+              href="/index.html"
+              class="block hover:text-blue-300 dark:hover:text-gray-200"
+              >Home</a
+            >
+            <a
+              href="../post/new.html"
+              class="block hover:text-blue-300 dark:hover:text-gray-200"
               >New Post</a
             >
             <a
               href="../account/dashboard.html"
-              class="block hover:text-gray-300"
+              class="block hover:text-blue-300 dark:hover:text-gray-200"
               >Dashboard</a
             >
             <a
               href="../account/login.html"
               id="mobileLoginLink"
-              class="block hover:text-gray-300"
+              class="block hover:text-blue-300 dark:hover:text-gray-200"
               >Login</a
             >
           </div>
@@ -148,12 +170,14 @@
       <div id="message" class="message"></div>
       <section
         id="newMemeFormSection"
-        class="bg-gray-900 min-h-screen flex items-center justify-center py-10"
+        class="bg-white text-gray-900 dark:text-white dark:bg-gray-900 min-h-screen flex items-center justify-center py-10"
       >
         <div
-          class="memeFormContainer max-w-md w-full bg-gray-800 shadow-lg rounded-lg p-6"
+          class="memeFormContainer max-w-md w-full bg-white text-gray-900 dark:text-white dark:bg-gray-900 shadow-lg rounded-lg p-6"
         >
-          <h1 class="text-xl font-semibold text-white mb-6 text-center">
+          <h1
+            class="text-xl font-semibold text-gray-900 dark:text-white mb-6 text-center"
+          >
             Post New Meme
           </h1>
           <form id="newPostForm" class="space-y-4">
@@ -161,7 +185,7 @@
             <div>
               <label
                 for="url"
-                class="block text-sm font-medium text-gray-300 mb-1"
+                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
                 >URL</label
               >
               <input
