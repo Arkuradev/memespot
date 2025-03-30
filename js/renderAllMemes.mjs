@@ -24,7 +24,7 @@ export function renderMemes(memes) {
     const memeElement = document.createElement("div");
     memeElement.classList.add(
       "meme-card",
-      "bg-gray-800",
+      "bg-secondary",
       "p-4",
       "rounded-lg",
       "shadow-lg",
@@ -35,12 +35,12 @@ export function renderMemes(memes) {
   <img src="${meme.media?.url || ""}" alt="${
       meme.media?.alt || "Meme"
     }" class="w-full h-auto object-cover rounded-md">
-  <h2 class="text-white text-lg font-semibold mt-2"><a class="text-white hover:text-blue-300" href="../pages/post.html?id=${
+  <h2 class="text-main text-lg font-semibold mt-2"><a class="text-main hover:text-hover" href="../pages/post.html?id=${
     meme.id
   }">${meme.title}</a></h2>
-  <p class="text-gray-400 mt-2">${meme.body}</p>
-  <p class="text-gray-400 text-sm mt-1">Posted by: <a class="text-white hover:text-blue-300" href="../account/profile.html?user=${authorName}">${authorName}</a></p>
-  <p class="text-gray-300 text-sm mt-1">${timeAgo}</p>
+  <p class="text-main mt-2">${meme.body}</p>
+  <p class="text-main text-sm mt-1">Posted by: <a class="text-main font-bold hover:text-hover" href="../account/profile.html?user=${authorName}">${authorName}</a></p>
+  <p class="text-main text-sm mt-1">${timeAgo}</p>
   `;
 
     memeContainer.appendChild(memeElement);

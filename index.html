@@ -10,6 +10,7 @@
     <script src="./js/renderAllMemes.mjs" type="module"></script>
     <script src="./js/searchMemes.mjs" type="module"></script>
     <script src="./js/loadingIndicator.mjs" type="module"></script>
+    <script src="./js/theme.mjs" type="module"></script>
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -32,19 +33,19 @@
   </head>
   <body>
     <header>
-      <nav class="bg-gray-800 text-white shadow relative">
+      <nav class="bg-nav text-main shadow relative">
         <div
           class="container mx-auto px-4 py-3 flex items-center justify-between"
         >
           <!-- Logo -->
-          <a href="/index.html" class="text-lg font-bold hover:text-gray-300"
+          <a href="/index.html" class="text-lg font-bold hover:text-hover"
             >MemeSpot</a
           >
 
           <!-- Hamburger Menu -->
           <button
             id="navToggle"
-            class="block md:hidden text-white focus:outline-none"
+            class="block md:hidden text-main focus:outline-none"
             aria-label="Toggle Navigation"
           >
             <svg
@@ -65,14 +66,20 @@
 
           <!-- Desktop Menu -->
           <ul class="hidden md:flex space-x-6 text-sm">
-            <li><a href="/index.html" class="hover:text-gray-300">Home</a></li>
             <li>
-              <a href="../post/new.html" class="hover:text-gray-300"
+              <a href="/index.html" class="hover:text-hover font-semibold"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a href="../post/new.html" class="hover:text-hover font-semibold"
                 >New Post</a
               >
             </li>
             <li>
-              <a href="../account/dashboard.html" class="hover:text-gray-300"
+              <a
+                href="../account/dashboard.html"
+                class="hover:text-hover font-semibold"
                 >Dashboard</a
               >
             </li>
@@ -80,7 +87,7 @@
               <a
                 href="../account/login.html"
                 id="desktopLoginLink"
-                class="hover:text-gray-300"
+                class="hover:text-hover font-semibold"
                 >Login</a
               >
             </li>
@@ -90,7 +97,7 @@
         <!-- Mobile Menu -->
         <div
           id="mobileMenu"
-          class="fixed top-0 right-0 h-70 w-full max-w-sm bg-gray-700 text-white transform translate-x-full transition-transform duration-300 ease-in-out md:hidden"
+          class="fixed top-0 right-0 h-70 w-full max-w-sm bg-nav text-main transform translate-x-full transition-transform duration-300 ease-in-out md:hidden"
         >
           <div
             class="flex items-center justify-between px-4 py-3 border-b border-gray-600"
@@ -98,7 +105,7 @@
             <h2 class="text-lg font-bold">Menu</h2>
             <button
               id="closeMenu"
-              class="text-white focus:outline-none"
+              class="text-main focus:outline-none"
               aria-label="Close Menu"
             >
               <svg
@@ -118,19 +125,21 @@
             </button>
           </div>
           <div class="flex flex-col px-4 py-4 space-y-4">
-            <a href="/index.html" class="block hover:text-gray-300">Home</a>
-            <a href="../post/new.html" class="block hover:text-gray-300"
+            <a href="/index.html" class="block hover:text-hover font-semibold"
+              >Home</a
+            >
+            <a href="../post/new.html" class="block hover:hover font-semibold"
               >New Post</a
             >
             <a
               href="../account/dashboard.html"
-              class="block hover:text-gray-300"
+              class="block hover:text-hover font-semibold"
               >Dashboard</a
             >
             <a
               href="../account/login.html"
               id="mobileLoginLink"
-              class="block hover:text-gray-300"
+              class="block hover:text-hover font-semibold"
               >Login</a
             >
           </div>
@@ -143,12 +152,12 @@
         class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50"
       >
         <div
-          class="w-12 h-12 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"
+          class="w-12 h-12 border-4 border-border border-t-blue-500 rounded-full animate-spin"
         ></div>
       </div>
 
-      <section class="bg-gray-900 min-h-screen p-4">
-        <h1 class="text-2xl font-semibold text-white mb-4 text-center">
+      <section class="bg-background min-h-screen p-4">
+        <h1 class="text-2xl font-semibold text-main mb-4 text-center">
           MemeSpot Feed
         </h1>
         <div id="message" class="message"></div>
@@ -157,7 +166,7 @@
           type="text"
           id="searchBar"
           placeholder="Search memes or users..."
-          class="w-full p-2 mb-4 text-white bg-gray-800 rounded-lg border border-gray-600"
+          class="w-full p-2 mb-4 text-main bg-secondary rounded-lg border border-border"
         />
 
         <div

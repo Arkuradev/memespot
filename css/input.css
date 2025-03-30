@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --nav: 196, 217, 255;
+  --background: 246, 240, 240;
+  --main: 27, 38, 44;
+  --border: 209, 219, 213;
+  --primary: 196, 217, 255;
+  --secondary: 196, 217, 255;
+  --hover: 162, 148, 249;
+  --btn-primary: 143, 135, 241;
+  --btn-secondary: 255, 138, 138;
+}
+
+.dark {
+  --nav: 49, 54, 63;
+  --background: 27, 38, 44;
+  --main: 187, 225, 250;
+  --hover: 100, 153, 233;
+  --primary: 15, 76, 117;
+  --secondary: 49, 54, 63;
+  --tertiary: 146, 144, 195;
+  --btn-primary: 75, 112, 245;
+  --btn-secondary: 136, 48, 78;
+}
