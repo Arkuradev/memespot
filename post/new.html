@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -30,26 +30,21 @@
     <link rel="manifest" href="/images/site.webmanifest" />
     <title>Post New Meme</title>
   </head>
-  <body class="bg-white text-gray-900 dark:text-white dark:bg-gray-900">
+  <body class="bg-background text-main">
     <header>
-      <nav
-        class="bg-white text-gray-900 dark:text-white dark:bg-gray-900 shadow relative"
-      >
+      <nav class="bg-nav text-main shadow relative">
         <div
           class="container mx-auto px-4 py-3 flex items-center justify-between"
         >
           <!-- Logo -->
-          <a
-            href="/index.html"
-            class="text-lg font-bold hover:text-blue-300 dark:hover:text-gray-200"
-          >
+          <a href="/index.html" class="text-lg font-bold hover:text-hover">
             MemeSpot</a
           >
 
           <!-- Hamburger Menu -->
           <button
             id="navToggle"
-            class="block md:hidden text-gray-900 dark:text-white focus:outline-none"
+            class="block md:hidden text-main focus:outline-none"
             aria-label="Toggle Navigation"
           >
             <svg
@@ -71,23 +66,19 @@
           <!-- Desktop Menu -->
           <ul class="hidden md:flex space-x-6 text-sm">
             <li>
-              <a
-                href="/index.html"
-                class="hover:text-blue-300 dark:hover:text-gray-200"
+              <a href="/index.html" class="hover:text-hover font-semibold"
                 >Home</a
               >
             </li>
             <li>
-              <a
-                href="../post/new.html"
-                class="hover:text-blue-300 dark:hover:text-gray-200"
+              <a href="../post/new.html" class="hover:text-hover font-semibold"
                 >New Post</a
               >
             </li>
             <li>
               <a
                 href="../account/dashboard.html"
-                class="hover:text-blue-300 dark:hover:text-gray-200"
+                class="hover:text-hover font-semibold"
                 >Dashboard</a
               >
             </li>
@@ -95,7 +86,7 @@
               <a
                 href="../account/login.html"
                 id="desktopLoginLink"
-                class="hover:text-blue-300 dark:hover:text-gray-200"
+                class="hover:text-hover font-semibold"
                 >Login</a
               >
             </li>
@@ -105,15 +96,15 @@
         <!-- Mobile Menu -->
         <div
           id="mobileMenu"
-          class="fixed top-0 right-0 h-70 w-full max-w-sm bg-white text-gray-900 dark:text-white dark:bg-gray-900 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden"
+          class="fixed top-0 right-0 h-70 w-full max-w-sm bg-nav text-main transform translate-x-full transition-transform duration-300 ease-in-out md:hidden"
         >
           <div
-            class="flex items-center justify-between px-4 py-3 border-b border-gray-600"
+            class="flex items-center justify-between px-4 py-3 border-b border-border"
           >
             <h2 class="text-lg font-bold">Menu</h2>
             <button
               id="closeMenu"
-              class="text-gray-900 dark:text-white focus:outline-none"
+              class="text-main focus:outline-none"
               aria-label="Close Menu"
             >
               <svg
@@ -133,25 +124,23 @@
             </button>
           </div>
           <div class="flex flex-col px-4 py-4 space-y-4">
-            <a
-              href="/index.html"
-              class="block hover:text-blue-300 dark:hover:text-gray-200"
+            <a href="/index.html" class="block hover:text-hover font-semibold"
               >Home</a
             >
             <a
               href="../post/new.html"
-              class="block hover:text-blue-300 dark:hover:text-gray-200"
+              class="block hover:text-hover font-semibold"
               >New Post</a
             >
             <a
               href="../account/dashboard.html"
-              class="block hover:text-blue-300 dark:hover:text-gray-200"
+              class="block hover:text-hover font-semibold"
               >Dashboard</a
             >
             <a
               href="../account/login.html"
               id="mobileLoginLink"
-              class="block hover:text-blue-300 dark:hover:text-gray-200"
+              class="block hover:text-hover font-semibold"
               >Login</a
             >
           </div>
@@ -170,61 +159,57 @@
       <div id="message" class="message"></div>
       <section
         id="newMemeFormSection"
-        class="bg-white text-gray-900 dark:text-white dark:bg-gray-900 min-h-screen flex items-center justify-center py-10"
+        class="bg-background text-main min-h-screen flex items-center justify-center py-10"
       >
         <div
-          class="memeFormContainer max-w-md w-full bg-white text-gray-900 dark:text-white dark:bg-gray-900 shadow-lg rounded-lg p-6"
+          class="memeFormContainer max-w-md w-full bg-secondary text-main shadow-lg rounded-lg p-6"
         >
-          <h1
-            class="text-xl font-semibold text-gray-900 dark:text-white mb-6 text-center"
-          >
+          <h1 class="text-xl font-semibold text-main mb-6 text-center">
             Post New Meme
           </h1>
           <form id="newPostForm" class="space-y-4">
             <!-- URL Input -->
             <div>
-              <label
-                for="url"
-                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+              <label for="url" class="block text-sm font-medium text-main mb-1"
                 >URL</label
               >
               <input
                 type="text"
                 placeholder="URL"
                 id="url"
-                class="w-full p-2 rounded-lg bg-gray-700 text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                class="w-full p-2 rounded-lg bg-background text-main placeholder-main focus:outline-none focus:ring-2 focus:ring-border"
               />
             </div>
             <div>
               <label
                 for="title"
-                class="block text-sm font-medium text-gray-300 mb-1"
+                class="block text-sm font-medium text-main mb-1"
                 >Title</label
               >
               <input
                 type="text"
                 placeholder="Title"
                 id="title"
-                class="w-full p-2 rounded-lg bg-gray-700 text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                class="w-full p-2 rounded-lg bg-background text-main placeholder-main focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
             <div>
               <label
                 for="description"
-                class="block text-sm font-medium text-gray-300 mb-1"
+                class="block text-sm font-medium text-main mb-1"
                 >Description</label
               >
               <textarea
                 placeholder="Write a description here"
                 id="description"
-                class="w-full p-2 rounded-lg bg-gray-700 text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                class="w-full p-2 rounded-lg bg-background text-main placeholder-main focus:outline-none focus:ring-2 focus:ring-blue-500"
               ></textarea>
             </div>
             <!-- Submit Button -->
             <button
               id="newPostButton"
               type="submit"
-              class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
+              class="w-full bg-btn-primary hover:bg-hover text-main font-semibold py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
             >
               Post Meme
             </button>

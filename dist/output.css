@@ -853,6 +853,10 @@ video {
   border-top-width: 2px;
 }
 
+.border-border {
+  border-color: rgba(var(--border));
+}
+
 .border-gray-300 {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
@@ -861,10 +865,6 @@ video {
 .border-gray-600 {
   --tw-border-opacity: 1;
   border-color: rgb(75 85 99 / var(--tw-border-opacity, 1));
-}
-
-.border-border {
-  border-color: rgba(var(--border));
 }
 
 .border-t-blue-500 {
@@ -929,6 +929,10 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
+.bg-primary {
+  background-color: rgba(var(--primary));
 }
 
 .bg-opacity-70 {
@@ -1079,6 +1083,14 @@ video {
 .placeholder-gray-500::placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(107 114 128 / var(--tw-placeholder-opacity, 1));
+}
+
+.placeholder-main::-moz-placeholder {
+  color: rgba(var(--main));
+}
+
+.placeholder-main::placeholder {
+  color: rgba(var(--main));
 }
 
 .opacity-0 {
@@ -1235,6 +1247,14 @@ video {
 .focus\:ring-red-400:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(248 113 113 / var(--tw-ring-opacity, 1));
+}
+
+.focus\:ring-main:focus {
+  --tw-ring-color: rgba(var(--main));
+}
+
+.focus\:ring-border:focus {
+  --tw-ring-color: rgba(var(--border));
 }
 
 @media (min-width: 640px) {

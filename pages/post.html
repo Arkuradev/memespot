@@ -11,6 +11,7 @@
     <script src="../js/navbar.mjs" type="module"></script>
     <script src="../js/logOut.mjs" type="module"></script>
     <script src="../js/loadingIndicator.mjs" type="module"></script>
+    <script src="../js/theme.mjs" type="module"></script>
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -32,21 +33,21 @@
 
     <title>Loading..</title>
   </head>
-  <body class="bg-gray-900">
+  <body class="bg-background">
     <header>
-      <nav class="bg-gray-800 text-white shadow relative">
+      <nav class="bg-nav text-main shadow relative">
         <div
           class="container mx-auto px-4 py-3 flex items-center justify-between"
         >
           <!-- Logo -->
-          <a href="/index.html" class="text-lg font-bold hover:text-blue-300"
+          <a href="/index.html" class="text-lg font-bold hover:text-hover"
             >MemeSpot</a
           >
 
           <!-- Hamburger Menu -->
           <button
             id="navToggle"
-            class="block md:hidden text-white focus:outline-none"
+            class="block md:hidden text-main focus:outline-none"
             aria-label="Toggle Navigation"
           >
             <svg
@@ -67,14 +68,20 @@
 
           <!-- Desktop Menu -->
           <ul class="hidden md:flex space-x-6 text-sm">
-            <li><a href="/index.html" class="hover:text-blue-300">Home</a></li>
             <li>
-              <a href="../post/new.html" class="hover:text-blue-300"
+              <a href="/index.html" class="hover:text-hover font-semibold"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a href="../post/new.html" class="hover:text-hover font-semibold"
                 >New Post</a
               >
             </li>
             <li>
-              <a href="../account/dashboard.html" class="hover:text-blue-300"
+              <a
+                href="../account/dashboard.html"
+                class="hover:text-hover font-semibold"
                 >Dashboard</a
               >
             </li>
@@ -82,7 +89,7 @@
               <a
                 href="../account/login.html"
                 id="desktopLoginLink"
-                class="hover:text-blue-300"
+                class="hover:text-hover font-semibold"
                 >Login</a
               >
             </li>
@@ -92,15 +99,15 @@
         <!-- Mobile Menu -->
         <div
           id="mobileMenu"
-          class="fixed top-0 right-0 h-70 w-full max-w-sm bg-gray-700 text-white transform translate-x-full transition-transform duration-300 ease-in-out md:hidden"
+          class="fixed top-0 right-0 h-70 w-full max-w-sm bg-nav text-main transform translate-x-full transition-transform duration-300 ease-in-out md:hidden"
         >
           <div
-            class="flex items-center justify-between px-4 py-3 border-b border-gray-600"
+            class="flex items-center justify-between px-4 py-3 border-b border-border"
           >
             <h2 class="text-lg font-bold">Menu</h2>
             <button
               id="closeMenu"
-              class="text-white focus:outline-none"
+              class="text-main focus:outline-none"
               aria-label="Close Menu"
             >
               <svg
@@ -120,19 +127,23 @@
             </button>
           </div>
           <div class="flex flex-col px-4 py-4 space-y-4">
-            <a href="/index.html" class="block hover:text-gray-300">Home</a>
-            <a href="../post/new.html" class="block hover:text-blue-300"
+            <a href="/index.html" class="block hover:text-hover font-semibold"
+              >Home</a
+            >
+            <a
+              href="../post/new.html"
+              class="block hover:text-hover font-semibold"
               >New Post</a
             >
             <a
               href="../account/dashboard.html"
-              class="block hover:text-blue-300"
+              class="block hover:text-hover font-semibold"
               >Dashboard</a
             >
             <a
               href="../account/login.html"
               id="mobileLoginLink"
-              class="block hover:text-blue-300"
+              class="block hover:text-hover font-semibold"
               >Login</a
             >
           </div>
@@ -151,11 +162,11 @@
       <div id="message" class="message"></div>
       <h1
         id="pageTitle"
-        class="text-xl font-semibold text-white mb-6 text-center"
+        class="text-xl font-semibold text-main mb-6 text-center"
       >
         Loading...
       </h1>
-      <div id="postSection" class="bg-gray-900 min-h-screen">
+      <div id="postSection" class="bg-background min-h-screen">
         <div id="postContainer"></div>
       </div>
     </main>
