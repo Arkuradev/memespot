@@ -87,7 +87,7 @@ The project interacts with the **Noroff Social API**, handling user authenticati
 ## Future Enhancements
 
 - **Comments & Reactions:** Users can comment and react to memes.
-- **Light/Dark Mode Support:** Toggle between light and dark themes.
+- **Additional Themes Support:** Toggle between between different colored themes.
 - **Better Search Functionality:** Find memes and users more easily.
 
 ## Changes added:
