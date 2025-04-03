@@ -69,7 +69,7 @@ function renderUserPosts(posts) {
     const postElement = document.createElement("div");
     postElement.classList.add(
       "meme-card",
-      "bg-gray-800",
+      "bg-secondary",
       "p-6",
       "rounded-lg",
       "shadow-lg",
@@ -80,10 +80,10 @@ function renderUserPosts(posts) {
       <img src="${post.media?.url || ""}" alt="${
       post.media?.alt || "Meme"
     }" class="w-62 h-auto object-cover rounded-md">
-      <h2 class="text-white text-lg font-semibold mt-2"><a class="text-white hover:text-blue-300"href="../pages/post.html?id=${
+      <h2 class="text-main text-lg font-semibold mt-2"><a class="text-main hover:text-hover"href="../pages/post.html?id=${
         post.id
       }">${post.title}</a></h2>
-      <p class="text-gray-400 mt-2">${post.body}</p>
+      <p class="text-main mt-2">${post.body}</p>
     `;
 
     postContainer.appendChild(postElement);

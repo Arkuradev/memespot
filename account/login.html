@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/styles.css" />
     <script src="../js/login.mjs" type="module"></script>
     <script src="../js/navbar.mjs" type="module"></script>
+    <script src="../js/theme.mjs" type="module"></script>
     <script src="../js/loadingIndicator.mjs" type="module"></script>
 
     <link
@@ -32,19 +33,19 @@
   </head>
   <body>
     <header>
-      <nav class="bg-gray-800 text-white shadow relative">
+      <nav class="bg-nav text-main shadow relative">
         <div
           class="container mx-auto px-4 py-3 flex items-center justify-between"
         >
           <!-- Logo -->
-          <a href="/index.html" class="text-lg font-bold hover:text-gray-300"
+          <a href="/index.html" class="text-lg font-bold hover:text-hover"
             >MemeSpot</a
           >
 
           <!-- Hamburger Menu -->
           <button
             id="navToggle"
-            class="block md:hidden text-white focus:outline-none"
+            class="block md:hidden text-main focus:outline-none"
             aria-label="Toggle Navigation"
           >
             <svg
@@ -65,14 +66,20 @@
 
           <!-- Desktop Menu -->
           <ul class="hidden md:flex space-x-6 text-sm">
-            <li><a href="/index.html" class="hover:text-gray-300">Home</a></li>
             <li>
-              <a href="../post/new.html" class="hover:text-gray-300"
+              <a href="/index.html" class="hover:text-hover font-semibold"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a href="../post/new.html" class="hover:text-hover font-semibold"
                 >New Post</a
               >
             </li>
             <li>
-              <a href="../account/dashboard.html" class="hover:text-gray-300"
+              <a
+                href="../account/dashboard.html"
+                class="hover:text-hover font-semibold"
                 >Dashboard</a
               >
             </li>
@@ -80,7 +87,7 @@
               <a
                 href="../account/login.html"
                 id="desktopLoginLink"
-                class="hover:text-gray-300"
+                class="hover:text-hover font-semibold"
                 >Login</a
               >
             </li>
@@ -90,15 +97,15 @@
         <!-- Mobile Menu -->
         <div
           id="mobileMenu"
-          class="fixed top-0 right-0 h-70 w-full max-w-sm bg-gray-700 text-white transform translate-x-full transition-transform duration-300 ease-in-out md:hidden"
+          class="fixed top-0 right-0 h-70 w-full max-w-sm bg-nav text-main transform translate-x-full transition-transform duration-300 ease-in-out md:hidden"
         >
           <div
-            class="flex items-center justify-between px-4 py-3 border-b border-gray-600"
+            class="flex items-center justify-between px-4 py-3 border-b border-border"
           >
             <h2 class="text-lg font-bold">Menu</h2>
             <button
               id="closeMenu"
-              class="text-white focus:outline-none"
+              class="text-main focus:outline-none"
               aria-label="Close Menu"
             >
               <svg
@@ -118,19 +125,23 @@
             </button>
           </div>
           <div class="flex flex-col px-4 py-4 space-y-4">
-            <a href="/index.html" class="block hover:text-gray-300">Home</a>
-            <a href="../post/new.html" class="block hover:text-gray-300"
+            <a href="/index.html" class="block hover:text-hover font-semibold"
+              >Home</a
+            >
+            <a
+              href="../post/new.html"
+              class="block hover:text-hover font-semibold"
               >New Post</a
             >
             <a
               href="../account/dashboard.html"
-              class="block hover:text-gray-300"
+              class="block hover:text-hover font-semibold"
               >Dashboard</a
             >
             <a
               href="../account/login.html"
               id="mobileLoginLink"
-              class="block hover:text-gray-300"
+              class="block hover:text-hover font-semibold"
               >Login</a
             >
           </div>
@@ -142,16 +153,16 @@
       class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50"
     >
       <div
-        class="w-12 h-12 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"
+        class="w-12 h-12 border-4 border-border border-t-blue-500 rounded-full animate-spin"
       ></div>
     </div>
     <main
-      class="min-h-screen bg-gray-900 flex items-center justify-center px-4"
+      class="min-h-screen bg-background flex items-center justify-center px-4"
     >
       <section id="loginSection" class="w-full max-w-md">
         <div id="message" class="message"></div>
         <div
-          class="loginContainer bg-gray-800 text-white shadow-lg rounded-2xl p-8"
+          class="loginContainer bg-secondary text-main shadow-lg rounded-2xl p-8"
         >
           <h2 class="text-2xl font-bold text-center mb-6">Login</h2>
           <form id="loginForm" class="space-y-4">
@@ -162,7 +173,7 @@
               type="text"
               placeholder="@stud.noroff.no"
               id="username"
-              class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              class="w-full px-4 py-2 bg-background border border-border rounded-lg text-main placeholder-main/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
             <label for="password" class="block text-sm font-medium mb-1"
               >Password
@@ -171,13 +182,13 @@
               type="password"
               placeholder="Password"
               id="password"
-              class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              class="w-full px-4 py-2 bg-background border border-border rounded-lg text-main placeholder-main/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
             <!-- Login Button -->
             <button
               id="loginButton"
               type="submit"
-              class="w-full px-4 py-2 bg-blue-600 rounded-lg text-white font-bold hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500"
+              class="w-full px-4 py-2 bg-btn-primary rounded-lg text-main font-bold hover:bg-hover focus:outline-none focus:ring-4 focus:ring-blue-500"
             >
               Login
             </button>
@@ -185,7 +196,7 @@
             <p class="text-sm mt-4">Need an account?</p>
             <a
               href="../account/register.html"
-              class="text-blue-100 hover:text-blue-300"
+              class="text-main hover:text-hover"
               >Click here to register.</a
             >
           </form>
