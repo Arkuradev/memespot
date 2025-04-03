@@ -29,14 +29,38 @@ This project has been used for JavaScript 2 and CSS Frameworks assignment at Nor
 
 ## Setup & Usage
 
-Since the project uses Tailwind via a CDN, there is no need for additional setup. Simply clone the repository and open the index.html file in a browser.
-
 ### Clone the repository
 
 > [!TIP]
 > git clone https://github.com/NoroffFEU/js2-course-assignment-Arkuradev
 >
 > cd js2-course-assignment-Arkuradev
+
+### Install Dependencies
+
+Install Node.js, if you don't have it, download it from [nodejs.org](https://nodejs.org).
+
+Install Tailwind and its dependencies:
+
+```
+npm install
+```
+
+### Run Tailwind in watch mode
+
+Use this command when working on the project.
+
+```
+npm run dev
+```
+
+### Build for production
+
+Optimize CSS for production:
+
+```
+npm run build
+```
 
 ### Demo Users
 
@@ -65,6 +89,10 @@ The project interacts with the **Noroff Social API**, handling user authenticati
 - **Comments & Reactions:** Users can comment and react to memes.
 - **Light/Dark Mode Support:** Toggle between light and dark themes.
 - **Better Search Functionality:** Find memes and users more easily.
+
+## Changes added:
+
+- **Light/Dark Mode Support:** Toggle between light and dark theme.
 
 ## Author
 
