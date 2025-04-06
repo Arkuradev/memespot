@@ -3,8 +3,8 @@
 MemeSpot is a social media platform where users can create an account to share fun memes. Users can follow each other, explore profiles, and interact
 with memes in a fun and engaging way.
 
-![darkmode version](dashboard-dm.png)
-![lightmode version](dashboard-lm.png)
+![darkmode version](./images/dashboard-dm.png)
+![lightmode version](./images/dashboard-lm.png)
 
 ## Features
 
