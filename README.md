@@ -90,7 +90,7 @@ The project interacts with the **Noroff Social API**, handling user authenticati
 - **Additional Themes Support:** Toggle between between different colored themes.
 - **Better Search Functionality:** Find memes and users more easily.
 
-## Changes added:
+## Changes added
 
 - **Light/Dark Mode Support:** Toggle between light and dark theme.
 

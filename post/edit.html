@@ -170,61 +170,62 @@
             Edit Meme
           </h1>
           <form id="editPostForm" class="space-y-4" onsubmit="return false;">
-            <!-- URL Input -->
-            <div>
-              <label
-                for="editURL"
-                class="block text-sm font-medium text-main mb-1"
-                >URL</label
+            <fieldset>
+              <div>
+                <label
+                  for="editURL"
+                  class="block text-sm font-medium text-main mb-1"
+                  >URL</label
+                >
+                <input
+                  type="text"
+                  placeholder="URL"
+                  id="editURL"
+                  class="w-full mb-4 p-2 rounded-lg bg-background text-main placeholder-main focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div>
+                <label
+                  for="editTitle"
+                  class="block text-sm font-medium text-main mb-1"
+                  >Title</label
+                >
+                <input
+                  type="text"
+                  placeholder="Title"
+                  id="editTitle"
+                  class="w-full mb-4 p-2 rounded-lg bg-background text-main placeholder-main focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div>
+                <label
+                  for="editDescription"
+                  class="block text-sm font-medium text-main mb-1"
+                  >Description</label
+                >
+                <textarea
+                  placeholder="Write a description here"
+                  id="editDescription"
+                  class="w-full mb-4 p-2 rounded-lg bg-background text-main placeholder-main focus:outline-none focus:ring-2 focus:ring-blue-500"
+                ></textarea>
+              </div>
+              <!-- Submit Button -->
+              <button
+                id="editPostButton"
+                onclick="savePost()"
+                type="submit"
+                class="w-full mb-4 bg-btn-primary hover:bg-hover text-main font-semibold py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
               >
-              <input
-                type="text"
-                placeholder="URL"
-                id="editURL"
-                class="w-full p-2 rounded-lg bg-background text-main placeholder-main focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-            <div>
-              <label
-                for="editTitle"
-                class="block text-sm font-medium text-main mb-1"
-                >Title</label
+                Save
+              </button>
+              <button
+                id="cancelEditButton"
+                type="submit"
+                class="w-full bg-btn-secondary hover:bg-red-500 text-main font-semibold py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
               >
-              <input
-                type="text"
-                placeholder="Title"
-                id="editTitle"
-                class="w-full p-2 rounded-lg bg-background text-main placeholder-main focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-            <div>
-              <label
-                for="editDescription"
-                class="block text-sm font-medium text-main mb-1"
-                >Description</label
-              >
-              <textarea
-                placeholder="Write a description here"
-                id="editDescription"
-                class="w-full p-2 rounded-lg bg-background text-main placeholder-main focus:outline-none focus:ring-2 focus:ring-blue-500"
-              ></textarea>
-            </div>
-            <!-- Submit Button -->
-            <button
-              id="editPostButton"
-              onclick="savePost()"
-              type="submit"
-              class="w-full bg-btn-primary hover:bg-hover text-main font-semibold py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
-            >
-              Save
-            </button>
-            <button
-              id="cancelEditButton"
-              type="submit"
-              class="w-full bg-btn-secondary hover:bg-red-500 text-main font-semibold py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
-            >
-              Cancel
-            </button>
+                Cancel
+              </button>
+            </fieldset>
           </form>
         </div>
       </section>

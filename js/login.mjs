@@ -7,7 +7,9 @@ const passwordInput = document.querySelector("#password");
 
 loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
-
+  const fieldset = loginForm.querySelector("fieldset");
+  const button = loginForm.querySelector("button");
+  const previousButtonText = button.textContent;
   const email = emailInput.value;
   const password = passwordInput.value;
 
@@ -18,6 +20,8 @@ loginForm.addEventListener("submit", async (event) => {
   }
 
   try {
+    button.textContent = "Logging in...";
+    fieldset.disabled = true;
     const response = await fetch(API_LOGIN, {
       method: "POST",
       headers: {
@@ -31,20 +35,18 @@ loginForm.addEventListener("submit", async (event) => {
     }
 
     const data = await response.json();
-
     localStorage.setItem("token", data.data?.accessToken);
     localStorage.setItem("name", data.data?.name);
     localStorage.setItem("isLoggedIn", "true");
 
-    displayMessage(
-      "#message",
-      "success",
-      "Login successful! Loading Dashboard..."
-    );
+    displayMessage("#message", "success", "Logging in...");
     setTimeout(() => {
       window.location.href = "../account/dashboard.html";
     }, 1000);
   } catch (error) {
     displayMessage("#message", "error", error.message);
+  } finally {
+    fieldset.disabled = false;
+    button.textContent = previousButtonText;
   }
 });

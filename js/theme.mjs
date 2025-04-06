@@ -1,35 +1,31 @@
-document.addEventListener("DOMContentLoaded", () => {
+function main() {
   const toggleButton = document.getElementById("themeToggleButton");
-  const themeIcon = document.getElementById("themeIcon");
-  const themeText = document.getElementById("themeText");
   const html = document.documentElement;
 
-  function updateButton() {
-    if (html.classList.contains("dark")) {
-      themeIcon.textContent = "☀️"; // Sun icon
-      themeText.textContent = "Light Mode";
-    } else {
-      themeIcon.textContent = "🌙"; // Moon icon
-      themeText.textContent = "Dark Mode";
-    }
-  }
-
-  // Load theme from localStorage
   if (localStorage.getItem("theme") === "light") {
     html.classList.remove("dark");
   } else {
-    html.classList.add("dark"); // Default to dark mode
+    html.classList.add("dark");
   }
 
-  updateButton(); // Set correct icon & text on load
+  if (toggleButton) {
+    function updateButton() {
+      toggleButton.innerHTML = html.classList.contains("dark")
+        ? `☀️ Light Mode`
+        : `🌙 Dark Mode`;
+    }
 
-  // Toggle theme on button click
-  toggleButton.addEventListener("click", () => {
-    html.classList.toggle("dark");
+    updateButton();
 
-    const newTheme = html.classList.contains("dark") ? "dark" : "light";
-    localStorage.setItem("theme", newTheme);
+    toggleButton.addEventListener("click", () => {
+      html.classList.toggle("dark");
 
-    updateButton(); // Update icon & text after change
-  });
-});
+      const theme = html.classList.contains("dark") ? "dark" : "light";
+      localStorage.setItem("theme", theme);
+
+      updateButton();
+    });
+  }
+}
+
+main();

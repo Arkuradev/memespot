@@ -5,6 +5,7 @@ import { showLoader, hideLoader } from "./loader.mjs";
 
 export async function apiFetch(endpoint, method = "GET", body = null) {
   const token = localStorage.getItem("token");
+
   const headers = {
     "Content-Type": "application/json",
     "X-Noroff-API-Key": API_KEY,

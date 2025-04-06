@@ -42,6 +42,7 @@ async function createPost(token, title, body, url) {
  */
 function createPostForm() {
   const form = document.getElementById("newPostForm");
+  const fieldset = form.querySelector("fieldset");
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -74,6 +75,7 @@ function createPostForm() {
       if (newPost) {
         displayMessage("#message", "success", "Post successfully created!");
         setTimeout(() => {
+          fieldset.disabled = true;
           form.reset();
           window.location.href = "../account/dashboard.html";
         }, 1500);
@@ -91,6 +93,8 @@ function createPostForm() {
         "error",
         "Failed to create post. Please try again later."
       );
+    } finally {
+      fieldset.disabled = false;
     }
   });
 }
