@@ -1,0 +1,16 @@
+{
+  "name": "js2-course-assignment-arkuradev",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "MemeSpot is a social media platform where users can create an account to share fun memes. Users can follow each other, explore profiles, and interact\r with memes in a fun and engaging way.",
+  "main": "index.mjs",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./css/input.css -o ./dist/output.css --watch",
+    "build": "npx tailwindcss -i ./css/input.css -o ./dist/output.css --minify"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
