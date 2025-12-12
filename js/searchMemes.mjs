@@ -2,10 +2,12 @@ import { apiFetch } from "./apiFetch.mjs";
 import { renderMemes, fetchMemes } from "./renderAllMemes.mjs";
 
 async function searchMemes(query) {
+  // If query is empty, fall back to default memes
   if (!query) {
-    fetchMemes();
+    await fetchMemes();
     return;
   }
+
   const data = await apiFetch("/posts?_tag=memespot&_author=true");
 
   if (data) {
@@ -15,15 +17,20 @@ async function searchMemes(query) {
         meme.body.toLowerCase().includes(query.toLowerCase()) ||
         meme.author?.name.toLowerCase().includes(query.toLowerCase())
     );
+
     renderMemes(filteredMemes);
   }
 }
 
-document.getElementById("searchBar").addEventListener("input", (event) => {
-  const query = event.target.value.trim();
-  if (query.length > 0) {
+document.addEventListener("DOMContentLoaded", () => {
+  // ✅ Initial load: render the default memes
+  fetchMemes();
+
+  const searchInput = document.getElementById("searchBar");
+  if (!searchInput) return;
+
+  searchInput.addEventListener("input", (event) => {
+    const query = event.target.value.trim();
     searchMemes(query);
-  } else {
-    fetchMemes();
-  }
+  });
 });
