@@ -24,52 +24,37 @@ export function renderMemes(memes) {
     const timeAgo = getTimeAgo(meme.created);
     const memeElement = document.createElement("div");
     memeElement.classList.add(
-      "meme-card",
-      "bg-secondary",
-      "p-4",
-      "rounded-lg",
-      "shadow-lg",
-      "mb-4"
+      "mb-4",
+      "break-inside-avoid"
     );
 
 memeElement.innerHTML = `
-  <article class="group relative flex h-full flex-col overflow-hidden rounded-xl bg-[#151515] shadow-md ring-1 ring-white/10 transition-all duration-300 hover:-translate-y-0.5 hover:ring-[#10c9c9]/30 hover:shadow-[0_0_22px_rgba(16,201,201,0.14)]">
-
+  <article class="group overflow-hidden rounded-xl bg-[#151515] shadow-md ring-1 ring-white/10 transition-all duration-300 hover:shadow-[0_0_22px_rgba(16,201,201,0.14)] hover:ring-[#10c9c9]/30">
     <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#10c9c9]/40 to-transparent"></div>
 
-    <!-- Image -->
     <a href="../pages/post.html?id=${meme.id}" class="block p-3">
-      <div class="relative mx-auto w-full max-w-sm overflow-hidden rounded-lg bg-black/20 ring-1 ring-white/10">
-        <img
-          src="${meme.media?.url || ""}"
-          alt="${meme.media?.alt || "Meme"}"
-          class="h-44 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-          loading="lazy"
-        />
-      </div>
+      <img
+        src="${meme.media?.url || ""}"
+        alt="${meme.media?.alt || "Meme"}"
+        class="w-full h-auto rounded-lg object-contain bg-black/20"
+        loading="lazy"
+        decoding="async"
+      />
     </a>
 
-    <!-- Content -->
-    <div class="flex flex-1 flex-col px-4 pb-4 pt-0">
-      <h2 class="text-main text-base font-semibold leading-snug">
-        <a
-          href="../pages/post.html?id=${meme.id}"
-          class="transition-colors hover:text-hover"
-        >
+    <div class="px-4 pb-4">
+      <h2 class="text-main text-sm font-semibold leading-snug">
+        <a href="../pages/post.html?id=${meme.id}" class="transition-colors hover:text-hover">
           ${meme.title}
         </a>
       </h2>
 
-      <p class="mt-2 line-clamp-2 text-sm text-main/80">
+      <p class="mt-2 text-sm text-main/80 line-clamp-2">
         ${meme.body}
       </p>
 
-      <!-- Footer -->
-      <div class="mt-auto flex items-center justify-between pt-4 text-xs text-main/70">
-        <a
-          href="../account/profile.html?user=${authorName}"
-          class="font-semibold transition-colors hover:text-hover"
-        >
+      <div class="mt-4 flex items-center justify-between text-xs text-main/70">
+        <a href="../account/profile.html?user=${authorName}" class="font-semibold hover:text-hover transition-colors">
           @${authorName}
         </a>
         <span class="opacity-80">${timeAgo}</span>

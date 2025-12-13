@@ -1,8 +1,10 @@
 import { apiFetch } from "./apiFetch.mjs";
 import { renderMemes, fetchMemes } from "./renderAllMemes.mjs";
+import { debounce } from "./debounce.mjs";
 
 async function searchMemes(query) {
-  // If query is empty, fall back to default memes
+
+  // renderMemeSkeletons(8);
   if (!query) {
     await fetchMemes();
     return;
@@ -11,11 +13,12 @@ async function searchMemes(query) {
   const data = await apiFetch("/posts?_tag=memespot&_author=true");
 
   if (data) {
+    const q = query.toLowerCase();
     const filteredMemes = data.data.filter(
       (meme) =>
-        meme.title.toLowerCase().includes(query.toLowerCase()) ||
-        meme.body.toLowerCase().includes(query.toLowerCase()) ||
-        meme.author?.name.toLowerCase().includes(query.toLowerCase())
+        meme.title?.toLowerCase().includes(q) ||
+        meme.body?.toLowerCase().includes(q) ||
+        meme.author?.name?.toLowerCase().includes(q)
     );
 
     renderMemes(filteredMemes);
@@ -23,14 +26,17 @@ async function searchMemes(query) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // ✅ Initial load: render the default memes
+  // initial render
   fetchMemes();
 
   const searchInput = document.getElementById("searchBar");
   if (!searchInput) return;
 
-  searchInput.addEventListener("input", (event) => {
-    const query = event.target.value.trim();
-    searchMemes(query);
+  const debounced = debounce((value) => {
+    searchMemes(value.trim());
+  }, 350);
+
+  searchInput.addEventListener("input", (e) => {
+    debounced(e.target.value);
   });
 });
