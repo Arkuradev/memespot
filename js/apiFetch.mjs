@@ -69,7 +69,7 @@ export async function apiFetch(
       (error.status === 401 || error.status === 403)
     ) {
       setTimeout(() => {
-        window.location.href = "../account/login.html";
+        window.location.href = "./account/login.html";
       }, 800);
     }
 
