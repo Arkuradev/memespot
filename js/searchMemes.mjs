@@ -1,26 +1,34 @@
 import { apiFetch } from "./apiFetch.mjs";
 import { renderMemes, fetchMemes } from "./renderAllMemes.mjs";
 import { debounce } from "./debounce.mjs";
+import { renderMemeSkeletons } from "./skeletonMemes.mjs";
+import { renderEmptyState } from "./renderEmptyState.mjs";
 
 async function searchMemes(query) {
 
-  // renderMemeSkeletons(8);
   if (!query) {
     await fetchMemes();
     return;
   }
 
-  const data = await apiFetch("/posts?_tag=memespot&_author=true");
+renderMemeSkeletons(8);
 
+  const data = await apiFetch("/posts?_tag=memespot&_author=true");
+  if (query.length < 3) return;
   if (data) {
     const q = query.toLowerCase();
+    
     const filteredMemes = data.data.filter(
       (meme) =>
         meme.title?.toLowerCase().includes(q) ||
         meme.body?.toLowerCase().includes(q) ||
         meme.author?.name?.toLowerCase().includes(q)
     );
-
+    
+    if (filteredMemes.length === 0) {
+    renderEmptyState(query);
+    return;
+  }
     renderMemes(filteredMemes);
   }
 }

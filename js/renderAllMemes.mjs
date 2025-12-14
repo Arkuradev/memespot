@@ -2,15 +2,25 @@
 import { apiFetch } from "./apiFetch.mjs";
 import { getTimeAgo } from "./formatDate.mjs";
 
+let isFirstLoad = true;
+
 export async function fetchMemes() {
   const data = await apiFetch(
-    "/posts?_tag=memespot&_author=true&_limit=12&sort=created&sortOrder=desc"
+    "/posts?_tag=memespot&_author=true&_limit=12&sort=created&sortOrder=desc",
+    "GET",
+    null,
+    {
+      showGlobalLoader: isFirstLoad, 
+      redirectOnAuthFail: true,
+    }
   );
+
+  isFirstLoad = false; 
+
   if (data) {
     renderMemes(data.data);
   }
 }
-
 export function renderMemes(memes) {
   const memeContainer = document.getElementById("memeContainer");
   if (!memeContainer) return;
