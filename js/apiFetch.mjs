@@ -1,6 +1,7 @@
 import { API_KEY, BASE_API_ENDPOINT } from "./constants.mjs";
 import { displayMessage } from "./displayMessage.mjs";
 import { showLoader, hideLoader } from "./loader.mjs";
+import { toUrl } from "./baseUrlHelper.mjs";
 
 /**
  * apiFetch(endpoint, method?, body?, options?)
@@ -69,7 +70,7 @@ export async function apiFetch(
       (error.status === 401 || error.status === 403)
     ) {
       setTimeout(() => {
-        window.location.href = `${window.location.origin}/account/login.html`;
+        window.location.href = toUrl("/account/login.html");
       }, 800);
     }
 
