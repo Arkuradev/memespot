@@ -16,7 +16,9 @@ export async function apiFetch(
   body = null,
   {
     showGlobalLoader = true,
-    redirectOnAuthFail = true,
+    redirectOnAuthFail = false,
+    allowUnauthorized = false,
+    silentAuthFail = false,
     messageSelector = "#message",
   } = {}
 ) {
@@ -39,15 +41,20 @@ export async function apiFetch(
 
   try {
     if (showGlobalLoader) showLoader();
-
+    
     const response = await fetch(
       `${BASE_API_ENDPOINT}/social${endpoint}`,
       options
     );
 
     let data = null;
+    
     if (response.status !== 204) {
       data = await response.json();
+    }
+
+    if (allowUnauthorized && (response.status === 401 || response.status === 403)) {
+      return null;
     }
 
     if (!response.ok) {
@@ -64,11 +71,12 @@ export async function apiFetch(
     const msg = error?.message || "Failed to fetch data.";
     displayMessage(messageSelector, "error", `${msg}. Please try again.`);
 
-    // Only redirect to login if auth actually failed
-    if (
-      redirectOnAuthFail &&
-      (error.status === 401 || error.status === 403)
-    ) {
+    if (!(silentAuthFail && isAuthFail)) {
+      const msg = error?.message || "Failed to fetch data.";
+      displayMessage(messageSelector, "error", `${msg}. Please try again.`);
+    }
+
+    if (redirectOnAuthFail && isAuthFail) {
       setTimeout(() => {
         window.location.href = toUrl("/account/login.html");
       }, 800);

@@ -3,6 +3,7 @@ import { renderMemes, fetchMemes } from "./renderAllMemes.mjs";
 import { debounce } from "./debounce.mjs";
 import { renderMemeSkeletons } from "./skeletonMemes.mjs";
 import { renderEmptyState } from "./renderEmptyState.mjs";
+import { renderLoginGate } from "./renderAllMemes.mjs";
 
 async function searchMemes(query) {
 
@@ -13,7 +14,11 @@ async function searchMemes(query) {
 
 renderMemeSkeletons(8);
 
-  const data = await apiFetch("/posts?_tag=memespot&_author=true");
+  const data = await apiFetch("/posts?_tag=memespot&_author=true",
+  "GET",
+  null,
+  { showGlobalLoader: false, allowUnauthorized: true, redirectOnAuthFail: false }
+);
   if (query.length < 3) return;
   if (data) {
     const q = query.toLowerCase();
@@ -24,7 +29,7 @@ renderMemeSkeletons(8);
         meme.body?.toLowerCase().includes(q) ||
         meme.author?.name?.toLowerCase().includes(q)
     );
-    
+
     if (filteredMemes.length === 0) {
     renderEmptyState(query);
     return;
@@ -34,7 +39,13 @@ renderMemeSkeletons(8);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // initial render
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    renderLoginGate();
+    return; // Prevents further execution if not logged in which gives a 401 error.
+  }
+
   fetchMemes();
 
   const searchInput = document.getElementById("searchBar");

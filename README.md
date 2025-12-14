@@ -1,5 +1,7 @@
 # MemeSpot - A Social Media Platform for Memes.
 
+[MemeSpot Live Site](https://memespot-js2.vercel.app/)
+
 MemeSpot is a social media platform where users can create an account to share fun memes. Users can follow each other, explore profiles, and interact
 with memes in a fun and engaging way.
 
@@ -92,6 +94,20 @@ The project interacts with the **Noroff Social API**, handling user authenticati
 - **Comments & Reactions:** Users can comment and react to memes.
 - **Additional Themes Support:** Toggle between between different colored themes.
 - **Better Search Functionality:** Find memes and users more easily.
+ ```
+ 14th of December updates: 
+
+  - Fixed styling on cards to take up less space for each card. 
+  - Changed colors for cards and hover. 
+  - Fixed loading indicator behaviour for query. 
+  - Added debounce to query to reduce network requests. 
+  - Fixed issue (401 access denied) when attempting to fetch api data with no user logged in. 
+  - Added a loginGate that displays to user in the memefeed when user is not logged in.  
+  - If user is not logged in, no api request to meme's occures. 
+  - Deployed site to vercel instead of netlify. 
+  - New deployed link: https://memespot-js2.vercel.app/
+
+ ``` 
 
 ## Changes added
 

@@ -41,7 +41,7 @@ loginForm.addEventListener("submit", async (event) => {
 
     displayMessage("#message", "success", "Logging in...");
     setTimeout(() => {
-      window.location.href = "../account/dashboard.html";
+      window.location.href = "../index.html";
     }, 1000);
   } catch (error) {
     displayMessage("#message", "error", error.message);

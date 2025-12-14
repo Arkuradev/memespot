@@ -2,25 +2,43 @@
 import { apiFetch } from "./apiFetch.mjs";
 import { getTimeAgo } from "./formatDate.mjs";
 
-let isFirstLoad = true;
-
 export async function fetchMemes() {
-  const data = await apiFetch(
-    "/posts?_tag=memespot&_author=true&_limit=12&sort=created&sortOrder=desc",
-    "GET",
-    null,
-    {
-      showGlobalLoader: isFirstLoad, 
-      redirectOnAuthFail: true,
+  try {
+    const data = await apiFetch(
+      "/posts?_tag=memespot&_author=true&_limit=12&sort=created&sortOrder=desc"
+    );
+
+    if (data) renderMemes(data.data);
+  } catch (err) {
+    // If not logged in, show a friendly message instead of hard redirect
+    if (err?.status === 401 || err?.status === 403) {
+      renderLoginGate();
+      return;
     }
-  );
-
-  isFirstLoad = false; 
-
-  if (data) {
-    renderMemes(data.data);
+    throw err;
   }
 }
+
+export function renderLoginGate() {
+  const memeContainer = document.getElementById("memeContainer");
+  if (!memeContainer) return;
+
+  memeContainer.innerHTML = `
+    <div class="[column-span:all] mx-auto max-w-xl rounded-xl bg-[#151515] p-6 ring-1 ring-white/10 text-center">
+      <h2 class="text-main text-xl font-semibold">Log in to view the feed</h2>
+      <p class="mt-2 text-main/70 text-sm">
+        MemeSpot requires you to be logged in to load posts from the API.
+      </p>
+      <a
+        href="../account/login.html"
+        class="mt-4 inline-flex items-center justify-center rounded-lg bg-[#10c9c9] px-4 py-2 text-sm font-semibold text-black hover:bg-[#22ffff] transition-colors"
+      >
+        Go to Login
+      </a>
+    </div>
+  `;
+}
+
 export function renderMemes(memes) {
   const memeContainer = document.getElementById("memeContainer");
   if (!memeContainer) return;
