@@ -94,6 +94,10 @@ The project interacts with the **Noroff Social API**, handling user authenticati
 - **Comments & Reactions:** Users can comment and react to memes.
 - **Additional Themes Support:** Toggle between between different colored themes.
 - **Better Search Functionality:** Find memes and users more easily.
+
+
+## Changes added
+
  ```
  14th of December updates: 
 
@@ -111,10 +115,6 @@ The project interacts with the **Noroff Social API**, handling user authenticati
   - New deployed link: https://memespot-js2.vercel.app/
 
  ``` 
-
-## Changes added
-
-- **Light/Dark Mode Support:** Toggle between light and dark theme.
 
 ## Author
 
