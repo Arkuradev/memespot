@@ -8,6 +8,7 @@ module.exports = {
         nav: "rgba(var(--nav))",
         background: "rgba(var(--background))",
         main: "rgba(var(--main))",
+        text: "rgba(var(--main-text))",
         hover: "rgba(var(--hover))",
         primary: "rgba(var(--primary))",
         secondary: "rgba(var(--secondary))",

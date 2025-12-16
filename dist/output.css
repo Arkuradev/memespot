@@ -1189,6 +1189,10 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
+.text-text {
+  color: rgba(var(--main-text));
+}
+
 .placeholder-main::-moz-placeholder {
   color: rgba(var(--main));
 }
@@ -1301,6 +1305,7 @@ video {
        column-span: all;
 }
 
+/* Light Theme 
 :root {
   --nav: 196, 217, 255;
   --background: 246, 240, 240;
@@ -1311,17 +1316,18 @@ video {
   --hover: 166, 77, 121;
   --btn-primary: 143, 135, 241;
   --btn-secondary: 255, 138, 138;
-}
+} */
 
 .dark {
   --nav: 49, 54, 63;
   --background: 27, 38, 44;
   --main: 187, 225, 250;
-  --hover: 143, 135, 241;
+  --main-text: 0, 0, 0;
+  --hover: 34, 255, 255;
   --primary: 15, 76, 117;
   --secondary: 49, 54, 63;
   --tertiary: 146, 144, 195;
-  --btn-primary: 106, 30, 85;
+  --btn-primary: 16, 201, 201;
   --btn-secondary: 136, 48, 78;
 }
 

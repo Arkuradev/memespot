@@ -99,6 +99,9 @@ The project interacts with the **Noroff Social API**, handling user authenticati
 
   - Fixed styling on cards to take up less space for each card. 
   - Changed colors for cards and hover. 
+  - Changed color theme for buttons on dark theme. 
+  - Made dark theme the only default color theme as light theme needs to be changed significantly. 
+  - * Temporarely removed light theme and theme toggle due to planned changes. 
   - Fixed loading indicator behaviour for query. 
   - Added debounce to query to reduce network requests. 
   - Fixed issue (401 access denied) when attempting to fetch api data with no user logged in. 

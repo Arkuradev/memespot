@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Light Theme 
 :root {
   --nav: 196, 217, 255;
   --background: 246, 240, 240;
@@ -12,7 +13,7 @@
   --hover: 166, 77, 121;
   --btn-primary: 143, 135, 241;
   --btn-secondary: 255, 138, 138;
-}
+} */
 
 .dark {
   --nav: 49, 54, 63;
