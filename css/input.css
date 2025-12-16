@@ -18,10 +18,10 @@
   --nav: 49, 54, 63;
   --background: 27, 38, 44;
   --main: 187, 225, 250;
-  --hover: 143, 135, 241;
+  --hover: "#22ffff";
   --primary: 15, 76, 117;
   --secondary: 49, 54, 63;
   --tertiary: 146, 144, 195;
-  --btn-primary: 15, 15, 15;
+  --btn-primary: "10c9c9";
   --btn-secondary: 136, 48, 78;
 }
